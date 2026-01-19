@@ -2,7 +2,6 @@ import headLeft from "../assets/coinporate/head-left.png";
 import headRight from "../assets/coinporate/head-right.png";
 import headLeftAlt from "../assets/coinporate/head-left-2.png";
 import streamerImage from "../assets/coinporate/streamer.png";
-import greenOrb from "../assets/coinporate/green-orb.png";
 
 import iconCrown from "../assets/coinporate/icons/referral.svg";
 import iconGrid from "../assets/coinporate/icons/brand.svg";

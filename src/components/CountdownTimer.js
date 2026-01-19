@@ -36,11 +36,15 @@ function CountdownTimer({
   useEffect(() => {
     if (targetDate instanceof Date) {
       targetTimeRef.current = targetDate.getTime();
-    } else if (typeof targetDate === "string" || typeof targetDate === "number") {
+    } else if (
+      typeof targetDate === "string" ||
+      typeof targetDate === "number"
+    ) {
       targetTimeRef.current = new Date(targetDate).getTime();
     } else if (typeof durationDays === "number") {
       targetTimeRef.current =
-        Date.now() + durationDays * HOURS_PER_DAY * SECONDS_PER_HOUR * MS_PER_SECOND;
+        Date.now() +
+        durationDays * HOURS_PER_DAY * SECONDS_PER_HOUR * MS_PER_SECOND;
     } else {
       targetTimeRef.current = 0;
     }
@@ -68,10 +72,26 @@ function CountdownTimer({
     const { days, hours, minutes, seconds } = getTimeParts(remaining);
 
     return [
-      { value: formatUnit(days), label: "days", numberColor: "countdown__value--accent" },
-      { value: formatUnit(hours), label: "hours", numberColor: "countdown__value--light" },
-      { value: formatUnit(minutes), label: "minutes", numberColor: "countdown__value--light" },
-      { value: formatUnit(seconds), label: "seconds", numberColor: "countdown__value--light" },
+      {
+        value: formatUnit(days),
+        label: "days",
+        numberColor: "countdown__value--accent",
+      },
+      {
+        value: formatUnit(hours),
+        label: "hours",
+        numberColor: "countdown__value--light",
+      },
+      {
+        value: formatUnit(minutes),
+        label: "minutes",
+        numberColor: "countdown__value--light",
+      },
+      {
+        value: formatUnit(seconds),
+        label: "seconds",
+        numberColor: "countdown__value--light",
+      },
     ];
   }, [now, units]);
 
