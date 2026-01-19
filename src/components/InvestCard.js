@@ -14,10 +14,10 @@ function InvestCard({
     variant === "dark"
       ? "invest-card invest-card--dark"
       : variant === "lime"
-      ? "invest-card invest-card--lime"
-      : variant === "image"
-      ? "invest-card invest-card--sage"
-      : "invest-card invest-card--sage";
+        ? "invest-card invest-card--lime"
+        : variant === "image"
+          ? "invest-card invest-card--sage"
+          : "invest-card invest-card--sage";
 
   return (
     <div

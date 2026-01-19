@@ -8,9 +8,7 @@ function HeroHeadline() {
         <br className="hero__title-break" />
         <span>acceleration</span>
       </h1>
-      <h2 className="hero__subtitle">
-        meets symbolic tokenomics
-      </h2>
+      <h2 className="hero__subtitle">meets symbolic tokenomics</h2>
     </div>
   );
 }

@@ -5,8 +5,8 @@ function RoadmapCard({ number, title, text, status }) {
   const numberClass = status
     ? "roadmap-card__number roadmap-card__number--active"
     : numeric >= 4
-    ? "roadmap-card__number roadmap-card__number--pending"
-    : "roadmap-card__number roadmap-card__number--done";
+      ? "roadmap-card__number roadmap-card__number--pending"
+      : "roadmap-card__number roadmap-card__number--done";
 
   return (
     <div className="roadmap-card">

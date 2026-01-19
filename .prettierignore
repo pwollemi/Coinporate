@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+package-lock.json
+yarn.lock
+
+# Build outputs
+build
+dist
+*.min.js
+*.min.css
+
+# Generated files
+coverage
+.nyc_output
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Public assets (usually don't format media files)
+public/media
