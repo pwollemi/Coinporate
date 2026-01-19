@@ -30,15 +30,15 @@ import {
   partnerLogos,
   faqItems,
 } from "./data/content";
-import heroBg from "./assets/coinporate/hero-bg.png";
 import heroTexture from "./assets/coinporate/hero-texture.png";
 import heroTriangles from "./assets/hero-triangles.svg";
 import heroLogo from "./assets/coinporate-logo-nav.svg";
+import heroVideoMobile from "./assets/coinporate/videos/coinporate-mobile-1080HD.mp4";
+import heroVideoDesktop from "./assets/coinporate/videos/coinporate-desktop_1080HD.mp4";
 import ctaArrow from "./assets/cta-arrow.svg";
 import socialX from "./assets/social-x.svg";
 import socialDiscord from "./assets/social-discord.svg";
 import socialLinkedIn from "./assets/social-linkedin.svg";
-
 import platformDashboard from "./assets/coinporate/platform-dashboard.png";
 import liquidMetal from "./assets/coinporate/liquid-metal.png";
 import iconBolt from "./assets/coinporate/icons/bolt.svg";
@@ -110,10 +110,10 @@ function App() {
     <div className="page">
       <div className="page__frame">
         <HeroSection
-          heroBg={heroBg}
           heroTexture={heroTexture}
           heroTriangles={heroTriangles}
-          videoSrc="/media/hero-background.mp4"
+          videoMobileSrc={heroVideoMobile}
+          videoDesktopSrc={heroVideoDesktop}
           nav={
             <nav className="hero__nav" aria-label="Primary">
               <img className="hero__logo" src={heroLogo} alt="coinporate" />

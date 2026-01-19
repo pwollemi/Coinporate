@@ -348,34 +348,98 @@ export const teamBio =
 export const faqItems = [
   {
     number: "01",
-    question: "What are the advantages of applying AI to my business?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur. Elementum nibh aenean feugiat nisi eu neque massa. Augue mattis blandit aliquet ut proin ipsum. At massa purus lorem quis et. Massa nullam eu dictum convallis magna. Nec bibendum cras leo nunc elementum semper dolor. Tellus amet convallis mauris orci in eget velit diam bibendum. Nec dignissim sem id interdum etiam imperdiet. Mauris sed arcu sit sed orci odio non. Est in habitant gravida nisl dignissim elit ullamcorper sed.",
+    question: "What does staking crypto mean?",
+    answer: `<p>Staking crypto means locking your cryptocurrency tokens for a period of time to support a platform or network and, in return, earn rewards.</p>
+    <p>When you stake crypto:</p>
+    <ul>
+      <li>You already own the tokens.</li>
+      <li>You voluntarily lock them in a smart contract.</li>
+      <li>You may receive rewards such as:</li>
+      <li>Additional tokens.</li>
+      <li>Platform benefits.</li>
+      <li>Access to ecosystem features.</li>
+    </ul>
+    <p>Staking is commonly used to encourage long-term participation and reduce short-term speculation.</p>
+    <p>Within Coinporate, staking will allow users to actively participate in the ecosystem and support platform growth.</p>`,
     open: true,
   },
   {
     number: "02",
-    question: "Why invest in to our Services?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur. Elementum nibh aenean feugiat nisi eu neque massa. Augue mattis blandit aliquet ut proin ipsum. At massa purus lorem quis et. Massa nullam eu dictum convallis magna. Nec bibendum cras leo nunc elementum semper dolor. Tellus amet convallis mauris orci in eget velit diam bibendum. Nec dignissim sem id interdum etiam imperdiet. Mauris sed arcu sit sed orci odio non. Est in habitant gravida nisl dignissim elit ullamcorper sed.",
+    question: "Which Solana wallet should I use?",
+    answer: `<p>To interact with Solana-based tokens (including CORP), you will need a Solana-compatible wallet.</p>
+    <p>Popular and widely trusted Solana wallets include:</p>
+    <ul>
+      <li>Phantom Wallet</li>
+      <li>Solflare</li>
+      <li>Backpack</li>
+    </ul>
+    <p>These wallets allow you to:</p>
+    <ul>
+      <li>Store Solana tokens</li>
+      <li>Connect to decentralized applications</li>
+      <li>Participate in token sales, staking, and airdrops</li>
+    </ul>
+    <p>For most users, Phantom is the easiest and most beginner-friendly option.</p>`,
   },
   {
     number: "03",
-    question: "What is an example of AI as a service?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur. Elementum nibh aenean feugiat nisi eu neque massa. Augue mattis blandit aliquet ut proin ipsum. At massa purus lorem quis et. Massa nullam eu dictum convallis magna. Nec bibendum cras leo nunc elementum semper dolor. Tellus amet convallis mauris orci in eget velit diam bibendum. Nec dignissim sem id interdum etiam imperdiet. Mauris sed arcu sit sed orci odio non. Est in habitant gravida nisl dignissim elit ullamcorper sed.",
+    question: "What is an ICO crypto coin?",
+    answer: `<p>An ICO (Initial Coin Offering) is a method used by crypto projects to introduce a new token to the public.</p>
+    <p>In an ICO:</p>
+    <ul>
+      <li>A project offers tokens for sale at an early stage.</li>
+      <li>Participants purchase tokens before the platform or product is fully launched.</li>
+      <li>Funds are typically used to build and grow the project.</li>
+    </ul>
+    <p>Coinporate's approach follows a structured and transparent pre-sale model, where the CORP token is introduced first and later used within the Coinporate platform once it goes live.</p>`,
   },
   {
     number: "04",
-    question: "How much it cost?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur. Elementum nibh aenean feugiat nisi eu neque massa. Augue mattis blandit aliquet ut proin ipsum. At massa purus lorem quis et. Massa nullam eu dictum convallis magna. Nec bibendum cras leo nunc elementum semper dolor. Tellus amet convallis mauris orci in eget velit diam bibendum. Nec dignissim sem id interdum etiam imperdiet. Mauris sed arcu sit sed orci odio non. Est in habitant gravida nisl dignissim elit ullamcorper sed.",
+    question: "What is a crypto airdrop?",
+    answer: `<p>A crypto airdrop is when a project distributes free tokens to users' wallets, usually to:</p>
+    <ul>
+      <li>Reward early supporters</li>
+      <li>Increase awareness</li>
+      <li>Encourage platform usage</li>
+    </ul>
+    <p>Airdrops may be given to users who:</p>
+    <ul>
+      <li>Hold a specific token</li>
+      <li>Use a platform early</li>
+      <li>Complete simple on-chain actions</li>
+    </ul>
+    <p>Airdrops are a common way to grow a community while decentralizing token ownership.</p>`,
   },
   {
     number: "05",
-    question: "What are the types of collaboration you offer?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur. Elementum nibh aenean feugiat nisi eu neque massa. Augue mattis blandit aliquet ut proin ipsum. At massa purus lorem quis et. Massa nullam eu dictum convallis magna. Nec bibendum cras leo nunc elementum semper dolor. Tellus amet convallis mauris orci in eget velit diam bibendum. Nec dignissim sem id interdum etiam imperdiet. Mauris sed arcu sit sed orci odio non. Est in habitant gravida nisl dignissim elit ullamcorper sed.",
+    question: "How do you claim a crypto airdrop?",
+    answer: `<p>To claim a crypto airdrop, users usually need to:</p>
+    <ol>
+      <li>Connect their crypto wallet to the official project website</li>
+      <li>Verify eligibility (based on wallet activity or participation)</li>
+      <li>Confirm the claim transaction</li>
+      <li>Receive tokens directly into their wallet</li>
+    </ol>
+    <p><strong>Important:</strong> Always make sure you are using the official Coinporate website and links. Never connect your wallet to unknown or unverified sources.</p>`,
+  },
+  {
+    number: "06",
+    question: "How can I buy the Coinporate token (CORP)?",
+    answer: `<p>The CORP token will be available through an upcoming pre-sale before the Coinporate platform launches.</p>
+    <p>General steps to buy CORP will include:</p>
+    <ol>
+      <li>Using a Solana-compatible wallet (such as Phantom)</li>
+      <li>Visiting the official Coinporate pre-sale page</li>
+      <li>Connecting your wallet</li>
+      <li>Purchasing CORP using supported tokens (details will be announced)</li>
+    </ol>
+    <p>Once the Coinporate platform is live, CORP will be used within the ecosystem for:</p>
+    <ul>
+      <li>Participation</li>
+      <li>Staking</li>
+      <li>Access to platform features</li>
+    </ul>
+    <p>Always follow official Coinporate announcements for exact dates and instructions.</p>`,
   },
 ];
 
