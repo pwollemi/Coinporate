@@ -27,19 +27,21 @@ function UseCaseBlock({ block, iconBullets, iconBolt }) {
           src={block.image}
           alt="Illustrated portrait"
         />
+        <div className="use-case__info-gradient" aria-hidden="true"></div>
       </div>
       <div className="use-case__cards">
         {block.cards.map((card) => (
           <UseCaseCard
-            key={card.title}
+            key={card.id}
             title={card.title}
             text={card.text}
             dim={card.dim}
             icon={iconBolt}
           />
         ))}
+        <div className="use-case__image-container-empty"></div>
+        <div className="use-case__image-container" aria-hidden="true"></div>
       </div>
-      <div className="use-case__image-container"></div>
     </div>
   );
 }
