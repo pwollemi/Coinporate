@@ -67,28 +67,34 @@ export const useCases = [
     ],
     cards: [
       {
+        id: 1,
         title: "Raise capital and fund projects",
         text: "Launch personal tokens to finance new creative works, tours, content, or experiences directly with their audience.",
       },
       {
+        id: 2,
         title: "Build and reward active communities",
         text: "Engage fans through community-driven initiatives, exclusive events, or special tokens for loyal supporters.",
       },
       {
+        id: 3,
         title: "Give exclusive access to content, presales, NFT drops",
         text: "Offer token holders unique content, early access to merchandise, behind-the-scenes material, or NFT collectibles.",
       },
       {
+        id: 4,
         title: "Launch loyalty and rewards programs",
         text: "Run custom reward schemes, including meetups, merch, or premium digital perks.",
         dim: true,
       },
       {
+        id: 5,
         title: "Launch loyalty and rewards programs",
         text: "Run custom reward schemes, including meetups, merch, or premium digital perks.",
         dim: true,
       },
       {
+        id: 6,
         title: "Launch loyalty and rewards programs",
         text: "Run custom reward schemes, including meetups, merch, or premium digital perks.",
         dim: true,
@@ -110,29 +116,35 @@ export const useCases = [
     ],
     cards: [
       {
+        id: 1,
         title: "Raise capital and fund projects",
         text: "Tokenize shares or project equity to attract investment from a global decentralized community - without banks or VC.",
       },
       {
+        id: 2,
         title: "Build and reward active communities",
         text: "Foster stronger user/customer engagement by offering governance rights or tangible rewards to token holders.",
       },
       {
+        id: 3,
         title: "Give exclusive access to content, presales, NFT drops",
         text: "Provide early-bird or exclusive offers, new product access, or digital assets to token holders.",
         dim: true,
       },
       {
+        id: 4,
         title: "Launch loyalty and rewards programs",
         text: "Developer robust loyalty ecosystems based on token ownership - discounts, benefits, status levels, etc.",
         dim: true,
       },
       {
+        id: 5,
         title: "Enable trading, staking and liquidity farming",
         text: "List company tokens on exchanges; run stacking pools or liquidity incentives to encourage market activity.",
         dim: true,
       },
       {
+        id: 6,
         title: "Run crowdfunding campaigns and launchpads",
         text: "Raise funds for R&D, expansion or product launches via blockchain-powered campaigns open to global investors.",
         dim: true,
@@ -152,29 +164,35 @@ export const useCases = [
     ],
     cards: [
       {
+        id: 1,
         title: "Raise capital and fund projects",
         text: "Crowdfund for social, educational or gaming projects; support new community initiatives with distributed funding.",
       },
       {
+        id: 2,
         title: "Build and reward active communities",
         text: "Incentivize participation, volunteering or engagement through community token rewards or voting rights.",
       },
       {
+        id: 3,
         title: "Give exclusive access to content, presales, NFT drops",
         text: "Unlock specialized courses, lectures, digital assets, in-game rewards, or member-only content for token holders.",
         dim: true,
       },
       {
+        id: 4,
         title: "Launch loyalty and rewards programs",
         text: "Recognize donors, high-engagement members or volunteers with rewards, special access, or digital badges.",
         dim: true,
       },
       {
+        id: 5,
         title: "Enable trading, staking and liquidity farming",
         text: "Offer community tokens tradable on decentralized exchanges; reward top supporters through special staking or liquidity programs.",
         dim: true,
       },
       {
+        id: 6,
         title: "Run crowdfunding campaigns and launchpads",
         text: "Fund ambitious projects (albums, art installations, films) by pre-selling access or stakes using their token.",
         dim: true,
