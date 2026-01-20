@@ -567,9 +567,8 @@ function App() {
               {roadmapNodes.map((node) => (
                 <div
                   key={node.id}
-                  className={`roadmap__node${
-                    node.status ? ` roadmap__node--${node.status}` : ""
-                  }`}
+                  className={`roadmap__node${node.status ? ` roadmap__node--${node.status}` : ""
+                    }`}
                   style={{ left: node.left }}
                 >
                   <div className={roadmapNodeStyles[node.status]}>
@@ -616,9 +615,8 @@ function App() {
                 <button
                   key={`roadmap-dot-${index}`}
                   type="button"
-                  className={`roadmap__dot${
-                    index === selectedIndex ? " roadmap__dot--active" : ""
-                  }`}
+                  className={`roadmap__dot${index === selectedIndex ? " roadmap__dot--active" : ""
+                    }`}
                   onClick={() => onDotButtonClick(index)}
                   aria-label={`Roadmap page ${index + 1}`}
                   aria-selected={index === selectedIndex}
