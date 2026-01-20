@@ -982,7 +982,7 @@ body {
 }
 
 .use-case--reverse .use-case__cards {
-  justify-content: stretch;
+  justify-content: flex-end;
   padding-right: 0;
 }
 
