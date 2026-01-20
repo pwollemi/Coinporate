@@ -94,8 +94,15 @@ function App() {
     dragFree: false,
     loop: false,
   });
+  const [teamEmblaRef, teamEmblaApi] = useEmblaCarousel({
+    dragFree: true,
+    containScroll: "trimSnaps",
+    loop: false,
+    align: "start",
+  });
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(roadmapEmblaApi);
+  const teamScrollProgress = useScrollProgress(teamEmblaApi);
 
   const handleRoadmapCardClick = (index) => {
     if (roadmapEmblaApi) {
@@ -635,21 +642,32 @@ function App() {
               pill="Meet the Team"
               pillClassName="section-header__pill--md"
             />
-            <div className="team__grid">
-              {teamMembers.map((member, index) => (
-                <TeamCard
-                  key={member.image}
-                  name={member.name}
-                  image={member.image}
-                  bio={teamBio}
-                  socialIcons={[
-                    { src: iconLinkedIn, alt: "LinkedIn" },
-                    { src: iconDiscord, alt: "Discord" },
-                    { src: iconX, alt: "X" },
-                  ]}
-                  index={index}
-                />
-              ))}
+            <div className="team__carousel embla" ref={teamEmblaRef}>
+              <div className="team__track embla__container">
+                {teamMembers.map((member, index) => (
+                  <div key={member.image} className="team__slide embla__slide">
+                    <TeamCard
+                      name={member.name}
+                      image={member.image}
+                      bio={teamBio}
+                      socialIcons={[
+                        { src: iconLinkedIn, alt: "LinkedIn" },
+                        { src: iconDiscord, alt: "Discord" },
+                        { src: iconX, alt: "X" },
+                      ]}
+                      index={index}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="team__progress" aria-hidden="true">
+              <div
+                className="team__progress-bar"
+                style={{
+                  width: `${Math.round(teamScrollProgress * 100)}%`,
+                }}
+              />
             </div>
           </div>
         </section>
@@ -760,6 +778,30 @@ function useDotButton(emblaApi) {
   }, [emblaApi, onInit, onSelect]);
 
   return { selectedIndex, scrollSnaps, onDotButtonClick };
+}
+
+function useScrollProgress(emblaApi) {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const onScroll = useCallback((api) => {
+    const nextProgress = Math.max(0, Math.min(1, api.scrollProgress()));
+    setScrollProgress(nextProgress);
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) {
+      return;
+    }
+    onScroll(emblaApi);
+    emblaApi.on("reInit", onScroll);
+    emblaApi.on("scroll", onScroll);
+    return () => {
+      emblaApi.off("reInit", onScroll);
+      emblaApi.off("scroll", onScroll);
+    };
+  }, [emblaApi, onScroll]);
+
+  return scrollProgress;
 }
 
 export default App;
