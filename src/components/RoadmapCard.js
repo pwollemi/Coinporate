@@ -1,11 +1,12 @@
 import React from "react";
 
 function RoadmapCard({ number, title, text, status }) {
-  const numberClass = status === "In Progress"
-    ? "roadmap-card__number roadmap-card__number--active"
-    : status === "Upcoming"
-      ? "roadmap-card__number roadmap-card__number--pending"
-      : "roadmap-card__number roadmap-card__number--done";
+  const numberClass =
+    status === "In Progress"
+      ? "roadmap-card__number roadmap-card__number--active"
+      : status === "Upcoming"
+        ? "roadmap-card__number roadmap-card__number--pending"
+        : "roadmap-card__number roadmap-card__number--done";
 
   return (
     <div className="roadmap-card">

@@ -90,6 +90,12 @@ function App() {
     containScroll: "trimSnaps",
     loop: false,
   });
+  const [liquidityEmblaRef] = useEmblaCarousel({
+    dragFree: true,
+    containScroll: "trimSnaps",
+    loop: false,
+    align: "start",
+  });
   const [partnersEmblaRef] = useEmblaCarousel({
     dragFree: false,
     loop: false,
@@ -388,17 +394,23 @@ function App() {
               pillClassName="section-header__pill--md"
               titleClassName="section-header__title--lg"
             />
-            <div className="liquidity__grid">
-              {liquidityCards.map((card, index) => (
-                <LiquidityCard
-                  key={card.title}
-                  icon={card.icon}
-                  title={card.title}
-                  text={card.text}
-                  active={index === selectedLiquidityIndex}
-                  onSelect={() => setSelectedLiquidityIndex(index)}
-                />
-              ))}
+            <div className="liquidity__carousel embla" ref={liquidityEmblaRef}>
+              <div className="liquidity__track embla__container">
+                {liquidityCards.map((card, index) => (
+                  <div
+                    key={card.title}
+                    className="liquidity__slide embla__slide"
+                  >
+                    <LiquidityCard
+                      icon={card.icon}
+                      title={card.title}
+                      text={card.text}
+                      active={index === selectedLiquidityIndex}
+                      onSelect={() => setSelectedLiquidityIndex(index)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
             <PrimaryButton className="btn--pill liquidity__cta" type="button">
               <span className="btn__label">
@@ -476,160 +488,162 @@ function App() {
           <div className="ring-section__bg" aria-hidden="true"></div>
           <section className="token-structure">
             <div className="token-structure__inner">
-            <div className="token-structure__header">
-              <SectionHeader
-                className="section-header--center"
-                pill="Transparency, deflationary value, long-term sustainability"
-                title="Token Structure"
-                pillClassName="section-header__pill--md"
-                titleClassName="section-header__title--md"
-              />
-              <div className="token-structure__note">
-                <div className="token-structure__note-content">
+              <div className="token-structure__header">
+                <SectionHeader
+                  className="section-header--center"
+                  pill="Transparency, deflationary value, long-term sustainability"
+                  title="Token Structure"
+                  pillClassName="section-header__pill--md"
+                  titleClassName="section-header__title--md"
+                />
+                <div className="token-structure__note">
+                  <div className="token-structure__note-content">
+                    <span className="token-structure__note-text">
+                      <span className="coinporate-accent">COINPORATE</span> is
+                      not just a token.
+                    </span>
+                  </div>
                   <span className="token-structure__note-text">
-                    <span className="coinporate-accent">COINPORATE</span> is not
-                    just a token.
+                    It is a cultural symbol for onchain brands.
                   </span>
                 </div>
-                <span className="token-structure__note-text">
-                  It is a cultural symbol for onchain brands.
-                </span>
               </div>
-            </div>
-            <div className="token-structure__track token-structure__track--desktop">
-              <div className="token-structure__line" aria-hidden="true" />
-              {tokenMarkers.map((marker) => (
+              <div className="token-structure__track token-structure__track--desktop">
+                <div className="token-structure__line" aria-hidden="true" />
+                {tokenMarkers.map((marker) => (
+                  <TokenMarker
+                    key={marker.label}
+                    label={marker.label}
+                    value={marker.value}
+                    sub={marker.sub}
+                    detail={marker.detail}
+                    left={marker.left}
+                  />
+                ))}
+              </div>
+              <div className="token-structure__track token-structure__track--mobile">
+                <div className="token-structure__line" aria-hidden="true" />
                 <TokenMarker
-                  key={marker.label}
-                  label={marker.label}
-                  value={marker.value}
-                  sub={marker.sub}
-                  detail={marker.detail}
-                  left={marker.left}
+                  key={activeTokenMarker.label}
+                  label={activeTokenMarker.label}
+                  value={activeTokenMarker.value}
+                  sub={activeTokenMarker.sub}
+                  detail={activeTokenMarker.detail}
+                  left={activeTokenMarker.left}
                 />
-              ))}
-            </div>
-            <div className="token-structure__track token-structure__track--mobile">
-              <div className="token-structure__line" aria-hidden="true" />
-              <TokenMarker
-                key={activeTokenMarker.label}
-                label={activeTokenMarker.label}
-                value={activeTokenMarker.value}
-                sub={activeTokenMarker.sub}
-                detail={activeTokenMarker.detail}
-                left={activeTokenMarker.left}
-              />
-              <PrimaryButton
-                className="btn--pill token-structure__cta token-structure__cta--mobile"
-                type="button"
-                onClick={handleMoveCap}
-              >
-                <span className="btn__label">Move cap</span>
-                <span
-                  className="btn__icon btn__icon--circle"
-                  aria-hidden="true"
+                <PrimaryButton
+                  className="btn--pill token-structure__cta token-structure__cta--mobile"
+                  type="button"
+                  onClick={handleMoveCap}
                 >
-                  <img src={iconArrow} alt="" className="btn__icon-img--sm" />
-                </span>
-              </PrimaryButton>
-            </div>
-            <div className="token-structure__list">
-              {tokenMarkers.map((marker) => (
-                <div key={marker.label} className="token-structure__card">
-                  <div className="token-structure__card-label">
-                    {marker.label}
-                  </div>
-                  <div className="token-structure__card-value">
-                    {marker.value}
-                  </div>
-                  {marker.sub && (
-                    <div className="token-structure__card-sub">
-                      {marker.sub}
+                  <span className="btn__label">Move cap</span>
+                  <span
+                    className="btn__icon btn__icon--circle"
+                    aria-hidden="true"
+                  >
+                    <img src={iconArrow} alt="" className="btn__icon-img--sm" />
+                  </span>
+                </PrimaryButton>
+              </div>
+              <div className="token-structure__list">
+                {tokenMarkers.map((marker) => (
+                  <div key={marker.label} className="token-structure__card">
+                    <div className="token-structure__card-label">
+                      {marker.label}
                     </div>
-                  )}
-                  {marker.detail && (
-                    <div className="token-structure__card-sub">
-                      {marker.detail}
+                    <div className="token-structure__card-value">
+                      {marker.value}
                     </div>
-                  )}
-                </div>
-              ))}
+                    {marker.sub && (
+                      <div className="token-structure__card-sub">
+                        {marker.sub}
+                      </div>
+                    )}
+                    {marker.detail && (
+                      <div className="token-structure__card-sub">
+                        {marker.detail}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
 
           <section className="roadmap">
-          <div className="roadmap__inner">
-            <div className="roadmap__header">
-              <SectionHeader
-                className="section-header--center"
-                pill="Where we at"
-                title="Roadmap 2026"
-                pillClassName="section-header__pill--md"
-                titleClassName="section-header__title--md"
-              />
-            </div>
-            <div className="roadmap__track">
-              <div className="roadmap__track-line" aria-hidden="true" />
-              {roadmapNodes.map((node) => (
-                <div
-                  key={node.id}
-                  className={`roadmap__node${node.status ? ` roadmap__node--${node.status}` : ""
-                    }`}
-                  style={{ left: node.left }}
-                >
-                  <div className={roadmapNodeStyles[node.status]}>
-                    {node.status === "done" ? (
-                      <img
-                        src={iconCheck}
-                        alt=""
-                        className="roadmap__node-icon"
-                      />
-                    ) : (
-                      node.id
-                    )}
-                  </div>
-                  {node.label && (
-                    <div className="roadmap__node-status">{node.label}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="roadmap__cards embla" ref={roadmapEmblaRef}>
-              <div className="roadmap__cards-track embla__container">
-                {roadmapCards.map((card, index) => (
+            <div className="roadmap__inner">
+              <div className="roadmap__header">
+                <SectionHeader
+                  className="section-header--center"
+                  pill="Where we at"
+                  title="Roadmap 2026"
+                  pillClassName="section-header__pill--md"
+                  titleClassName="section-header__title--md"
+                />
+              </div>
+              <div className="roadmap__track">
+                <div className="roadmap__track-line" aria-hidden="true" />
+                {roadmapNodes.map((node) => (
                   <div
-                    key={card.number}
-                    className="roadmap__cards-slide embla__slide"
-                    onClick={() => handleRoadmapCardClick(index)}
+                    key={node.id}
+                    className={`roadmap__node${
+                      node.status ? ` roadmap__node--${node.status}` : ""
+                    }`}
+                    style={{ left: node.left }}
                   >
-                    <RoadmapCard
-                      number={card.number}
-                      title={card.title}
-                      text={card.text}
-                      status={card.status}
-                    />
+                    <div className={roadmapNodeStyles[node.status]}>
+                      {node.status === "done" ? (
+                        <img
+                          src={iconCheck}
+                          alt=""
+                          className="roadmap__node-icon"
+                        />
+                      ) : (
+                        node.id
+                      )}
+                    </div>
+                    {node.label && (
+                      <div className="roadmap__node-status">{node.label}</div>
+                    )}
                   </div>
                 ))}
               </div>
-            </div>
-            <div
-              className="roadmap__dots"
-              role="tablist"
-              aria-label="Roadmap pages"
-            >
-              {scrollSnaps.map((_, index) => (
-                <button
-                  key={`roadmap-dot-${index}`}
-                  type="button"
-                  className={`roadmap__dot${index === selectedIndex ? " roadmap__dot--active" : ""
+              <div className="roadmap__cards embla" ref={roadmapEmblaRef}>
+                <div className="roadmap__cards-track embla__container">
+                  {roadmapCards.map((card, index) => (
+                    <div
+                      key={card.number}
+                      className="roadmap__cards-slide embla__slide"
+                      onClick={() => handleRoadmapCardClick(index)}
+                    >
+                      <RoadmapCard
+                        number={card.number}
+                        title={card.title}
+                        text={card.text}
+                        status={card.status}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div
+                className="roadmap__dots"
+                role="tablist"
+                aria-label="Roadmap pages"
+              >
+                {scrollSnaps.map((_, index) => (
+                  <button
+                    key={`roadmap-dot-${index}`}
+                    type="button"
+                    className={`roadmap__dot${
+                      index === selectedIndex ? " roadmap__dot--active" : ""
                     }`}
-                  onClick={() => onDotButtonClick(index)}
-                  aria-label={`Roadmap page ${index + 1}`}
-                  aria-selected={index === selectedIndex}
-                  role="tab"
-                />
-              ))}
+                    onClick={() => onDotButtonClick(index)}
+                    aria-label={`Roadmap page ${index + 1}`}
+                    aria-selected={index === selectedIndex}
+                    role="tab"
+                  />
+                ))}
               </div>
             </div>
           </section>
