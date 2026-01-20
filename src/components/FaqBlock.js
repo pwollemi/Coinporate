@@ -13,7 +13,7 @@ function FaqBlock({ title, pill, items }) {
     <section className="faq">
       <div className="faq__inner">
         <div className="faq__header">
-          {pill ? <span className="faq__pill">{pill}</span> : null}
+          {pill ? <span className="section-header__pill section-header__pill--md">{pill}</span> : null}
           <h2 className="faq__title">{title}</h2>
         </div>
         <div className="faq__list">
