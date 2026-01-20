@@ -76,8 +76,6 @@ const iconBullets = [
 ];
 
 function App() {
-  const [activeTokenIndex, setActiveTokenIndex] = useState(0);
-  const activeTokenMarker = tokenMarkers[activeTokenIndex];
   const defaultLiquidityIndex = Math.max(
     0,
     liquidityCards.findIndex((card) => card.active)
@@ -106,6 +104,12 @@ function App() {
     loop: false,
     align: "start",
   });
+  const [tokenEmblaRef, tokenEmblaApi] = useEmblaCarousel({
+    dragFree: false,
+    containScroll: "trimSnaps",
+    loop: false,
+    align: "center",
+  });
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(roadmapEmblaApi);
   const teamScrollProgress = useScrollProgress(teamEmblaApi);
@@ -116,7 +120,11 @@ function App() {
     }
   };
   const handleMoveCap = () => {
-    setActiveTokenIndex((prevIndex) => (prevIndex + 1) % tokenMarkers.length);
+    if (tokenEmblaApi) {
+      const currentIndex = tokenEmblaApi.selectedScrollSnap();
+      const nextIndex = (currentIndex + 1) % tokenMarkers.length;
+      tokenEmblaApi.scrollTo(nextIndex);
+    }
   };
 
   return (
@@ -319,6 +327,13 @@ function App() {
                   className="btn--pill platform__cta"
                   type="button"
                 >
+                <span className="btn__icon" aria-hidden="true">
+                  <img
+                    src={require("./assets/coinporate/svgs/star.svg").default}
+                    alt=""
+                    className="btn__icon-img"
+                  />
+                </span>
                   <span className="btn__label">Read Whitepaper</span>
                   <span
                     className="btn__icon btn__icon--circle"
@@ -336,10 +351,6 @@ function App() {
             </div>
 
             <div className="platform__split platform__split--reverse">
-              <PlatformShot
-                image={platformDashboard}
-                alt="Token platform overview"
-              />
               <div className="platform__text">
                 <h3 className="platform__title">
                   Coinporate is a Web3 platform
@@ -357,6 +368,13 @@ function App() {
                   className="btn--pill platform__cta"
                   type="button"
                 >
+                  <span className="btn__icon" aria-hidden="true">
+                    <img
+                      src={require("./assets/coinporate/svgs/star.svg").default}
+                      alt=""
+                      className="btn__icon-img"
+                    />
+                  </span>
                   <span className="btn__label">Explore Platform</span>
                   <span
                     className="btn__icon btn__icon--circle"
@@ -366,6 +384,10 @@ function App() {
                   </span>
                 </PrimaryButton>
               </div>
+              <PlatformShot
+                image={platformDashboard}
+                alt="Token platform overview"
+              />
             </div>
           </div>
         </section>
@@ -419,6 +441,13 @@ function App() {
               </div>
             </div>
             <PrimaryButton className="btn--pill liquidity__cta" type="button">
+              <span className="btn__icon" aria-hidden="true">
+                <img
+                  src={require("./assets/coinporate/svgs/star.svg").default}
+                  alt=""
+                  className="btn__icon-img"
+                />
+              </span>
               <span className="btn__label">
                 Join the Exclusive CORP Airdrop
               </span>
@@ -435,7 +464,7 @@ function App() {
               className="section-header--center"
               pill="How and by Whom Can CORP be Used"
               title="Distribution"
-              pillClassName="section-header__pill--md"
+              pillClassName="section-header__pill--md--distribution"
               titleClassName="section-header__title--md"
             />
             <div className="distribution__scale">
@@ -462,7 +491,7 @@ function App() {
               className="section-header--center"
               pill="CORP"
               title="Why invest in Coinporate"
-              pillClassName="section-header__pill--md"
+              pillClassName="section-header__pill--md-invest"
               titleClassName="section-header__title--lg"
             />
             <div className="invest__grid">
@@ -499,7 +528,7 @@ function App() {
                   className="section-header--center"
                   pill="Transparency, deflationary value, long-term sustainability"
                   title="Token Structure"
-                  pillClassName="section-header__pill--md"
+                  pillClassName="section-header__pill--md-token-structure"
                   titleClassName="section-header__title--md"
                 />
                 <div className="token-structure__note">
@@ -529,14 +558,21 @@ function App() {
               </div>
               <div className="token-structure__track token-structure__track--mobile">
                 <div className="token-structure__line" aria-hidden="true" />
-                <TokenMarker
-                  key={activeTokenMarker.label}
-                  label={activeTokenMarker.label}
-                  value={activeTokenMarker.value}
-                  sub={activeTokenMarker.sub}
-                  detail={activeTokenMarker.detail}
-                  left={activeTokenMarker.left}
-                />
+                <div className="token-structure__carousel" ref={tokenEmblaRef}>
+                  <div className="token-structure__carousel-container">
+                    {tokenMarkers.map((marker) => (
+                      <div key={marker.label} className="token-structure__carousel-slide">
+                        <TokenMarker
+                          label={marker.label}
+                          value={marker.value}
+                          sub={marker.sub}
+                          detail={marker.detail}
+                          left="50%"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 <PrimaryButton
                   className="btn--pill token-structure__cta token-structure__cta--mobile"
                   type="button"
@@ -583,7 +619,7 @@ function App() {
                   className="section-header--center"
                   pill="Where we at"
                   title="Roadmap 2026"
-                  pillClassName="section-header__pill--md"
+                  pillClassName="section-header__pill--md-roadmap"
                   titleClassName="section-header__title--md"
                 />
               </div>
