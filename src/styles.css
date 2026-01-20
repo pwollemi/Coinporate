@@ -894,9 +894,8 @@
 }
 
 .use-case--reverse .use-case__cards {
-  justify-content: flex-end;
-  padding-left: 0;
-  padding-right: 30px;
+  justify-content: stretch;
+  padding-right: 0;
 }
 
 .use-case--reverse .use-case__image-img {
@@ -1069,7 +1068,6 @@
   align-items: center;
   position: relative;
   width: 520px;
-  height: 126px;
 }
 
 .use-case-card--dim {
@@ -1128,11 +1126,26 @@
   align-items: center;
 }
 
-.liquidity__grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 22px;
+.liquidity__carousel {
   width: 100%;
+  overflow: hidden;
+  padding-bottom: 6px;
+  cursor: grab;
+}
+
+.liquidity__carousel:active {
+  cursor: grabbing;
+}
+
+.liquidity__track {
+  display: flex;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.liquidity__slide {
+  flex: 0 0 calc((100% - 88px) / 5);
+  display: flex;
 }
 
 .liquidity__cta {
@@ -1149,6 +1162,8 @@
   gap: 12px;
   text-align: center;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
   transition:
     background 0.2s ease,
     box-shadow 0.2s ease;
@@ -1156,7 +1171,9 @@
 
 .liquidity-card--active,
 .liquidity-card:hover,
-.liquidity-card:focus-visible {
+.liquidity-card:focus-visible,
+.liquidity-card:active,
+.liquidity-card:focus {
   background: var(--accent);
   box-shadow: var(--shadow-accent);
 }
@@ -2018,7 +2035,7 @@
 }
 
 .faq {
-  padding: 80px 0;
+  padding: 80px 200px;
   background: var(--soft);
 }
 
@@ -2489,7 +2506,6 @@
   .token-intro__grid,
   .platform__split,
   .use-case,
-  .liquidity__grid,
   .distribution__scale,
   .invest__grid {
     grid-template-columns: 1fr;
@@ -2497,7 +2513,7 @@
   }
 
   .faq {
-    padding: 72px 0;
+    padding: 72px 0px;
   }
 
   .faq__item-toggle {
@@ -2634,8 +2650,12 @@
     max-width: 100%;
   }
 
-  .liquidity__grid {
+  .liquidity__track {
     gap: 16px;
+  }
+
+  .liquidity__slide {
+    flex: 0 0 70%;
   }
 
   .token-structure__list {
@@ -2957,6 +2977,10 @@
   .partners__row,
   .footer__row {
     padding: 0 18px;
+  }
+
+  .liquidity__slide {
+    flex: 0 0 82%;
   }
 
   .faq__inner {

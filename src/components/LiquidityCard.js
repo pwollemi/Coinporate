@@ -14,6 +14,11 @@ function LiquidityCard({ icon, title, text, active, onSelect }) {
       role="button"
       tabIndex={0}
       onClick={onSelect}
+      onPointerDown={(event) => {
+        if (event.pointerType === "touch") {
+          onSelect();
+        }
+      }}
       onKeyDown={handleKeyDown}
     >
       <img src={icon} alt="" className="liquidity-card__icon" />
