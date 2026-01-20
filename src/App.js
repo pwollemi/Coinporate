@@ -136,17 +136,23 @@ function App() {
                   ))}
                 </div>
               </div>
-              <PrimaryButton className="btn--nav hero__cta" type="button">
-                <img
-                  src={iconWallet}
-                  alt=""
-                  className="btn__icon"
-                  aria-hidden="true"
-                />
-                <span className="btn__label hero__cta-label">
-                  Connect Wallet
-                </span>
-              </PrimaryButton>
+              <div className="hero__cta-container">
+                <PrimaryButton className="btn--nav hero__cta" type="button">
+                  <img
+                    src={iconWallet}
+                    alt=""
+                    className="btn__icon"
+                    aria-hidden="true"
+                  />
+                  <span className="btn__label hero__cta-label">
+                    Connect Wallet
+                  </span>
+                </PrimaryButton>
+              </div>
+              <button className="hero__menu-toggle" aria-label="Toggle menu">
+                <span className="hero__menu-bar"></span>
+                <span className="hero__menu-bar"></span>
+              </button>
             </nav>
           }
           socialRow={
@@ -266,7 +272,7 @@ function App() {
                   style={{ width: 18, height: 18 }}
                 />
                 <p className="token-intro__copy">
-                  Coinporate is a protocol for meme-driven branding, narrative
+                  <strong>Coinporate</strong> is a protocol for meme-driven branding, narrative
                   design, and community-powered activation. We help teams, DAOs,
                   and creators:
                 </p>
@@ -278,7 +284,7 @@ function App() {
                         src={feature.icon}
                         alt=""
                       />
-                      <span>{feature.label}</span>
+                      <span className="token-intro__feature-label">{feature.label}</span>
                     </div>
                   ))}
                 </div>
