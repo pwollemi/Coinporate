@@ -10,6 +10,10 @@
     0 8px 10px -6px rgba(219, 255, 109, 0.3);
 }
 
+body {
+  overflow-x: clip;
+}
+
 .page {
   width: 100%;
   display: flex;
@@ -1392,7 +1396,8 @@
 .ring-section {
   position: relative;
   background: #ffffff;
-  overflow: visible;
+  overflow-x: clip;
+  overflow-y: visible;
   padding: 200px 0 450px;
 }
 
