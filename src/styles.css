@@ -2221,6 +2221,9 @@
     flex-basis: 100%;
   }
 
+  .platform-shot {
+    margin-right: -50px;
+  }
   .use-case__info {
     align-items: center;
     justify-content: center;
@@ -2233,6 +2236,9 @@
     width: 100%;
     text-align: center;
     justify-content: center;
+  }
+  .platform-shot__callout {
+    display: none;
   }
 
   .section-header__pill--md {
