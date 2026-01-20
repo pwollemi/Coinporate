@@ -994,7 +994,11 @@
 }
 
 .use-case__image-container {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 86.06%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 86.06%
+  );
   position: sticky;
   bottom: 0;
   width: calc(100% + 60px);
@@ -1028,7 +1032,12 @@
 }
 
 .use-case__info-gradient {
-  background: linear-gradient(to top, #fff 60%, rgba(255,255,255,0.9) 80%, transparent);
+  background: linear-gradient(
+    to top,
+    #fff 60%,
+    rgba(255, 255, 255, 0.9) 80%,
+    transparent
+  );
   position: absolute;
   bottom: -100px;
   left: 0;
@@ -1380,10 +1389,45 @@
   overflow: hidden;
 }
 
+.ring-section {
+  position: relative;
+  background: #ffffff;
+  overflow: visible;
+  padding: 200px 0 450px;
+}
+
+.ring-section__bg {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2006px;
+  height: 2053px;
+  border-radius: 50%;
+  /* background: rgba(206, 208, 209, 0.20); */
+  pointer-events: none;
+  z-index: 0;
+  flex-shrink: 0;
+}
+
+.ring-section__bg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  width: 2006px;
+  height: 2053px;
+  background-image: url("./assets/coinporate/icons/vector.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .token-structure {
   position: relative;
   padding: 120px 0;
-  background: #ffffff;
+  background: transparent;
   overflow: visible;
   box-sizing: border-box;
 }
@@ -1501,19 +1545,34 @@
 
 .token-marker {
   position: absolute;
-  top: 58%;
+  top: 40%;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 180px;
+  min-width: 500px;
   height: 80px;
 }
 
+.token-marker__value-container {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 122px);
+  transform: translateX(-50%);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .token-marker__label {
-  font-size: 10px;
-  color: rgba(0, 56, 47, 0.6);
+  color: var(--tetriary, #00382f);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  line-height: 14px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -1521,32 +1580,49 @@
 }
 
 .token-marker__line {
-  width: 4px;
-  height: 36px;
+  width: 10px;
+  height: 94.4px;
   background: var(--accent);
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 5%);
 }
 
 .token-marker__value {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 20px;
-  position: absolute;
+  color: var(--tetriary, #00382f);
+  text-align: center;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  /* position: absolute;
   left: 50%;
-  top: calc(50% + 28px);
-  transform: translateX(-50%);
+  top: calc(50% + 120px);
+  transform: translateX(-50%); */
   max-width: 400px;
   width: 100%;
 }
 
 .token-marker__sub {
-  font-weight: 400;
-  font-size: 14px;
+  color: var(--tetriary, #00382f);
+  text-align: center;
+  font-family: Inter;
+  font-size: 25.6px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.token-marker__detail {
   color: var(--Alternative-text-color-gray, #799088);
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 25.6px */
 }
 
 .token-marker__sub:nth-of-type(1) {
@@ -1561,15 +1637,17 @@
   position: relative;
   background: transparent;
   z-index: 1;
+  padding-top: 150px;
 }
 
 .roadmap__inner {
   position: relative;
   margin: 0 auto;
-  padding: 0 80px;
+  /* padding: 0 80px; */
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 85px;
+  width: 68%;
 }
 
 .roadmap__header {
@@ -1658,10 +1736,12 @@
 }
 
 .roadmap__node-circle--active {
-  background: var(--accent);
+  background: #f2f2f2;
   color: var(--dark);
   border: 4px solid #e9f7c1;
-  box-shadow: inset 0 0 0 6px #ffffff;
+  box-shadow: inset 0 0 0 15px #dbff6d;
+  width: 80px;
+  height: 80px;
 }
 
 .roadmap__node-circle--pending {
@@ -1694,7 +1774,7 @@
 }
 
 .roadmap__node--active .roadmap__node-status {
-  top: calc(50% + 50px);
+  top: calc(50% + 35px);
 }
 
 .roadmap__cards {
@@ -1711,7 +1791,7 @@
 
 .roadmap__cards-track {
   display: flex;
-  gap: 20px;
+  gap: 115px;
 }
 
 .roadmap__cards-slide {
@@ -1833,16 +1913,16 @@
 }
 
 .team {
-  padding: 120px 0;
+  padding: 253px 0 130px 0;
   background: #ffffff;
 }
 
 .team__inner {
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 0 120px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 110px;
   align-items: center;
 }
 
@@ -2544,6 +2624,20 @@
     display: none;
   }
 
+  .ring-section {
+    padding: 150px 0 200px;
+  }
+
+  .ring-section__bg {
+    width: min(1400px, 150vw);
+    height: min(1400px, 150vw);
+  }
+
+  .ring-section__bg::before {
+    width: min(1400px, 140vw);
+    height: min(1710px, 170vw);
+  }
+
   .token-structure {
     padding: 30px;
   }
@@ -2688,6 +2782,20 @@
 }
 
 @media (max-width: 640px) {
+  .ring-section {
+    padding: 100px 0 150px;
+  }
+
+  .ring-section__bg {
+    width: min(1000px, 160vw);
+    height: min(1000px, 160vw);
+  }
+
+  .ring-section__bg::before {
+    width: min(1000px, 150vw);
+    height: min(1222px, 180vw);
+  }
+
   .hero__logo {
     height: 24px;
   }

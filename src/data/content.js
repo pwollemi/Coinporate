@@ -288,7 +288,7 @@ export const tokenMarkers = [
   {
     label: "Soft cap",
     value: "$250,000",
-    left: "9%",
+    left: "21%",
   },
   {
     label: "Hard cap",
@@ -296,23 +296,23 @@ export const tokenMarkers = [
     sub: "Bonding Curve Max Raise",
     detail:
       "100% of raised funds go toward development, staking rewards, and community growth",
-    left: "50%",
+    left: "51%",
   },
   {
     label: "Bonus",
-    value: "First 500 participants:",
+    sub: "First 500 participants:",
     detail: "Eligible for airdrop snapshot",
-    left: "88%",
+    left: "81%",
   },
 ];
 
 export const roadmapNodes = [
   { id: 1, left: "0%", status: "done" },
-  { id: 2, left: "16%", status: "done" },
-  { id: 3, left: "32%", status: "active", label: "In Progress" },
-  { id: 4, left: "50%", status: "pending" },
-  { id: 5, left: "68%", status: "pending" },
-  { id: 6, left: "84%", status: "pending" },
+  { id: 2, left: "19%", status: "done" },
+  { id: 3, left: "37%", status: "active", label: "In Progress" },
+  { id: 4, left: "57%", status: "pending" },
+  { id: 5, left: "76%", status: "pending" },
+  { id: 6, left: "95%", status: "pending" },
 ];
 
 export const roadmapCards = [
