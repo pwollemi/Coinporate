@@ -465,8 +465,10 @@ function App() {
           </div>
         </section>
 
-        <section className="token-structure">
-          <div className="token-structure__inner">
+        <div className="ring-section">
+          <div className="ring-section__bg" aria-hidden="true"></div>
+          <section className="token-structure">
+            <div className="token-structure__inner">
             <div className="token-structure__header">
               <SectionHeader
                 className="section-header--center"
@@ -545,11 +547,11 @@ function App() {
                   )}
                 </div>
               ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="roadmap">
+          <section className="roadmap">
           <div className="roadmap__inner">
             <div className="roadmap__header">
               <SectionHeader
@@ -623,9 +625,10 @@ function App() {
                   role="tab"
                 />
               ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         <section className="team">
           <div className="team__inner">
