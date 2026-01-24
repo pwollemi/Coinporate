@@ -33,8 +33,6 @@ export const countdownUnits = [
   { value: "43", label: "seconds", numberColor: "countdown__value--light" },
 ];
 
-export const avatarOffsets = [0, 16, 32];
-
 export const navLinks = [
   "About",
   "How to earn",
@@ -353,11 +351,31 @@ export const roadmapCards = [
 ];
 
 export const teamMembers = [
-  { name: "William Holeksa", image: team1 },
-  { name: "William Holeksa", image: team2 },
-  { name: "William Holeksa", image: team3 },
-  { name: "William Holeksa", image: team4 },
-  { name: "William Holeksa", image: team5 },
+  {
+    name: "William Holeksa",
+    image: team1,
+    linkedin: "https://www.linkedin.com/in/williamholeksa/",
+  },
+  {
+    name: "William Holeksa",
+    image: team2,
+    linkedin: "https://www.linkedin.com/in/williamholeksa/",
+  },
+  {
+    name: "William Holeksa",
+    image: team3,
+    linkedin: "https://www.linkedin.com/in/williamholeksa/",
+  },
+  {
+    name: "William Holeksa",
+    image: team4,
+    linkedin: "https://www.linkedin.com/in/williamholeksa/",
+  },
+  {
+    name: "William Holeksa",
+    image: team5,
+    linkedin: "https://www.linkedin.com/in/williamholeksa/",
+  },
 ];
 
 export const teamBio =

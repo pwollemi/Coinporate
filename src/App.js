@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import PrimaryButton from "./components/PrimaryButton";
 import SectionHeader from "./components/SectionHeader";
@@ -15,7 +15,6 @@ import UseCaseBlock from "./components/UseCaseBlock";
 import HeroSection from "./components/HeroSection";
 import FaqBlock from "./components/FaqBlock";
 import {
-  avatarOffsets,
   navLinks,
   tokenFeatures,
   useCases,
@@ -30,6 +29,12 @@ import {
   partnerLogos,
   faqItems,
 } from "./data/content";
+import {
+  WIDGET_URL,
+  X_URL,
+  DISCORD_URL,
+  WHITEPAPER_URL,
+} from "./data/constants";
 import heroTexture from "./assets/coinporate/hero-texture.png";
 import heroTriangles from "./assets/hero-triangles.svg";
 import heroLogo from "./assets/coinporate-logo-nav.svg";
@@ -38,8 +43,8 @@ import heroVideoDesktop from "./assets/coinporate/videos/coinporate-desktop_1080
 import ctaArrow from "./assets/cta-arrow.svg";
 import socialX from "./assets/social-x.svg";
 import socialDiscord from "./assets/social-discord.svg";
-import socialLinkedIn from "./assets/social-linkedin.svg";
-import platformDashboard from "./assets/coinporate/platform-dashboard.png";
+import platformDashboard1 from "./assets/coinporate/platform-dashboard1.png";
+import platformDashboard2 from "./assets/coinporate/platform-dashboard2.png";
 import liquidMetal from "./assets/coinporate/liquid-metal.png";
 import iconBolt from "./assets/coinporate/icons/bolt.svg";
 import iconArrow from "./assets/coinporate/icons/arrow.svg";
@@ -75,11 +80,32 @@ const iconBullets = [
   iconArrowDown,
 ];
 
+const getNextJan26NoonUk = () => {
+  const now = new Date();
+  const currentYear = now.getUTCFullYear();
+  const targetThisYear = new Date(Date.UTC(currentYear, 0, 26, 12, 0, 0));
+
+  if (targetThisYear.getTime() <= now.getTime()) {
+    return new Date(Date.UTC(currentYear + 1, 0, 26, 12, 0, 0));
+  }
+
+  return targetThisYear;
+};
+
+const getWidget = async () => {
+  const response = await fetch(WIDGET_URL);
+  const data = await response.json();
+  return data;
+};
+
 function App() {
+  const countdownTarget = useMemo(() => getNextJan26NoonUk(), []);
   const defaultLiquidityIndex = Math.max(
     0,
     liquidityCards.findIndex((card) => card.active)
   );
+  const [presenceCount, setPresenceCount] = useState(null);
+  const [avatarOffsets, setAvatarOffsets] = useState([]);
   const [selectedLiquidityIndex, setSelectedLiquidityIndex] = useState(
     defaultLiquidityIndex
   );
@@ -114,6 +140,41 @@ function App() {
     useDotButton(roadmapEmblaApi);
   const teamScrollProgress = useScrollProgress(teamEmblaApi);
 
+  useEffect(() => {
+    let isActive = true;
+
+    const loadWidget = async () => {
+      try {
+        const data = await getWidget();
+        const count = data?.presence_count;
+        const members = Array.isArray(data?.members)
+          ? data.members
+          : Array.isArray(data?.online_members)
+            ? data.online_members
+            : [];
+        const avatars = members
+          .map((member) => member?.avatar_url || member?.avatar)
+          .filter(Boolean)
+          .slice(0, 3);
+
+        if (isActive && typeof count === "number") {
+          setPresenceCount(count);
+        }
+        if (isActive && avatars.length) {
+          setAvatarOffsets(avatars);
+        }
+      } catch (error) {
+        // Keep the default display if the widget request fails.
+      }
+    };
+
+    loadWidget();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
   const handleRoadmapCardClick = (index) => {
     if (roadmapEmblaApi) {
       roadmapEmblaApi.scrollTo(index);
@@ -125,6 +186,9 @@ function App() {
       const nextIndex = (currentIndex + 1) % tokenMarkers.length;
       tokenEmblaApi.scrollTo(nextIndex);
     }
+  };
+  const handleWhitepaperClick = () => {
+    window.open(WHITEPAPER_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -142,7 +206,17 @@ function App() {
                 <div className="hero__links">
                   {navLinks.map((link, index) => (
                     <Fragment key={link}>
-                      <button className="hero__link">{link}</button>
+                      <button
+                        className="hero__link"
+                        onClick={
+                          link === "Whitepaper"
+                            ? handleWhitepaperClick
+                            : undefined
+                        }
+                        type="button"
+                      >
+                        {link}
+                      </button>
                       {index < navLinks.length - 1 && (
                         <span className="hero__divider" aria-hidden="true" />
                       )}
@@ -172,17 +246,23 @@ function App() {
           socialRow={
             <div className="hero__social">
               <span className="hero__social-label">FOLLOW</span>
-              <img className="hero__social-icon" src={socialX} alt="X" />
+              <img
+                className="hero__social-icon"
+                src={socialX}
+                alt="X"
+                onClick={(e) => window.open(X_URL, "_blank")}
+              />
               <img
                 className="hero__social-icon"
                 src={socialDiscord}
                 alt="Discord"
+                onClick={(e) => window.open(DISCORD_URL, "_blank")}
               />
-              <img
+              {/* <img
                 className="hero__social-icon"
                 src={socialLinkedIn}
                 alt="LinkedIn"
-              />
+              /> */}
             </div>
           }
           scrollPrompt={
@@ -229,7 +309,7 @@ function App() {
                   />
                 </span>
                 <span className="btn__label">
-                  Join the Exclusive CORP Airdrop
+                  Join the Exclusive CORP Presale
                 </span>
                 <span className="btn__icon" aria-hidden="true">
                   <img src={ctaArrow} alt="" className="btn__icon-img" />
@@ -238,12 +318,13 @@ function App() {
             </div>
             <CountdownTimer
               className="hero__countdown"
-              durationDays={30}
+              targetDate={countdownTarget}
               avatarOffsets={avatarOffsets}
+              userActiveValue={presenceCount}
               pillContent={
                 <div className="countdown__pill-text">
-                  <span className="countdown__pill-text-strong">NP.CPT</span>
-                  <span className="countdown__pill-text-light"> AIRDROP</span>
+                  <span className="countdown__pill-text-strong">CORP</span>
+                  <span className="countdown__pill-text-light"> Presale</span>
                 </div>
               }
             />
@@ -286,9 +367,9 @@ function App() {
                   style={{ width: 18, height: 18 }}
                 />
                 <p className="token-intro__copy">
-                  <strong>Coinporate</strong> is a protocol for meme-driven branding, narrative
-                  design, and community-powered activation. We help teams, DAOs,
-                  and creators:
+                  <strong>Coinporate</strong> is a protocol for meme-driven
+                  branding, narrative design, and community-powered activation.
+                  We help teams, DAOs, and creators:
                 </p>
                 <div className="token-intro__features">
                   {tokenFeatures.map((feature) => (
@@ -298,7 +379,9 @@ function App() {
                         src={feature.icon}
                         alt=""
                       />
-                      <span className="token-intro__feature-label">{feature.label}</span>
+                      <span className="token-intro__feature-label">
+                        {feature.label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -326,14 +409,15 @@ function App() {
                 <PrimaryButton
                   className="btn--pill platform__cta"
                   type="button"
+                  onClick={handleWhitepaperClick}
                 >
-                <span className="btn__icon" aria-hidden="true">
-                  <img
-                    src={require("./assets/coinporate/svgs/star.svg").default}
-                    alt=""
-                    className="btn__icon-img"
-                  />
-                </span>
+                  <span className="btn__icon" aria-hidden="true">
+                    <img
+                      src={require("./assets/coinporate/svgs/star.svg").default}
+                      alt=""
+                      className="btn__icon-img"
+                    />
+                  </span>
                   <span className="btn__label">Read Whitepaper</span>
                   <span
                     className="btn__icon btn__icon--circle"
@@ -344,7 +428,7 @@ function App() {
                 </PrimaryButton>
               </div>
               <PlatformShot
-                image={platformDashboard}
+                image={platformDashboard1}
                 alt="Token platform dashboard"
                 showWallet
               />
@@ -353,16 +437,19 @@ function App() {
             <div className="platform__split platform__split--reverse">
               <div className="platform__text">
                 <h3 className="platform__title">
-                  Coinporate is a Web3 platform
+                  Token detail & participation
                 </h3>
                 <p className="platform__copy">
-                  that lets creators and experts, as well as startups and
-                  companies, transform their brands into digital assets.
+                  Each brand token has a dedicated view combining market data,
+                  creator context, and participation tools. Users can review
+                  historical activity, liquidity indicators, and recent
+                  interactions while accessing project and creator information
+                  alongside on-platform actions.
                 </p>
                 <p className="platform__copy">
-                  Supporters and investors can acquire unique CORP tokens and
-                  gain real participation in project growth, innovation, and
-                  rewards.
+                  This layout is designed to support informed participation by
+                  placing token data, project context, and interaction
+                  mechanisms in a single, transparent workflow.
                 </p>
                 <PrimaryButton
                   className="btn--pill platform__cta"
@@ -385,7 +472,7 @@ function App() {
                 </PrimaryButton>
               </div>
               <PlatformShot
-                image={platformDashboard}
+                image={platformDashboard2}
                 alt="Token platform overview"
               />
             </div>
@@ -449,7 +536,7 @@ function App() {
                 />
               </span>
               <span className="btn__label">
-                Join the Exclusive CORP Airdrop
+                Join the Exclusive CORP Presale
               </span>
               <span className="btn__icon btn__icon--circle" aria-hidden="true">
                 <img src={iconArrow} alt="" className="btn__icon-img--sm" />
@@ -561,7 +648,10 @@ function App() {
                 <div className="token-structure__carousel" ref={tokenEmblaRef}>
                   <div className="token-structure__carousel-container">
                     {tokenMarkers.map((marker) => (
-                      <div key={marker.label} className="token-structure__carousel-slide">
+                      <div
+                        key={marker.label}
+                        className="token-structure__carousel-slide"
+                      >
                         <TokenMarker
                           label={marker.label}
                           value={marker.value}
@@ -628,9 +718,8 @@ function App() {
                 {roadmapNodes.map((node) => (
                   <div
                     key={node.id}
-                    className={`roadmap__node${
-                      node.status ? ` roadmap__node--${node.status}` : ""
-                    }`}
+                    className={`roadmap__node${node.status ? ` roadmap__node--${node.status}` : ""
+                      }`}
                     style={{ left: node.left }}
                   >
                     <div className={roadmapNodeStyles[node.status]}>
@@ -677,9 +766,8 @@ function App() {
                   <button
                     key={`roadmap-dot-${index}`}
                     type="button"
-                    className={`roadmap__dot${
-                      index === selectedIndex ? " roadmap__dot--active" : ""
-                    }`}
+                    className={`roadmap__dot${index === selectedIndex ? " roadmap__dot--active" : ""
+                      }`}
                     onClick={() => onDotButtonClick(index)}
                     aria-label={`Roadmap page ${index + 1}`}
                     aria-selected={index === selectedIndex}
@@ -711,6 +799,7 @@ function App() {
                         { src: iconDiscord, alt: "Discord" },
                         { src: iconX, alt: "X" },
                       ]}
+                      socialLinks={[member.linkedin, member.discord, member.x]}
                       index={index}
                     />
                   </div>
@@ -761,22 +850,34 @@ function App() {
                 <span className="footer__separator">|</span>
                 <span>Staking</span>
                 <span className="footer__separator">|</span>
-                <span>Whitepaper</span>
+                <button
+                  className="footer__nav-link"
+                  type="button"
+                  onClick={handleWhitepaperClick}
+                >
+                  Whitepaper
+                </button>
                 <span className="footer__separator">|</span>
-                <span>Airdrop</span>
+                <span>Presale</span>
               </nav>
               <div className="footer__social">
-                <img className="footer__social-icon" src={socialX} alt="X" />
+                <img
+                  className="footer__social-icon"
+                  src={socialX}
+                  alt="X"
+                  onClick={(e) => window.open(X_URL, "_blank")}
+                />
                 <img
                   className="footer__social-icon"
                   src={socialDiscord}
                   alt="Discord"
+                  onClick={(e) => window.open(DISCORD_URL, "_blank")}
                 />
-                <img
+                {/* <img
                   className="footer__social-icon"
                   src={socialLinkedIn}
                   alt="LinkedIn"
-                />
+                /> */}
               </div>
             </div>
             <PrimaryButton

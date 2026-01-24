@@ -29,6 +29,7 @@ function CountdownTimer({
   avatarOffsets,
   className = "",
   pillContent = "NP.CPT AIRDROP",
+  userActiveValue = null,
 }) {
   const targetTimeRef = useRef(0);
   const [now, setNow] = useState(Date.now());
@@ -95,6 +96,25 @@ function CountdownTimer({
     ];
   }, [now, units]);
 
+  const userActiveDisplay = useMemo(() => {
+    if (typeof userActiveValue === "number") {
+      return new Intl.NumberFormat("en-US").format(userActiveValue);
+    }
+    if (typeof userActiveValue === "string" && userActiveValue.trim()) {
+      return userActiveValue;
+    }
+    return "578M +";
+  }, [userActiveValue]);
+
+  const avatarImages = useMemo(() => {
+    if (!Array.isArray(avatarOffsets)) {
+      return [];
+    }
+    return avatarOffsets.filter(Boolean).slice(0, 3);
+  }, [avatarOffsets]);
+
+  const avatarSlots = avatarImages.length ? avatarImages : [null, null, null];
+
   return (
     <div className={`countdown ${className}`}>
       <CountdownPill>{pillContent}</CountdownPill>
@@ -103,9 +123,8 @@ function CountdownTimer({
           {liveUnits.map((unit, index) => (
             <div
               key={unit.label}
-              className={`countdown__unit ${
-                index > 0 ? "countdown__unit--divider" : ""
-              }`}
+              className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
+                }`}
             >
               <div className={`countdown__value ${unit.numberColor}`}>
                 {unit.value}
@@ -116,13 +135,19 @@ function CountdownTimer({
         </div>
         <div className="countdown__meta">
           <div className="countdown__avatars" aria-hidden="true">
-            {avatarOffsets.map((offset) => (
-              <span key={offset} className="countdown__avatar" />
+            {avatarSlots.map((avatar, index) => (
+              <span
+                key={avatar || index}
+                className="countdown__avatar"
+                style={
+                  avatar ? { backgroundImage: `url(${avatar})` } : undefined
+                }
+              />
             ))}
           </div>
           <div className="countdown__meta-text">
-            <div className="countdown__meta-value">578M +</div>
-            <div className="countdown__meta-label">User Active</div>
+            <div className="countdown__meta-value">{userActiveDisplay}</div>
+            <div className="countdown__meta-label">Users Active</div>
           </div>
         </div>
       </div>
