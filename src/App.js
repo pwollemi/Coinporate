@@ -367,9 +367,7 @@ function App() {
                   style={{ width: 18, height: 18 }}
                 />
                 <p className="token-intro__copy">
-                  <strong>Coinporate</strong> is a protocol for meme-driven
-                  branding, narrative design, and community-powered activation.
-                  We help teams, DAOs, and creators:
+                  <strong>Coinporate</strong> is a Web3 platform built around a native utility token, designed to enable token-based access, participation, and community engagement for verified projects and organisations.
                 </p>
                 <div className="token-intro__features">
                   {tokenFeatures.map((feature) => (
@@ -577,7 +575,7 @@ function App() {
             <SectionHeader
               className="section-header--center"
               pill="CORP"
-              title="Why invest in Coinporate"
+              title="Why use Coinporate"
               pillClassName="section-header__pill--md-invest"
               titleClassName="section-header__title--lg"
             />

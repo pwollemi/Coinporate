@@ -103,7 +103,7 @@ function CountdownTimer({
     if (typeof userActiveValue === "string" && userActiveValue.trim()) {
       return userActiveValue;
     }
-    return "578M +";
+    return "0";
   }, [userActiveValue]);
 
   const avatarImages = useMemo(() => {
