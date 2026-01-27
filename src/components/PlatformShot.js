@@ -6,7 +6,9 @@ function PlatformShot({ image, alt, showWallet }) {
       <img className="platform-shot__image" src={image} alt={alt} />
       <div className="platform-shot__badge">
         <div className="platform-shot__tag">Token Platform</div>
-        <div className="platform-shot__sub">Platform Explorer, Project Overview, Project Interface, Token Detail View
+        <div className="platform-shot__sub">
+          Platform Explorer, Project Overview, Project Interface, Token Detail
+          View
         </div>
       </div>
       {showWallet ? (

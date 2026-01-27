@@ -1,6 +1,11 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import PrimaryButton from "./components/PrimaryButton";
+import {
+  ConnectWalletButton,
+  ConnectWalletLabel,
+} from "./components/ConnectWalletButton";
 import SectionHeader from "./components/SectionHeader";
 import LiquidityCard from "./components/LiquidityCard";
 import DistributionItem from "./components/DistributionItem";
@@ -87,10 +92,7 @@ const getWidget = async () => {
 };
 
 function App() {
-  const countdownTarget = useMemo(
-    () => new Date(Date.now() + 10 * 1000),
-    []
-  );
+  const countdownTarget = useMemo(() => new Date(Date.now() + 10 * 1000), []);
   const defaultLiquidityIndex = Math.max(
     0,
     liquidityCards.findIndex((card) => card.active)
@@ -115,6 +117,7 @@ function App() {
     dragFree: false,
     loop: false,
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [teamEmblaRef, teamEmblaApi] = useEmblaCarousel({
     dragFree: true,
     containScroll: "trimSnaps",
@@ -130,6 +133,50 @@ function App() {
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(roadmapEmblaApi);
   const teamScrollProgress = useScrollProgress(teamEmblaApi);
+  const { connected, publicKey, disconnect } = useWallet();
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add("mobile-menu-open");
+    } else {
+      document.body.classList.remove("mobile-menu-open");
+    }
+    return () => {
+      document.body.classList.remove("mobile-menu-open");
+    };
+  }, [isMobileMenuOpen]);
+
+  const handleMobileNavClick = (link) => {
+    if (link === "Whitepaper") {
+      handleWhitepaperClick();
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleCopyAddress = async () => {
+    if (!publicKey) {
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(publicKey.toBase58());
+    } catch (error) {
+      // Clipboard permissions can fail; ignore silently.
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleDisconnect = async () => {
+    try {
+      await disconnect();
+    } catch (error) {
+      // Wallet adapter handles its own error reporting/logging.
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     let isActive = true;
@@ -191,48 +238,108 @@ function App() {
           videoMobileSrc={heroVideoMobile}
           videoDesktopSrc={heroVideoDesktop}
           nav={
-            <nav className="hero__nav" aria-label="Primary">
-              <img className="hero__logo" src={heroLogo} alt="coinporate" />
-              <div className="hero__nav-center">
-                <div className="hero__links">
-                  {navLinks.map((link, index) => (
-                    <Fragment key={link}>
-                      <button
-                        className="hero__link"
-                        onClick={
-                          link === "Whitepaper"
-                            ? handleWhitepaperClick
-                            : undefined
-                        }
-                        type="button"
-                      >
-                        {link}
-                      </button>
-                      {index < navLinks.length - 1 && (
-                        <span className="hero__divider" aria-hidden="true" />
-                      )}
-                    </Fragment>
-                  ))}
+            <>
+              <nav className="hero__nav" aria-label="Primary">
+                <img className="hero__logo" src={heroLogo} alt="coinporate" />
+                <div className="hero__nav-center">
+                  <div className="hero__links">
+                    {navLinks.map((link, index) => (
+                      <Fragment key={link}>
+                        <button
+                          className="hero__link"
+                          onClick={
+                            link === "Whitepaper"
+                              ? handleWhitepaperClick
+                              : undefined
+                          }
+                          type="button"
+                        >
+                          {link}
+                        </button>
+                        {index < navLinks.length - 1 && (
+                          <span className="hero__divider" aria-hidden="true" />
+                        )}
+                      </Fragment>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="hero__cta-container">
-                <PrimaryButton className="btn--nav hero__cta" type="button">
-                  <img
-                    src={iconWallet}
-                    alt=""
-                    className="btn__icon"
-                    aria-hidden="true"
-                  />
-                  <span className="btn__label hero__cta-label">
-                    Connect Wallet
-                  </span>
-                </PrimaryButton>
-              </div>
-              <button className="hero__menu-toggle" aria-label="Toggle menu">
-                <span className="hero__menu-bar"></span>
-                <span className="hero__menu-bar"></span>
-              </button>
-            </nav>
+                <div className="hero__cta-container">
+                  <ConnectWalletButton
+                    className="btn--nav hero__cta"
+                    type="button"
+                  >
+                    <img
+                      src={iconWallet}
+                      alt=""
+                      className="btn__icon"
+                      aria-hidden="true"
+                    />
+                    <ConnectWalletLabel className="btn__label hero__cta-label" />
+                  </ConnectWalletButton>
+                </div>
+                <button
+                  className="hero__menu-toggle"
+                  aria-label="Toggle menu"
+                  aria-expanded={isMobileMenuOpen}
+                  onClick={handleMobileMenuToggle}
+                  type="button"
+                >
+                  <span className="hero__menu-bar"></span>
+                  <span className="hero__menu-bar"></span>
+                </button>
+                {isMobileMenuOpen && (
+                  <div className="hero__mobile-menu" role="dialog">
+                    <div className="hero__mobile-menu-inner">
+                      <div className="hero__mobile-links">
+                        {navLinks.map((link) => (
+                          <button
+                            key={link}
+                            className="hero__mobile-link"
+                            type="button"
+                            onClick={() => handleMobileNavClick(link)}
+                          >
+                            {link}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="hero__mobile-wallet">
+                        <ConnectWalletButton
+                          className="btn--nav hero__mobile-cta"
+                          type="button"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <img
+                            src={iconWallet}
+                            alt=""
+                            className="btn__icon"
+                            aria-hidden="true"
+                          />
+                          <ConnectWalletLabel className="btn__label hero__cta-label" />
+                        </ConnectWalletButton>
+                        {connected && (
+                          <div className="hero__mobile-wallet-actions">
+                            <button
+                              type="button"
+                              className="hero__mobile-action"
+                              onClick={handleCopyAddress}
+                            >
+                              Copy address
+                            </button>
+                            <button
+                              type="button"
+                              className="hero__mobile-action"
+                              onClick={handleDisconnect}
+                            >
+                              Disconnect
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </nav>
+            </>
           }
           socialRow={
             <div className="hero__social">
@@ -360,7 +467,10 @@ function App() {
                   style={{ width: 18, height: 18 }}
                 />
                 <p className="token-intro__copy">
-                  <strong>Coinporate</strong> is a Web3 platform built around a native utility token, designed to enable token-based access, participation, and community engagement for verified projects and organisations.
+                  <strong>Coinporate</strong> is a Web3 platform built around a
+                  native utility token, designed to enable token-based access,
+                  participation, and community engagement for verified projects
+                  and organisations.
                 </p>
                 <div className="token-intro__features">
                   {tokenFeatures.map((feature) => (
@@ -586,13 +696,13 @@ function App() {
                 />
               ))}
             </div>
-            <PrimaryButton
+            {/* <ConnectWalletButton
               className="btn--pill btn--pill-sm invest__cta"
               type="button"
             >
               <img src={iconWallet} alt="" className="btn__icon-img--sm" />
-              <span className="btn__label">Connect Wallet</span>
-            </PrimaryButton>
+              <ConnectWalletLabel className="btn__label" />
+            </ConnectWalletButton> */}
           </div>
         </section>
 
@@ -708,8 +818,9 @@ function App() {
                 {roadmapNodes.map((node) => (
                   <div
                     key={node.id}
-                    className={`roadmap__node${node.status ? ` roadmap__node--${node.status}` : ""
-                      }`}
+                    className={`roadmap__node${
+                      node.status ? ` roadmap__node--${node.status}` : ""
+                    }`}
                     style={{ left: node.left }}
                   >
                     <div className={roadmapNodeStyles[node.status]}>
@@ -756,8 +867,9 @@ function App() {
                   <button
                     key={`roadmap-dot-${index}`}
                     type="button"
-                    className={`roadmap__dot${index === selectedIndex ? " roadmap__dot--active" : ""
-                      }`}
+                    className={`roadmap__dot${
+                      index === selectedIndex ? " roadmap__dot--active" : ""
+                    }`}
                     onClick={() => onDotButtonClick(index)}
                     aria-label={`Roadmap page ${index + 1}`}
                     aria-selected={index === selectedIndex}
@@ -870,15 +982,15 @@ function App() {
                 /> */}
               </div>
             </div>
-            <PrimaryButton
+            {/* <ConnectWalletButton
               className="btn--pill btn--pill-sm footer__cta"
               type="button"
             >
-              <span className="btn__label">CONNECT WALLET</span>
+              <ConnectWalletLabel className="btn__label" uppercase />
               <span className="btn__icon btn__icon--circle" aria-hidden="true">
                 <img src={iconArrow} alt="" className="btn__icon-img--sm" />
               </span>
-            </PrimaryButton>
+            </ConnectWalletButton> */}
           </div>
         </footer>
       </div>

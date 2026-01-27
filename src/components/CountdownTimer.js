@@ -9,7 +9,8 @@ const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 const SECONDS_PER_DAY = SECONDS_PER_HOUR * HOURS_PER_DAY;
 const DEFAULT_SOLD_TOKENS = 5921321;
 const DEFAULT_TOTAL_TOKENS = 10000000;
-const PRESALE_DURATION_MS = 20 * HOURS_PER_DAY * SECONDS_PER_HOUR * MS_PER_SECOND;
+const PRESALE_DURATION_MS =
+  20 * HOURS_PER_DAY * SECONDS_PER_HOUR * MS_PER_SECOND;
 
 const formatUnit = (value) => String(value).padStart(2, "0");
 
@@ -31,7 +32,7 @@ function CountdownTimer({
   targetDate = null,
   avatarOffsets,
   className = "",
-  pillContent = "NP.CPT PRESALE",
+  pillContent = "CORP PRESALE",
   userActiveValue = null,
 }) {
   const targetTimeRef = useRef(0);
@@ -174,10 +175,10 @@ function CountdownTimer({
 
   return (
     <div className={`countdown ${className}`}>
-      <CountdownPill>{pillContent}</CountdownPill>
       <div
-        className={`countdown__panel ${isComplete ? "countdown__panel--presale" : ""
-          }`}
+        className={`countdown__panel ${
+          isComplete ? "countdown__panel--presale" : ""
+        }`}
       >
         {isComplete ? (
           <div className="countdown__presale">
@@ -185,8 +186,9 @@ function CountdownTimer({
               {presaleUnits.map((unit, index) => (
                 <div
                   key={unit.label}
-                  className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
-                    }`}
+                  className={`countdown__unit ${
+                    index > 0 ? "countdown__unit--divider" : ""
+                  }`}
                 >
                   <div className={`countdown__value ${unit.numberColor}`}>
                     {unit.value}
@@ -202,7 +204,7 @@ function CountdownTimer({
             <div className="countdown__progress">
               <div className="countdown__progress-row">
                 <span className="countdown__progress-label">
-                  NP.CPT raised - {soldPercentDisplay}%
+                  UDST raised - {soldPercentDisplay}%
                 </span>
                 <span className="countdown__progress-value">
                   {formattedSold} / {formattedTotal}
@@ -224,18 +226,20 @@ function CountdownTimer({
             <div className="countdown__presale-options">
               <button
                 type="button"
-                className={`countdown__option ${paymentMethod === "usdt" ? "countdown__option--active" : ""
-                  }`}
+                className={`countdown__option ${
+                  paymentMethod === "usdt" ? "countdown__option--active" : ""
+                }`}
                 onClick={() => setPaymentMethod("usdt")}
                 aria-pressed={paymentMethod === "usdt"}
               >
-                PRUSDT (ERC20)
+                USDT (SOLANA)
               </button>
               <span className="countdown__option-divider">or</span>
               <button
                 type="button"
-                className={`countdown__option ${paymentMethod === "card" ? "countdown__option--active" : ""
-                  }`}
+                className={`countdown__option ${
+                  paymentMethod === "card" ? "countdown__option--active" : ""
+                }`}
                 onClick={() => setPaymentMethod("card")}
                 aria-pressed={paymentMethod === "card"}
               >
@@ -268,25 +272,25 @@ function CountdownTimer({
                 </label>
                 <div className="countdown__card-grid">
                   <label className="countdown__field">
-                      <span className="countdown__field-label">Expiry</span>
-                      <input
-                        className="countdown__input"
-                        type="text"
-                        name="cardExpiry"
-                        inputMode="numeric"
-                        placeholder="MM/YYYY"
-                      />
-                    </label>
-                    <label className="countdown__field">
-                      <span className="countdown__field-label">CVC</span>
-                      <input
-                        className="countdown__input"
-                        type="password"
-                        name="cardCvc"
-                        inputMode="numeric"
-                        placeholder="010"
-                      />
-                    </label>
+                    <span className="countdown__field-label">Expiry</span>
+                    <input
+                      className="countdown__input"
+                      type="text"
+                      name="cardExpiry"
+                      inputMode="numeric"
+                      placeholder="MM/YYYY"
+                    />
+                  </label>
+                  <label className="countdown__field">
+                    <span className="countdown__field-label">CVC</span>
+                    <input
+                      className="countdown__input"
+                      type="password"
+                      name="cardCvc"
+                      inputMode="numeric"
+                      placeholder="010"
+                    />
+                  </label>
                 </div>
               </form>
             ) : (
@@ -303,7 +307,7 @@ function CountdownTimer({
                 </label>
                 <label className="countdown__field">
                   <span className="countdown__field-label">
-                    NP.CPT you receive
+                    CORP you receive
                   </span>
                   <input
                     className="countdown__input"
@@ -316,7 +320,13 @@ function CountdownTimer({
                 </label>
               </div>
             )}
-            <button className="countdown__action" type="button">
+            <button
+              className="countdown__action"
+              type="button"
+              onClick={() => {
+                console.log("connect wallet");
+              }}
+            >
               Connect Wallet
             </button>
           </div>
@@ -326,8 +336,9 @@ function CountdownTimer({
               {liveUnits.map((unit, index) => (
                 <div
                   key={unit.label}
-                  className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
-                    }`}
+                  className={`countdown__unit ${
+                    index > 0 ? "countdown__unit--divider" : ""
+                  }`}
                 >
                   <div className={`countdown__value ${unit.numberColor}`}>
                     {unit.value}
@@ -356,6 +367,7 @@ function CountdownTimer({
           </>
         )}
       </div>
+      <CountdownPill>{pillContent}</CountdownPill>
     </div>
   );
 }

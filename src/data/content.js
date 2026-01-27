@@ -53,12 +53,7 @@ export const useCases = [
     id: "personal",
     title: "PERSONAL BRANDS",
     image: headLeft,
-    list: [
-      "Creators",
-      "influencers",
-      "experts",
-      "athletes",
-    ],
+    list: ["Creators", "influencers", "experts", "athletes"],
     cards: [
       {
         id: 1,
@@ -86,7 +81,7 @@ export const useCases = [
         title: "Enable creator participation mechanics",
         text: "Use platform tools to support token-based participation such as access control, gated experiences, and creator-led engagement flows.",
         dim: true,
-      }
+      },
     ],
   },
   {
@@ -94,12 +89,7 @@ export const useCases = [
     title: "COMPANIES & STARTUPS",
     image: headRight,
     reverse: true,
-    list: [
-      "Tech",
-      "SaaS",
-      "e-commerce",
-      "brands"
-    ],
+    list: ["Tech", "SaaS", "e-commerce", "brands"],
     cards: [
       {
         id: 1,
@@ -135,13 +125,7 @@ export const useCases = [
     id: "communities",
     title: "COMMUNITIES & MICROBRANDS",
     image: headLeftAlt,
-    list: [
-      "NGOs",
-      "local initiatives",
-      "gaming",
-      "fan groups",
-      "education"
-    ],
+    list: ["NGOs", "local initiatives", "gaming", "fan groups", "education"],
     cards: [
       {
         id: 1,
@@ -170,7 +154,7 @@ export const useCases = [
         title: "Support decentralized community access",
         text: "Enable token-gated spaces that allow communities to manage access, participation, and internal engagement independently.",
         dim: true,
-      }
+      },
     ],
   },
 ];
@@ -212,7 +196,6 @@ export const distributionItems = [
   { value: "8%", label: "Ecosystem / Strategic Reserve" },
   { value: "5%", label: "Development and Operations" },
   { value: "5%", label: "Marketing & Partnerships" },
-
 ];
 
 export const investCards = [

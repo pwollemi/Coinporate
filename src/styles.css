@@ -105,6 +105,65 @@ body {
   width: 100%;
 }
 
+.wallet-button {
+  position: relative;
+  display: inline-flex;
+  pointer-events: auto;
+}
+
+.wallet-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.wallet-dropdown__panel {
+  min-width: 180px;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+  display: grid;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.wallet-dropdown__item {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: transparent;
+  color: var(--dark);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@media (max-width: 980px) {
+  .wallet-dropdown {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .wallet-button--connected .btn {
+    display: none;
+  }
+}
+
+.wallet-dropdown__item:hover,
+.wallet-dropdown__item:focus-visible {
+  background: rgba(0, 56, 47, 0.08);
+}
+
 .hero {
   position: relative;
   height: calc(100vh);
@@ -123,7 +182,6 @@ body {
 }
 
 .hero__video {
-  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -134,17 +192,14 @@ body {
 }
 
 .hero__overlay {
-  z-index: 2;
   background: rgba(0, 0, 0, 0.55);
 }
 
 .hero__texture {
-  z-index: 3;
   opacity: 0.6;
 }
 
 .hero__triangles {
-  z-index: 4;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -159,7 +214,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 50px 0px;
+  padding: 30px 0px 100px;
   max-width: 1440px;
 }
 
@@ -249,6 +304,95 @@ body {
   border-radius: 2px;
 }
 
+.hero__mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 80px 24px 24px;
+  background: #00382f;
+  z-index: -1;
+  height: 100vh;
+}
+
+.hero__mobile-menu-inner {
+  margin: 0 auto;
+  max-width: 520px;
+  border-radius: 16px;
+  border: 1px solid rgba(219, 255, 109, 0.35);
+  background: #00453a;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.35);
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+  z-index: 1;
+}
+
+.hero__mobile-links {
+  display: grid;
+  gap: 10px;
+}
+
+.hero__mobile-link {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #ffffff;
+  padding: 12px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hero__mobile-link:hover,
+.hero__mobile-link:focus-visible {
+  border-color: rgba(219, 255, 109, 0.6);
+  color: var(--accent);
+}
+
+.hero__mobile-wallet {
+  display: grid;
+  gap: 10px;
+}
+
+.hero__mobile-cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.hero__mobile-wallet-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.hero__mobile-action {
+  width: 100%;
+  border: 1px solid rgba(219, 255, 109, 0.4);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(219, 255, 109, 0.12);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.hero__mobile-action:hover,
+.hero__mobile-action:focus-visible {
+  background: rgba(219, 255, 109, 0.2);
+}
+
+@media (min-width: 981px) {
+  .hero__mobile-menu {
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .hero__video--desktop {
     display: block;
@@ -259,7 +403,6 @@ body {
   }
 }
 
-
 .hero__layout-container {
   display: flex;
   flex-direction: row;
@@ -269,12 +412,10 @@ body {
 
 .hero__layout {
   position: relative;
-  z-index: 5;
   display: flex;
   justify-content: space-between;
   gap: 40px;
   margin: 0 auto;
-  padding: 96px 80px 96px;
   max-width: 1440px;
   align-items: flex-start;
 }
@@ -463,7 +604,6 @@ body {
   top: -18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
 }
 
 .countdown__pill-text {
@@ -744,7 +884,8 @@ body {
 .countdown__option--active {
   background: rgba(0, 0, 0, 0.55);
   color: var(--accent);
-  box-shadow: 0 0 0 1px rgba(219, 255, 109, 0.8),
+  box-shadow:
+    0 0 0 1px rgba(219, 255, 109, 0.8),
     0 12px 20px rgba(219, 255, 109, 0.18);
 }
 
@@ -2787,7 +2928,6 @@ body {
     margin-right: -100px;
     width: calc(100% + 100px);
   }
-
 
   .hero__layout-container {
     max-height: none;

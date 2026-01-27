@@ -15,6 +15,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.mobile-menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
 #root {
   display: flex;
   justify-content: center;
