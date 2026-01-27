@@ -80,18 +80,6 @@ const iconBullets = [
   iconArrowDown,
 ];
 
-const getNextJan26NoonUk = () => {
-  const now = new Date();
-  const currentYear = now.getUTCFullYear();
-  const targetThisYear = new Date(Date.UTC(currentYear, 0, 26, 12, 0, 0));
-
-  if (targetThisYear.getTime() <= now.getTime()) {
-    return new Date(Date.UTC(currentYear + 1, 0, 26, 12, 0, 0));
-  }
-
-  return targetThisYear;
-};
-
 const getWidget = async () => {
   const response = await fetch(WIDGET_URL);
   const data = await response.json();
@@ -99,7 +87,10 @@ const getWidget = async () => {
 };
 
 function App() {
-  const countdownTarget = useMemo(() => getNextJan26NoonUk(), []);
+  const countdownTarget = useMemo(
+    () => new Date(Date.now() + 10 * 1000),
+    []
+  );
   const defaultLiquidityIndex = Math.max(
     0,
     liquidityCards.findIndex((card) => card.active)
@@ -275,7 +266,7 @@ function App() {
                     src={iconChevronDown}
                     alt=""
                   />
-                  See How It Works &amp; Why Invest
+                  See How It Works &amp; Why Participate
                   <img
                     className="hero__arch-text-icon"
                     src={iconChevronDown}
@@ -286,48 +277,50 @@ function App() {
             </div>
           }
         >
-          <div className="hero__layout">
-            <div className="hero__content">
-              <HeroHeadline />
-              <p className="hero__copy">
-                <span className="hero__copy-accent">
-                  Coinporate Token (CORP)
-                </span>{" "}
-                empowers personal brands, startups, and companies to engage
-                communities, raise capital, and reward supporters using
-                decentralized tokens.
-              </p>
-              <PrimaryButton
-                className="btn--cta hero__cta-button"
-                type="button"
-              >
-                <span className="btn__icon" aria-hidden="true">
-                  <img
-                    src={require("./assets/coinporate/svgs/star.svg").default}
-                    alt=""
-                    className="btn__icon-img"
-                  />
-                </span>
-                <span className="btn__label">
-                  Join the Exclusive CORP Presale
-                </span>
-                <span className="btn__icon" aria-hidden="true">
-                  <img src={ctaArrow} alt="" className="btn__icon-img" />
-                </span>
-              </PrimaryButton>
+          <div className="hero__layout-container">
+            <div className="hero__layout">
+              <div className="hero__content">
+                <HeroHeadline />
+                <p className="hero__copy">
+                  <span className="hero__copy-accent">
+                    Coinporate Token (CORP)
+                  </span>{" "}
+                  empowers personal brands, startups, and companies to engage
+                  communities, grow participation, and reward supporters using
+                  decentralized tokens.
+                </p>
+                <PrimaryButton
+                  className="btn--cta hero__cta-button"
+                  type="button"
+                >
+                  <span className="btn__icon" aria-hidden="true">
+                    <img
+                      src={require("./assets/coinporate/svgs/star.svg").default}
+                      alt=""
+                      className="btn__icon-img"
+                    />
+                  </span>
+                  <span className="btn__label">
+                    Join the Exclusive CORP Presale
+                  </span>
+                  <span className="btn__icon" aria-hidden="true">
+                    <img src={ctaArrow} alt="" className="btn__icon-img" />
+                  </span>
+                </PrimaryButton>
+              </div>
+              <CountdownTimer
+                className="hero__countdown"
+                targetDate={countdownTarget}
+                avatarOffsets={avatarOffsets}
+                userActiveValue={presenceCount}
+                pillContent={
+                  <div className="countdown__pill-text">
+                    <span className="countdown__pill-text-strong">CORP</span>
+                    <span className="countdown__pill-text-light"> Presale</span>
+                  </div>
+                }
+              />
             </div>
-            <CountdownTimer
-              className="hero__countdown"
-              targetDate={countdownTarget}
-              avatarOffsets={avatarOffsets}
-              userActiveValue={presenceCount}
-              pillContent={
-                <div className="countdown__pill-text">
-                  <span className="countdown__pill-text-strong">CORP</span>
-                  <span className="countdown__pill-text-light"> Presale</span>
-                </div>
-              }
-            />
           </div>
         </HeroSection>
 
@@ -400,9 +393,8 @@ function App() {
                   companies, transform their brands into digital assets.
                 </p>
                 <p className="platform__copy">
-                  Supporters and investors can acquire unique CORP tokens and
-                  gain real participation in project growth, innovation, and
-                  rewards.
+                  Supporters and members can access unique CORP tokens and gain
+                  real participation in project growth, innovation, and rewards.
                 </p>
                 <PrimaryButton
                   className="btn--pill platform__cta"

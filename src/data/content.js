@@ -200,7 +200,7 @@ export const liquidityCards = [
   {
     icon: iconCrown,
     title: "Referral Rewards",
-    text: "Earn bonuses for inviting new members and investors",
+    text: "Earn bonuses for inviting new members and participants",
   },
 ];
 
@@ -295,12 +295,12 @@ export const roadmapCards = [
   {
     number: "1",
     title: "Ensure Liquidity & Technical Launch",
-    text: "Kick off by building robust liquidity pools for CORP tokens on decentralized exchanges (DEX). Launch the platform MVP, onboard first creators and brands, and secure initial trading volume. Early liquidity providers benefit from special rewards, staking, and bonus programs to set a strong market foundation.",
+    text: "Kick off by building robust liquidity pools for CORP tokens on decentralized exchanges (DEX). Launch the platform MVP, onboard first creators and brands, and secure initial platform activity. Early liquidity providers benefit from special rewards, staking, and bonus programs to set a strong foundation.",
   },
   {
     number: "2",
     title: "Expand Token Distribution & Accessibility",
-    text: "Develop and strengthen the network for token distribution: onboard additional projects, open up token access via new channels, and implement fiat on-ramps or secondary exchange listings to boost global availability. Begin strategic partnerships with launchpads, NFT providers, and platforms servicing creators and startups.",
+    text: "Develop and strengthen the network for token distribution: onboard additional projects, open up token access via new channels, and implement fiat on-ramps or secondary platform listings to boost global availability. Begin strategic partnerships with launchpads, NFT providers, and platforms servicing creators and startups.",
   },
   {
     number: "3",
@@ -311,7 +311,7 @@ export const roadmapCards = [
   {
     number: "4",
     title: "Major Exchange Listings",
-    text: "Apply for and secure listings on leading centralized exchanges to increase liquidity and market capitalization. Prepare tech and legal documentation, engage market makers, and run promotional trading competitions to maximize awareness and onboarding of new investors and users.",
+    text: "Apply for and secure listings on leading centralized exchanges to increase liquidity and visibility. Prepare tech and legal documentation, engage market makers, and run promotional community campaigns to maximize awareness and onboarding of new participants and users.",
     status: "Upcoming",
   },
   {
@@ -323,7 +323,7 @@ export const roadmapCards = [
   {
     number: "6",
     title: "Long-Term Sustainability & Global Scaling",
-    text: "Focus on enterprise adoption, B2B integrations, real-world utility (payments, licensing, ticketing), and strategic alliances with global payment processors, regulatory partners, and legacy businesses. Implement ongoing burn, and reward mechanisms to ensure token value grows alongside ecosystem adoption.",
+    text: "Focus on enterprise adoption, B2B integrations, real-world utility (payments, licensing, ticketing), and strategic alliances with global payment processors, regulatory partners, and legacy businesses. Implement ongoing burn, and reward mechanisms to ensure ecosystem value grows alongside adoption.",
     status: "Upcoming",
   },
 ];
@@ -357,7 +357,7 @@ export const teamMembers = [
 ];
 
 export const teamBio =
-  "Kick off by building robust liquidity pools for CORP tokens on decentralized exchanges (DEX). Launch the platform MVP, onboard first creators/brands, and secure initial trading volume. Early liquidity providers benefit from special rewards, staking, and bonus programs setting a strong market foundation.";
+  "Kick off by building robust liquidity pools for CORP tokens on decentralized exchanges (DEX). Launch the platform MVP, onboard first creators/brands, and secure initial platform activity. Early liquidity providers benefit from special rewards, staking, and bonus programs setting a strong foundation.";
 
 export const faqItems = [
   {
@@ -401,8 +401,8 @@ export const faqItems = [
     answer: `<p>An ICO (Initial Coin Offering) is a method used by crypto projects to introduce a new token to the public.</p>
     <p>In an ICO:</p>
     <ul>
-      <li>A project offers tokens for sale at an early stage.</li>
-      <li>Participants purchase tokens before the platform or product is fully launched.</li>
+      <li>A project offers early access to tokens at an initial stage.</li>
+      <li>Participants access tokens before the platform or product is fully launched.</li>
       <li>Funds are typically used to build and grow the project.</li>
     </ul>
     <p>Coinporate's approach follows a structured and transparent pre-sale model, where the CORP token is introduced first and later used within the Coinporate platform once it goes live.</p>`,
@@ -438,14 +438,14 @@ export const faqItems = [
   },
   {
     number: "06",
-    question: "How can I buy the Coinporate token (CORP)?",
+    question: "How can I join the Coinporate presale?",
     answer: `<p>The CORP token will be available through an upcoming pre-sale before the Coinporate platform launches.</p>
-    <p>General steps to buy CORP will include:</p>
+    <p>General steps to join will include:</p>
     <ol>
       <li>Using a Solana-compatible wallet (such as Phantom)</li>
       <li>Visiting the official Coinporate pre-sale page</li>
       <li>Connecting your wallet</li>
-      <li>Purchasing CORP using supported tokens (details will be announced)</li>
+      <li>Participating with supported tokens (details will be announced)</li>
     </ol>
     <p>Once the Coinporate platform is live, CORP will be used within the ecosystem for:</p>
     <ul>
