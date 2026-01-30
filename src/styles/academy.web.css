@@ -1,0 +1,385 @@
+/* ============================================
+   ACADEMY PAGE STYLES
+   Academy Hero, Academy Grid, Academy Cards,
+   Academy Filters, Academy Pagination
+   ============================================ */
+
+
+.academy__hero {
+  padding: 28px 0 12px;
+}
+
+.academy__hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px 16px;
+  border-bottom: 1px solid rgba(0, 56, 47, 0.12);
+}
+
+.academy__hero-top {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  align-items: center;
+  gap: 20px;
+}
+
+.academy__title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #0f3d34;
+}
+
+.academy__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #789086;
+}
+
+.academy__filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.academy__chip {
+  border: 1px solid #dbe7d6;
+  background: #eef4e0;
+  color: #0f3d34;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.academy__chip--active {
+  background: #dbff6d;
+  border-color: #dbff6d;
+}
+
+.academy__hero-bottom {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.academy__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.academy__search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.academy__search-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1px solid #dbe7d6;
+  border-radius: 10px;
+  height: 36px;
+}
+
+.academy__difficulty-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.academy__difficulty-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #6f837b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.academy__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.academy__legend-item--active {
+  color: #0f3d34;
+  font-weight: 700;
+}
+
+.academy__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.academy__legend-dot--easy {
+  background: #39c36e;
+}
+
+.academy__legend-dot--medium {
+  background: #f5b73c;
+}
+
+.academy__legend-dot--hard {
+  background: #f0544f;
+}
+
+.academy__sort-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.academy__sort-inline {
+  border: 0;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #6f837b;
+  cursor: pointer;
+  text-transform: uppercase;
+  appearance: none;
+  padding-right: 12px;
+}
+
+.academy__sort-icon {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  display: grid;
+  gap: 3px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.academy__sort-icon span {
+  display: block;
+  height: 2px;
+  background: #6f837b;
+  border-radius: 999px;
+}
+
+.academy__sort-icon span:nth-child(1) {
+  width: 14px;
+}
+
+.academy__sort-icon span:nth-child(2) {
+  width: 18px;
+}
+
+.academy__sort-icon span:nth-child(3) {
+  width: 10px;
+}
+
+.academy__search-input input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f3d34;
+  background: transparent;
+}
+
+.academy__search-input input::placeholder {
+  color: #9bb0a8;
+}
+
+.academy__search-icon {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #9bb0a8;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+}
+
+.academy__search-icon::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background: #9bb0a8;
+  right: -5px;
+  bottom: -2px;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.academy__grid {
+  padding: 26px 0 40px;
+}
+
+.academy__grid-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.academy-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.academy-card__media {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.academy-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.academy-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #dbff6d;
+  color: #0f3d34;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.academy-card__body {
+  padding: 16px 18px 18px;
+  display: grid;
+  gap: 10px;
+  background: #eef4e0;
+  color: #0f3d34;
+}
+
+.academy-card__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.academy-card__category {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0f3d34;
+  background: #eef4e0;
+  border: 1px solid #dbe7d6;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.academy-card__body h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f3d34;
+  line-height: 1.3;
+}
+
+.academy-card__body p {
+  margin: 0;
+  font-size: 12px;
+  color: #789086;
+  line-height: 1.6;
+}
+
+.academy-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.academy-card__cta {
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: #0f3d34;
+  color: #dbff6d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.academy-card__time {
+  font-size: 11px;
+  font-weight: 700;
+  color: #5f736b;
+}
+
+.academy__pagination {
+  margin: 24px auto 0;
+  max-width: 1200px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: #6f837b;
+  font-size: 12px;
+}
+
+.academy__page-btn {
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6f837b;
+  cursor: pointer;
+}
+
+.academy__page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.academy__page-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.academy__page-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #cfdad4;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.academy__page-dot--active {
+  background: #0f3d34;
+}
+

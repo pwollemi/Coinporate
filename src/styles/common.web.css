@@ -1,0 +1,166 @@
+/* ============================================
+   COMMON STYLES
+   Base styles, variables, buttons, wallet
+   ============================================ */
+
+:root {
+  --accent: #dbff6d;
+  --dark: #00382f;
+  --muted: #799088;
+  --ink: #0f3d34;
+  --soft: #e6ecec;
+  --line: rgba(0, 56, 47, 0.25);
+  --shadow-accent:
+    0 20px 25px -5px rgba(219, 255, 109, 0.3),
+    0 8px 10px -6px rgba(219, 255, 109, 0.3);
+}
+
+html,
+body {
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.page__frame {
+  width: 100%;
+  background: #fff;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--dark);
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.439px;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--nav {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.btn--pill {
+  padding: 10px 15px;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--pill-sm {
+  color: var(--Dark-Background, #192729);
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.312px;
+  padding: 10px 40px;
+}
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.btn__icon--circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(0, 56, 47, 0.08);
+}
+
+.btn__icon-img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn__icon-img--sm {
+  width: 14px;
+  height: 14px;
+}
+
+.btn__label {
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* ============================================
+   WALLET BUTTON & DROPDOWN
+   ============================================ */
+
+.wallet-button {
+  position: relative;
+  display: inline-flex;
+  pointer-events: auto;
+}
+
+.wallet-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.wallet-dropdown__panel {
+  min-width: 180px;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+  display: grid;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.wallet-dropdown__item {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: transparent;
+  color: var(--dark);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.wallet-dropdown__item:hover,
+.wallet-dropdown__item:focus-visible {
+  background: rgba(0, 56, 47, 0.08);
+}
+

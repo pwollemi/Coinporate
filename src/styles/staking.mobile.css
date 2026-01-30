@@ -1,0 +1,47 @@
+/* ============================================
+   STAKING MOBILE/RESPONSIVE STYLES
+   Media queries for responsive design
+   ============================================ */
+
+@media (max-width: 980px) {
+  .staking-overview__inner,
+  .staking-flow__inner,
+  .staking-rewards__inner,
+  .staking-not__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .staking-platform__cards,
+  .staking-steps__grid,
+  .staking-ecosystem__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .staking-platform__media img {
+    width: min(200px, 80%);
+    height: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .staking-hero__inner,
+  .staking-overview__inner,
+  .staking-flow__inner,
+  .staking-steps__inner,
+  .staking-platform__inner,
+  .staking-rewards__inner,
+  .staking-not__inner,
+  .staking-ecosystem__inner {
+    padding: 0 20px;
+  }
+
+  .staking-platform__cards,
+  .staking-steps__grid,
+  .staking-ecosystem__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .staking-overview__panel {
+    max-width: 100%;
+  }
+}

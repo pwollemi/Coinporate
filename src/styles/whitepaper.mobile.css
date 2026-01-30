@@ -1,0 +1,16 @@
+/* ============================================
+   WHITEPAPER MOBILE/RESPONSIVE STYLES
+   Media queries for responsive design
+   ============================================ */
+
+@media (max-width: 1100px) {
+  .whitepaper-body__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .whitepaper-body__inner {
+    padding: 0 20px;
+  }
+}
