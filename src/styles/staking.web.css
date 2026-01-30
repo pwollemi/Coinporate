@@ -17,7 +17,7 @@
 }
 
 .staking-presale__inner {
-  max-width: 1100px;
+  /* max-width: 1100px; */
   margin: 0 auto;
   padding: 48px 24px;
   position: relative;
@@ -41,7 +41,8 @@
 }
 
 .staking-presale__card {
-  width: min(420px, 92vw);
+  width: min(505px, 92vw);
+  height: 668px;
   border-radius: 26px;
   background: linear-gradient(180deg, rgba(7, 12, 12, 0.96), rgba(6, 9, 10, 0.9));
   border: 1px solid rgba(140, 167, 150, 0.35);
@@ -49,7 +50,7 @@
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   position: relative;
 }
 
@@ -60,7 +61,9 @@
   transform: translateX(-50%);
   background: var(--accent);
   color: #0b1a17;
-  padding: 6px 18px;
+  width: 219px;
+  height: 34px;
+  padding: 6px 30px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 700;
@@ -72,9 +75,24 @@
   box-shadow: 0 10px 20px rgba(219, 255, 109, 0.25);
 }
 
+.staking-presale__pill-text {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16.8px;
+  line-height: 19.6px;
+  letter-spacing: -0.31px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.staking-presale__pill-text strong {
+  font-weight: 700;
+}
+
 .staking-presale__pill-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .staking-presale__meta-row {
@@ -85,16 +103,20 @@
 }
 
 .staking-presale__meta {
+  font-weight: 700;
+  line-height: 13px;
+  font-family: Roboto Mono;
   margin: 0;
   text-align: center;
-  font-size: 9px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgb(121,144,135);
 }
 
 .staking-presale__meta strong {
-  color: rgba(255, 255, 255, 0.88);
+  font-family: Roboto Mono;
+  color: rgba(255, 255, 255);
   font-weight: 600;
 }
 
@@ -108,7 +130,7 @@
 .staking-presale__stat {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 35px;
 }
 
 .staking-presale__stat:last-child {
@@ -117,38 +139,54 @@
 
 .staking-presale__stat-label {
   display: inline;
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-family: Roboto Mono;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgb(121,144,135);
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 20.8px;
+  line-height: 31.2px;
+  letter-spacing: -0.41px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .staking-presale__stat-value {
   display: inline;
   margin-top: 0;
-  font-size: 16px;
-  font-weight: 600;
   color: #ffffff;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 20.8px;
+  line-height: 31.2px;
+  letter-spacing: -0.41px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .staking-presale__copy {
-  margin: 0;
-  font-size: 9.5px;
-  line-height: 1.7;
-  letter-spacing: 0.08em;
+  margin: 0 15px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.69);
   text-align: center;
+  font-family: Roboto Mono;
+  font-weight: 500;
+  font-size: 9.5px;
+  line-height: 14px;
+}
+
+.staking-presale__copy-highlight {
+  color: rgba(219, 255, 109, 1);
 }
 
 .staking-presale__tabs {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-radius: 999px;
+  border-radius: 7px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  margin-top: 6px;
+  margin: 0 15px;
 }
 
 .staking-presale__tab {
@@ -156,9 +194,9 @@
   background: transparent;
   border: 0;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -172,14 +210,16 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 15px;
 }
 
 .staking-presale__field-label {
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-family: "Roboto Mono", monospace;
+  font-size: 9.5px;
+  font-weight: 500;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
+  margin-left: 30px;
 }
 
 .staking-presale__input {
@@ -191,6 +231,7 @@
   padding: 8px 12px;
   background: rgba(4, 9, 9, 0.7);
   gap: 8px;
+  margin: 0 10px;
 }
 
 .staking-presale__token {
@@ -205,7 +246,7 @@
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: rgba(15, 25, 24, 0.8);
+  background: linear-gradient(135deg, #00d4aa 0%, #0ea5e9 100%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -215,25 +256,31 @@
 .staking-presale__token-icon img {
   width: 12px;
   height: 12px;
+  filter: brightness(0) invert(1);
 }
 
 .staking-presale__token-name {
-  letter-spacing: 0.12em;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .staking-presale__token-caret {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: -2px;
 }
 
 .staking-presale__amount {
   flex: 1;
   text-align: left;
+  font-family: "Roboto Mono", monospace;
   font-size: 12px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.08em;
+  color: rgba(219, 255, 109, 1);
   background: transparent;
   border: 0;
   outline: none;
@@ -241,7 +288,7 @@
 }
 
 .staking-presale__amount::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(219, 255, 109, 0.6);
 }
 
 .staking-presale__max {
@@ -250,83 +297,112 @@
   color: #f1ffbe;
   padding: 6px 14px;
   border-radius: 10px;
+  font-family: "Roboto Mono", monospace;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   cursor: pointer;
 }
 
 .staking-presale__summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   font-size: 11px;
   color: rgba(255, 255, 255, 0.7);
-  margin-top: 4px;
+  margin: 10px;
+  font-family: "Roboto Mono", monospace;
 }
 
 .staking-presale__summary-item {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  align-items: center;
+  gap: 200px;
 }
 
 .staking-presale__summary-item:last-child {
-  align-items: flex-end;
+  align-items: center;
   text-align: right;
 }
 
 .staking-presale__summary-label {
   font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.04em;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   color: rgba(255, 255, 255, 0.6);
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  text-align: center;
+  text-transform: uppercase;
+
 }
 
 .staking-presale__info {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 .staking-presale__info img {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   display: block;
+  opacity: 0.6;
 }
 
 .staking-presale__summary-value {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  gap: 4px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
   color: #ffffff;
+  text-transform: none;
+  font-family: Roboto Mono;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  text-align: center;
+  text-transform: uppercase;
+
+  
 }
 
 .staking-presale__summary-icon {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
 }
 
 .staking-presale__note {
-  margin: 0;
-  font-size: 9px;
+  margin: 22px 0;
+  font-family: "Roboto Mono", monospace;
+  font-size: 9.5px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
   color: rgba(219, 255, 109, 0.85);
   display: flex;
   align-items: center;
   gap: 6px;
   justify-content: center;
   text-align: center;
-  margin-top: 4px;
 }
 
 .staking-presale__note-icon {
@@ -338,19 +414,20 @@
 }
 
 .staking-presale__note-icon img {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.85;
 }
 
 .staking-presale__cta {
   border: 0;
   background: var(--accent);
   color: #0b1a17;
-  padding: 11px 14px;
+  padding: 12px 14px;
   border-radius: 12px;
-  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.04em;
   text-transform: none;
   cursor: pointer;
   box-shadow: 0 16px 28px -12px rgba(219, 255, 109, 0.4);
@@ -359,7 +436,15 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  margin-top: 6px;
+}
+
+.staking-presale__cta-text {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+
 }
 
 .staking-presale__cta-icon {
@@ -375,14 +460,19 @@
 
 .staking-presale__legal {
   margin: 0;
-  font-size: 9px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
+  font-family: Roboto Mono;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 10px;
+  line-height: 13px;
+  letter-spacing: -0.31px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.69);
   text-align: center;
 }
 
 .staking-hero {
-  padding: 70px 0 36px;
+  padding: 200px 0 50px;
   background: #ffffff;
 }
 
@@ -395,7 +485,7 @@
 
 .staking-hero__title {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 34px);
+  font-size: 60px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #0f3d34;
@@ -407,7 +497,7 @@
 }
 
 .staking-overview__inner {
-  max-width: 1060px;
+  max-width: 1378px;
   margin: 0 auto;
   padding: 0 48px;
   display: grid;
@@ -420,13 +510,13 @@
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  min-height: 270px;
+  min-height: 475px;
   background: #dfe7e4;
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
-  padding: 20px;
+  padding: 42px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .staking-overview__pattern {
@@ -444,17 +534,21 @@
   z-index: 1;
   background: #dbff6d;
   border-radius: 6px;
-  padding: 18px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 83px 40px;
+  /* padding: 18px 22px 20px;
   max-width: 82%;
   box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
-  margin-left: 4px;
+  margin-left: 4px; */
 }
 
 .staking-overview__panel-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
 }
 
 .staking-overview__panel-row img {
@@ -463,24 +557,29 @@
 }
 
 .staking-overview__panel span {
-  font-size: 11px;
+  letter-spacing: 0.02em;
+  font-family: Inter;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 160%;
+
 }
 
 .staking-overview__panel h2 {
-  margin: 10px 0 0;
-  font-size: 16px;
-  line-height: 1.3;
-  font-weight: 500;
+  margin: 20px 0 0;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 120%;
+
 }
 
 .staking-overview__content {
   background: #f2f7f0;
   border-radius: 12px;
-  padding: 26px 30px;
-  min-height: 270px;
+  padding: 30px 52px;
+  min-height: 475px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -488,9 +587,15 @@
 
 .staking-overview__copy {
   margin: 0 0 18px;
-  font-size: 12px;
-  line-height: 1.7;
   color: #2a4d46;
+
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: -0.45px;
+
 }
 
 .staking-overview__copy em {
@@ -500,16 +605,22 @@
 
 .staking-overview__note {
   margin: 0 0 22px;
-  font-size: 11px;
-  line-height: 1.6;
-  font-weight: 600;
   color: #1e3d36;
+
+  font-family: Inter;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 160%;
+  letter-spacing: -0.45px;
+
 }
 
 .staking-overview__cta {
   gap: 8px;
-  padding: 8px 18px;
-  font-size: 12px;
+  padding: 12px 31px;
+  font-size: 18px;
   border-radius: 8px;
   align-self: flex-start;
 }
