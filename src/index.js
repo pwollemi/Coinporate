@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { Buffer } from "buffer";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -10,15 +11,24 @@ import {
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
+import { LedgerWalletAdapter } from "@solana/wallet-adapter-ledger";
 import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+if (!window.Buffer) {
+  window.Buffer = Buffer;
+}
+
 function Root() {
   const endpoint = useMemo(() => clusterApiUrl("mainnet-beta"), []);
   const wallets = useMemo(
-    () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
+    () => [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new LedgerWalletAdapter(),
+    ],
     []
   );
 

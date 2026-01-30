@@ -5,7 +5,6 @@ function HeroSection({
   heroTriangles,
   videoMobileSrc,
   videoDesktopSrc,
-  nav,
   children,
   socialRow,
   scrollPrompt,
@@ -49,7 +48,6 @@ function HeroSection({
           aria-hidden="true"
         />
       ) : null}
-      {nav}
       {children}
       {socialRow}
       {scrollPrompt}
