@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PrimaryButton from "../components/PrimaryButton";
 // import FaqBlock from "../components/FaqBlock";
 // import { faqItems } from "../data/content";
@@ -22,6 +22,9 @@ import ecosystemIconThree from "../source/staking/8.svg";
 import ecosystemIconFour from "../source/staking/9.svg";
 
 function StakingPage() {
+  const [stakingTab, setStakingTab] = useState("deposit");
+  const [stakeAmount, setStakeAmount] = useState("");
+
   useEffect(() => {
     document.title = "Crypto Staking Explained | How Staking Works";
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -42,6 +45,102 @@ function StakingPage() {
   return (
     <>
       <main className="staking">
+        <section className="staking-presale">
+          <div className="staking-presale__inner">
+            <div className="staking-presale__card">
+              <div className="staking-presale__pill">
+                <span>Corp Strategy</span>
+              </div>
+              <p className="staking-presale__meta">
+                Created by Coinporate &nbsp;-&nbsp; Infra provider Coinporate
+              </p>
+              <div className="staking-presale__stats">
+                <div>
+                  <span className="staking-presale__stat-label">TVL</span>
+                  <strong className="staking-presale__stat-value">$128.7M</strong>
+                </div>
+                <div>
+                  <span className="staking-presale__stat-label">APY</span>
+                  <strong className="staking-presale__stat-value">5.3%</strong>
+                </div>
+              </div>
+              <p className="staking-presale__copy">
+                Lido strategy gives users exposure to a range of leading DeFi
+                protocols targeting increased rewards, plus additional corp
+                points.
+              </p>
+              <div className="staking-presale__tabs">
+                <button
+                  className={`staking-presale__tab ${
+                    stakingTab === "deposit" ? "staking-presale__tab--active" : ""
+                  }`}
+                  type="button"
+                  onClick={() => setStakingTab("deposit")}
+                >
+                  Deposit
+                </button>
+                <button
+                  className={`staking-presale__tab ${
+                    stakingTab === "withdraw" ? "staking-presale__tab--active" : ""
+                  }`}
+                  type="button"
+                  onClick={() => setStakingTab("withdraw")}
+                >
+                  Withdraw
+                </button>
+              </div>
+              <div className="staking-presale__field">
+                <span className="staking-presale__field-label">Available to deposit</span>
+                <div className="staking-presale__input">
+                  <div className="staking-presale__token">
+                    <span className="staking-presale__token-dot" />
+                    <span className="staking-presale__token-name">CORP</span>
+                  </div>
+                  <input
+                    className="staking-presale__amount"
+                    type="text"
+                    inputMode="decimal"
+                    placeholder="Amount"
+                    value={stakeAmount}
+                    onChange={(event) => setStakeAmount(event.target.value)}
+                  />
+                  <button
+                    className="staking-presale__max"
+                    type="button"
+                    onClick={() => setStakeAmount("MAX")}
+                  >
+                    Max
+                  </button>
+                </div>
+              </div>
+              <div className="staking-presale__summary">
+                <div>
+                  <span>You will receive</span>
+                  <strong>0.00</strong>
+                </div>
+                <div>
+                  <span>Waiting time</span>
+                  <strong>24 hours</strong>
+                </div>
+              </div>
+              <p className="staking-presale__note">
+                Withdrawals are only in ETH, regardless to deposit asset(s).
+              </p>
+              <button className="staking-presale__cta" type="button">
+                Connect Wallet
+              </button>
+              <p className="staking-presale__legal">
+                Corp service relies on third-party infrastructure provided by
+                Helion. By proceeding, you are subject to Helion's terms of
+                service and privacy notice.
+              </p>
+              <p className="staking-presale__legal">
+                Note that the vault involves protocol, slashing and other
+                risks. You can find more details in the FAQ.
+              </p>
+            </div>
+          </div>
+        </section>
         <section className="staking-hero">
           <div className="staking-hero__inner">
             <h1 className="staking-hero__title">How staking works</h1>

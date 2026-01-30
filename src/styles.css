@@ -4083,6 +4083,235 @@ body {
   color: #0f3d34;
 }
 
+.staking-presale {
+  padding: 64px 0 48px;
+  background: radial-gradient(
+      60% 60% at 50% 20%,
+      rgba(219, 255, 109, 0.15),
+      transparent 65%
+    ),
+    #050707;
+  color: #ffffff;
+}
+
+.staking-presale__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.staking-presale__card {
+  width: min(430px, 92vw);
+  border-radius: 24px;
+  background: rgba(7, 12, 12, 0.85);
+  border: 1px solid rgba(219, 255, 109, 0.4);
+  padding: 26px 22px 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.staking-presale__pill {
+  align-self: center;
+  background: var(--accent);
+  color: #0b1a17;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.staking-presale__meta {
+  margin: 0;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.staking-presale__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  text-align: center;
+}
+
+.staking-presale__stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.staking-presale__stat-value {
+  display: block;
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.staking-presale__copy {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: center;
+}
+
+.staking-presale__tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(219, 255, 109, 0.35);
+  overflow: hidden;
+}
+
+.staking-presale__tab {
+  padding: 8px 10px;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.staking-presale__tab--active {
+  background: var(--accent);
+  color: #0b1a17;
+}
+
+.staking-presale__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.staking-presale__field-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.staking-presale__input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 14px;
+  border: 1px solid rgba(219, 255, 109, 0.5);
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.35);
+  gap: 10px;
+}
+
+.staking-presale__token {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.staking-presale__token-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, var(--accent));
+  box-shadow: 0 0 10px rgba(219, 255, 109, 0.5);
+}
+
+.staking-presale__token-name {
+  letter-spacing: 0.08em;
+}
+
+.staking-presale__amount {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.staking-presale__amount::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.staking-presale__max {
+  border: 0;
+  background: rgba(219, 255, 109, 0.2);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.staking-presale__summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.staking-presale__summary strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.staking-presale__note {
+  margin: 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(219, 255, 109, 0.8);
+  text-align: center;
+}
+
+.staking-presale__cta {
+  border: 0;
+  background: var(--accent);
+  color: #0b1a17;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  cursor: pointer;
+  box-shadow: 0 16px 28px -12px rgba(219, 255, 109, 0.4);
+}
+
+.staking-presale__legal {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
 .staking-hero {
   padding: 70px 0 36px;
   background: #ffffff;
