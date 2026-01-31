@@ -341,7 +341,6 @@
   font-weight: 500;
   font-style: Medium;
   font-size: 14px;
-  leading-trim: NONE;
   line-height: 24px;
   letter-spacing: -0.31px;
   text-align: center;
@@ -377,7 +376,6 @@
   font-weight: 500;
   font-style: Medium;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 24px;
   letter-spacing: -0.31px;
   text-align: center;
@@ -611,7 +609,6 @@
   font-weight: 700;
   font-style: Bold;
   font-size: 18px;
-  leading-trim: NONE;
   line-height: 160%;
   letter-spacing: -0.45px;
 
@@ -631,94 +628,111 @@
 }
 
 .staking-flow {
-  padding: 54px 0 70px;
+  padding: 80px 0 100px;
   background: #ffffff;
 }
 
 .staking-flow__inner {
-  max-width: 1040px;
+  max-width: 1378px;
   margin: 0 auto;
   padding: 0 48px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  gap: 24px;
   align-items: center;
 }
 
 .staking-flow__media img {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 20px;
   background: #e7ecea;
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
 }
+.staking-flow__content {
+  padding: 90px 40px 0 40px;
+}
 
 .staking-flow__content h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
+  font-family: Inter, sans-serif;
+  font-size: 33px;
   font-weight: 700;
+  color: #0f3d34;
 }
 
 .staking-flow__copy {
-  margin: 0 0 14px;
+  margin: 0 0 24px;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
   color: #2e4d47;
-  font-size: 12.5px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: -0.45px;
 }
 
 .staking-flow__badges {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: 18px 0 18px;
+  gap: 16px;
+  margin: 28px 0 28px;
 }
 
 .staking-flow__badges span {
   background: #dbff6d;
-  border-radius: 12px;
-  padding: 12px 10px;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.3;
+  border-radius: 16px;
+  padding: 20px 32px;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
   text-align: center;
+  color: #0f3d34;
+  width: 240px;
+  height: 100px;
 }
 
 .staking-flow__note {
   margin: 0;
-  font-size: 11.5px;
-  line-height: 1.6;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: -0.45px;
   color: #2e4d47;
 }
 
 .staking-steps {
-  padding: 64px 0 40px;
+  padding: 204px 0 0;
   background: #ffffff;
+  position: relative;
+  z-index: 2;
 }
 
 .staking-steps__inner {
-  max-width: 1040px;
+  max-width: 1378px;
   margin: 0 auto;
   padding: 0 48px;
   text-align: center;
 }
 
 .staking-steps__title {
-  margin: 0 0 24px;
-  font-size: 18px;
+  margin: 0 0 40px;
+  font-size: 50px;
   font-weight: 700;
 }
 
 .staking-steps__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  display: flex;
+  gap: 25px;
 }
 
 .staking-step {
   background: #f2f7f0;
   border-radius: 14px;
-  padding: 16px;
+  padding: 37px 34px;
   border: 0;
-  min-height: 188px;
+  min-height: 380px;
+  max-width: 277px;
   text-align: left;
 }
 
@@ -726,35 +740,48 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
   border: 1px solid rgba(15, 61, 52, 0.35);
   font-size: 10px;
   font-weight: 700;
   color: #0f3d34;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .staking-step h4 {
-  margin: 0 0 8px;
-  font-size: 12.5px;
+  margin: 0 0 28px;
+  font-family: Inter;
   font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: -0.44px;
+
 }
 
 .staking-step p {
   margin: 0;
-  font-size: 10.5px;
-  line-height: 1.55;
   color: #3a5a53;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.44px;
+
 }
 
 .staking-steps__cta {
-  margin: 22px auto 0;
-  padding: 8px 18px;
-  font-size: 11.5px;
+  margin: 58px auto 0;
+  padding: 8px 25px;
   border-radius: 8px;
   gap: 6px;
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.44px;
+  text-align: center;
 }
 
 .staking-steps__cta-icon {
@@ -764,19 +791,25 @@
 
 .staking-steps__media {
   margin-top: 34px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  position: relative;
+  z-index: 3;
 }
 
 .staking-steps__media img {
   width: 100%;
-  max-width: 980px;
+  max-width: none;
   margin: 0 auto;
+  margin-bottom: -280px;
   display: block;
-  border-radius: 26px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .staking-platform {
-  padding: 78px 0 90px;
+  padding: 273px 0 90px;
   background: radial-gradient(
       80% 70% at 50% 0%,
       rgba(219, 255, 109, 0.08) 0%,
@@ -784,28 +817,31 @@
     ),
     #060606;
   color: #f2f8f6;
+  position: relative;
+  z-index: 1;
 }
 
 .staking-platform__inner {
-  max-width: 1060px;
+  max-width: 1196px;
   margin: 0 auto;
-  padding: 0 48px;
+  /* padding: 0 48px; */
   display: grid;
   gap: 20px;
+  text-align: center;
   text-align: center;
 }
 
 .staking-platform__header h3 {
-  margin: 0 0 8px;
-  font-size: 22px;
+  margin: 0 0 30px;
+  font-size: 47px;
   letter-spacing: 0.01em;
   color: #dbff6d;
 }
 
 .staking-platform__header p {
   margin: 0 auto;
-  max-width: 560px;
-  font-size: 12.5px;
+  /* max-width: 560px; */
+  font-size: 18px;
   color: rgba(242, 248, 246, 0.65);
 }
 
@@ -813,7 +849,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
-  margin-top: 18px;
+  margin-top: 78px;
 }
 
 .staking-platform__media {
@@ -821,11 +857,13 @@
   flex-direction: column;
   align-items: center;
   gap: 0;
+  width: 280px;
 }
 
 .staking-platform__media img {
-  width: min(180px, 78%);
-  height: 140px;
+  /* width: min(180px, 78%); */
+  /* height: 140px; */
+  width: 100%;
   margin-bottom: -6px;
   border-radius: 0;
   object-fit: contain;
@@ -837,34 +875,45 @@
   width: 100%;
   background: #0f1b19;
   border-radius: 14px;
-  padding: 18px 16px 18px;
+  padding: 18px 35px 18px 35px;
   text-align: left;
-  min-height: 162px;
+  min-height: 244px;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+  margin-top: -78px;
+  z-index: 1;
 }
 
 .staking-platform__card h4 {
-  margin: 0 0 7px;
-  font-size: 12.75px;
+  /* margin: 0 0 7px 20px; */
   color: #dbff6d;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: -0.44px;
+  margin-bottom: 18px;
 }
 
 .staking-platform__card p {
   margin: 0;
-  font-size: 11.5px;
   color: rgba(242, 248, 246, 0.65);
-  line-height: 1.5;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.44px;
+
 }
 
 .staking-platform__cta {
   margin: 14px auto 0;
-  padding: 8px 18px;
+  padding: 10px 32px;
   background: var(--accent);
   border-radius: 8px;
-  font-size: 11.5px;
+  font-size: 18px;
   gap: 6px;
   box-shadow: 0 6px 16px rgba(219, 255, 109, 0.35);
 }
@@ -875,219 +924,277 @@
 }
 
 .staking-rewards {
-  padding: 70px 0;
+  padding: 285px 0 30px;
   background: #ffffff;
 }
 
 .staking-rewards__inner {
-  max-width: 1040px;
+  max-width: 1378px;
   margin: 0 auto;
-  padding: 0 48px;
+  /* padding: 0 48px; */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: 671px 1fr;
+  gap: 48px;
+  align-items: center;
   align-items: center;
 }
 
 .staking-rewards__media img {
   width: 100%;
-  border-radius: 16px;
+  height: 474px;
+  object-fit: cover;
+  border-radius: 20px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
 }
 
-.staking-rewards__content h3 {
-  margin: 0 0 14px;
-  font-size: 16px;
-  font-weight: 700;
+.staking-rewards__content {
+    padding: 38px 0 0 68px;
+    display: flex;
+    flex-direction: column;
+    min-height: 474px;
+    align-items: flex-start;
 }
 
-.staking-rewards__content ul {
-  margin: 0 0 16px;
+.staking-rewards__content h3 {
+  margin: 0 0 24px;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 160%;
+  letter-spacing: -0.45px;
+  color: #0f3d34;
+}
+
+.staking-rewards__content ul {    margin: 15px 0 24px;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
-  font-size: 11px;
+  gap: 32px;
   line-height: 1.5;
   color: #2f4c46;
 }
 
 .staking-rewards__content ul li {
   display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 10px;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
   align-items: center;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #2e4d47;
 }
 
 .staking-rewards__content ul img {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .staking-rewards__cta {
-  padding: 8px 18px;
-  font-size: 11.5px;
+  padding: 12px 24px;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
   border-radius: 8px;
-  gap: 6px;
+  gap: 8px;
   align-self: flex-start;
 }
 
 .staking-rewards__cta-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .staking-not {
-  padding: 74px 0;
+  padding: 80px 0;
   background: #ffffff;
 }
 
 .staking-not__inner {
-  max-width: 1040px;
+  max-width: 1378px;
   margin: 0 auto;
   padding: 0 48px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 26px;
+  grid-template-columns: 671px 658px;
+  gap: 24px;
+  justify-content: center;
   align-items: center;
 }
 
 .staking-not__title-card {
-  background: #0b3a32;
+  background: rgba(0, 56, 47, 1);
   color: #dbff6d;
-  border-radius: 16px;
-  padding: 26px 28px;
-  min-height: 210px;
-  height: 210px;
+  border-radius: 20px;
+  padding: 40px 48px;
+  min-height: 474px;
+  height: 474px;
+  display: flex;
+  align-items: flex-end;
   display: flex;
   align-items: center;
 }
 
 .staking-not__title-card h2 {
   margin: 0;
-  font-size: 26px;
   line-height: 1.1;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 104px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
 }
 
 .staking-not__list {
-  background: #f2f7f0;
-  border-radius: 16px;
-  padding: 22px 24px;
+  background: rgba(246, 246, 242, 1);
+  border-radius: 20px;
+  padding: 48px 56px;
   border: 1px solid rgba(15, 61, 52, 0.06);
-  min-height: 210px;
-  height: 210px;
+  min-height: 474px;
+  height: 474px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .staking-not__lead {
-  margin: 0 0 12px;
-  font-size: 11px;
+  margin: 0 0 20px;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
   color: #2f4c46;
+  text-decoration: underline;
 }
 
 .staking-not__list ul {
-  margin: 0 0 12px;
+  margin: 0 0 24px;
   padding: 0;
   list-style: none;
-  color: #f0a36a;
-  font-size: 11px;
   display: grid;
+  gap: 12px;
   gap: 8px;
 }
 
 .staking-not__list li {
   display: grid;
-  grid-template-columns: 14px 1fr;
-  align-items: start;
-  gap: 8px;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  gap: 12px;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
   color: #f09a62;
 }
 
 .staking-not__list li img {
-  width: 12px;
-  height: 12px;
-  margin-top: 2px;
-}
-
-.staking-not__note {
-  margin: 0;
-  font-size: 10px;
-  color: #6a7b74;
-  line-height: 1.5;
-}
-
-.staking-ecosystem {
-  padding: 80px 0 100px;
-  background: #ffffff;
-}
-
-.staking-ecosystem__inner {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0 48px;
-  text-align: center;
-}
-
-.staking-ecosystem__inner h3 {
-  margin: 0 0 10px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.staking-ecosystem__inner p {
-  margin: 0;
-  font-size: 12px;
-  color: #6f847e;
-}
-
-.staking-ecosystem__grid {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.staking-ecosystem__card {
-  background: #dbff6d;
-  color: #0f3d34;
-  border-radius: 12px;
-  padding: 16px;
-  text-align: left;
-  min-height: 110px;
-  display: grid;
-  align-content: start;
-  gap: 8px;
-}
-
-.staking-ecosystem__card h4 {
-  margin: 0;
-  font-size: 12.5px;
-  font-weight: 700;
-}
-
-.staking-ecosystem__card img {
   width: 18px;
   height: 18px;
 }
 
+.staking-not__note {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  color: #6a7b74;
+}
+
+.staking-ecosystem {
+  padding: 190px 0 120px;
+  background: #ffffff;
+}
+
+.staking-ecosystem__inner {
+  max-width: 1396px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.staking-ecosystem__inner h3 {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 110%;
+  text-align: center;
+  color: #00382F;
+}
+
+.staking-ecosystem__inner > p {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #799088;
+}
+
+.staking-ecosystem__grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+.staking-ecosystem__card {
+  width: 280px;
+  height: 244px;
+  background: #DBFF6D;
+  border-radius: 20px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.staking-ecosystem__card h4 {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: -0.44px;
+  color: #00382F;
+}
+
+.staking-ecosystem__card img {
+  width: 30px;
+  height: 30px;
+}
+
 .staking-ecosystem__note {
   margin: 0;
-  padding-top: 18px;
-  padding-bottom: 18px;
-  font-size: 11px;
-  color: #6f847e;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #799088;
 }
 
 .staking-ecosystem__cta {
-  margin-top: 24px;
-  padding: 8px 16px;
-  font-size: 11px;
+  padding: 12px 24px;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
   border-radius: 8px;
-  gap: 6px;
+  gap: 8px;
   box-shadow: 0 6px 16px rgba(219, 255, 109, 0.4);
 }
 
 .staking-ecosystem__cta-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 

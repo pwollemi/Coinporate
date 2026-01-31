@@ -3,14 +3,14 @@ import PrimaryButton from "../components/PrimaryButton";
 // import FaqBlock from "../components/FaqBlock";
 // import { faqItems } from "../data/content";
 import spiralArt from "../source/66577c52a096ad868c800581b396a8f0dc1bd26e.png";
-import platformShot from "../source/staking/image.png";
+import platformShot from "../source/staking/laptop.png";
 import meshPattern from "../source/staking/image copy 6.png";
 import lightTunnel from "../source/staking/image copy 5.png";
 import starIcon from "../source/staking/star.svg";
-import platformImageOne from "../source/staking/image copy.png";
-import platformImageTwo from "../source/staking/image copy 2.png";
-import platformImageThree from "../source/staking/image copy 3.png";
-import platformImageFour from "../source/staking/image copy 4.png";
+import platformImageOne from "../source/staking/1.jpg";
+import platformImageTwo from "../source/staking/2.jpg";
+import platformImageThree from "../source/staking/3.jpg";
+import platformImageFour from "../source/staking/4.jpg";
 import notIcon from "../source/staking/not.svg";
 import featureIconOne from "../source/staking/1.svg";
 import featureIconTwo from "../source/staking/2.svg";
@@ -316,10 +316,10 @@ function StakingPage() {
                 are assigned to defined roles within the platform, such as:
               </p>
               <div className="staking-flow__badges">
-                <span>enabling access to certain features</span>
-                <span>supporting network operations</span>
-                <span>participating in platform processes</span>
-                <span>helping maintain system integrity</span>
+                <span>enabling access<br />to certain features</span>
+                <span>supporting network<br />operations</span>
+                <span>participating<br />in platform processes</span>
+                <span>helping maintain<br />system integrity</span>
               </div>
               <p className="staking-flow__note">
                 Staking is a technical and operational mechanism that connects
