@@ -931,28 +931,28 @@
 .staking-rewards__inner {
   max-width: 1378px;
   margin: 0 auto;
-  /* padding: 0 48px; */
+  padding: 0 48px;
   display: grid;
-  grid-template-columns: 671px 1fr;
+  grid-template-columns: minmax(0, 671px) 1fr;
   gap: 48px;
-  align-items: center;
   align-items: center;
 }
 
 .staking-rewards__media img {
   width: 100%;
-  height: 474px;
+  height: auto;
+  max-height: 474px;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
 }
 
 .staking-rewards__content {
-    padding: 38px 0 0 68px;
     display: flex;
     flex-direction: column;
     min-height: 474px;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .staking-rewards__content h3 {
@@ -1016,7 +1016,7 @@
   margin: 0 auto;
   padding: 0 48px;
   display: grid;
-  grid-template-columns: 671px 658px;
+  grid-template-columns: minmax(0, 671px) minmax(0, 658px);
   gap: 24px;
   justify-content: center;
   align-items: center;
