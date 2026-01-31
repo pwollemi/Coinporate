@@ -95,7 +95,7 @@ function StakingPage() {
                     alt=""
                     aria-hidden="true"
                   />
-                  <span>Corp Strategy</span>
+                  <span className="staking-presale__pill-text"><strong>Corp</strong> Strategy</span>
                 </div>
                 <div className="staking-presale__meta-row">
                   <span className="staking-presale__meta">
@@ -117,8 +117,8 @@ function StakingPage() {
                 </div>
                 <p className="staking-presale__copy">
                   Lido strategy gives users exposure to a range of leading DeFi
-                  protocols targeting increased rewards, plus additional corp
-                  points.
+                  protocols targeting increased rewards, plus additional <span className="staking-presale__copy-highlight">CORP </span>
+                  points
                 </p>
                 <div className="staking-presale__tabs">
                   <button
@@ -161,7 +161,7 @@ function StakingPage() {
                       className="staking-presale__amount"
                       type="text"
                       inputMode="decimal"
-                      placeholder="CORP AMOUNT"
+                      placeholder="ETH AMOUNT"
                       value={stakeAmount}
                       onChange={(event) => setStakeAmount(event.target.value)}
                     />
@@ -206,7 +206,7 @@ function StakingPage() {
                   <span className="staking-presale__note-icon" aria-hidden="true">
                     <img src={coinporateIcon} alt="" />
                   </span>
-                  Withdrawals are only in CORP, regardless to deposit asset(s).
+                  Withdrawals are only in WTH, regardless to deposit asset(s).
                 </p>
                 <button className="staking-presale__cta" type="button">
                   <span className="staking-presale__cta-icon" aria-hidden="true">
@@ -231,15 +231,17 @@ function StakingPage() {
                       <circle cx="16.5" cy="13.8" r="1" fill="currentColor" />
                     </svg>
                   </span>
-                  Connect Wallet
+                  <span className="staking-presale__cta-text">
+                    Connect wallet
+                  </span>
                 </button>
                 <p className="staking-presale__legal">
                   Corp service relies on third-party infrastructure provided by
-                  Helion. By proceeding, you are subject to Helion's terms of
+                  Mellow. <br/>By processing, you are subject to Mellow's terms of
                   service and privacy notice.
                 </p>
                 <p className="staking-presale__legal">
-                  Note that the vault involves protocol, slashing and other
+                  Note, that the vault involves protocol, slashing and others
                   risks. You can find more details in the FAQ.
                 </p>
               </div>
