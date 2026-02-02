@@ -5,21 +5,21 @@
    ============================================ */
 
 /* Common Styles */
-@import './styles/common.web.css';
-@import './styles/common.mobile.css';
+@import "./styles/common.web.css";
+@import "./styles/common.mobile.css";
 
 /* Homepage Styles */
-@import './styles/homepage.web.css';
-@import './styles/homepage.mobile.css';
+@import "./styles/homepage.web.css";
+@import "./styles/homepage.mobile.css";
 
 /* Staking Page Styles */
-@import './styles/staking.web.css';
-@import './styles/staking.mobile.css';
+@import "./styles/staking.web.css";
+@import "./styles/staking.mobile.css";
 
 /* Academy Page Styles */
-@import './styles/academy.web.css';
-@import './styles/academy.mobile.css';
+@import "./styles/academy.web.css";
+@import "./styles/academy.mobile.css";
 
 /* Whitepaper Page Styles */
-@import './styles/whitepaper.web.css';
-@import './styles/whitepaper.mobile.css';
+@import "./styles/whitepaper.web.css";
+@import "./styles/whitepaper.mobile.css";

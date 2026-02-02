@@ -4,7 +4,6 @@
    Academy Filters, Academy Pagination
    ============================================ */
 
-
 .academy__hero {
   padding: 28px 0 12px;
 }
@@ -382,4 +381,3 @@
 .academy__page-dot--active {
   background: #0f3d34;
 }
-

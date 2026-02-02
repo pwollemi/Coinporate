@@ -82,7 +82,10 @@ function App() {
           ) : isWhitepaper ? (
             <WhitepaperRedirect onOpen={() => navigate("/")} />
           ) : (
-            <HomePage header={header} onWhitepaperClick={handleWhitepaperClick} />
+            <HomePage
+              header={header}
+              onWhitepaperClick={handleWhitepaperClick}
+            />
           )}
           <SiteFooter
             logo={heroLogo}

@@ -52,9 +52,13 @@ function CountdownTimer({
     isActive,
     isEnded,
     timeUntilStart,
-    timeUntilEnd
+    timeUntilEnd,
   } = usePresaleState(wallet);
-  const { withdrawableAmounts, refetch: refetchVesting, hasPurchased } = useVestingState();
+  const {
+    withdrawableAmounts,
+    refetch: refetchVesting,
+    hasPurchased,
+  } = useVestingState();
 
   const [paymentMethod, setPaymentMethod] = useState("usdc");
   const [usdcAmount, setUsdcAmount] = useState("");
@@ -70,7 +74,9 @@ function CountdownTimer({
     100,
     Math.max(0, (soldTokens / totalTokens) * 100)
   );
-  const soldUsdc = new Intl.NumberFormat("en-US").format(soldTokens * exchangeRate / EXCHANGE_RATE_DECIMALS);
+  const soldUsdc = new Intl.NumberFormat("en-US").format(
+    (soldTokens * exchangeRate) / EXCHANGE_RATE_DECIMALS
+  );
   const formattedSold = new Intl.NumberFormat("en-US").format(soldTokens);
   const formattedTotal = new Intl.NumberFormat("en-US").format(totalTokens);
 
@@ -133,7 +139,8 @@ function CountdownTimer({
     setUsdcAmount(amount);
 
     if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
-      const expectedTokens = parseFloat(amount) / exchangeRate * EXCHANGE_RATE_DECIMALS;
+      const expectedTokens =
+        (parseFloat(amount) / exchangeRate) * EXCHANGE_RATE_DECIMALS;
       setCorpAmount(expectedTokens.toFixed(2));
     } else {
       setCorpAmount("");
@@ -164,11 +171,14 @@ function CountdownTimer({
         connection,
         wallet,
         sendTransaction,
-        parseFloat(usdcAmount),
+        parseFloat(usdcAmount)
       );
 
       if (result.success) {
-        showToast(`Transaction successful!\nYour CORP tokens will be available shortly.`, "success");
+        showToast(
+          `Transaction successful!\nYour CORP tokens will be available shortly.`,
+          "success"
+        );
         refetch();
         // Reset form
         setUsdcAmount("");
@@ -196,14 +206,13 @@ function CountdownTimer({
     setIsProcessing(true);
 
     try {
-      const result = await executeWithdraw(
-        connection,
-        wallet,
-        sendTransaction,
-      );
+      const result = await executeWithdraw(connection, wallet, sendTransaction);
 
       if (result.success) {
-        showToast(`Transaction successful!\nYour CORP tokens have been withdrawn.`, "success");
+        showToast(
+          `Transaction successful!\nYour CORP tokens have been withdrawn.`,
+          "success"
+        );
         refetchVesting();
       }
     } catch (error) {
@@ -212,7 +221,7 @@ function CountdownTimer({
     } finally {
       setIsProcessing(false);
     }
-  }
+  };
 
   const avatarSlots = avatarImages.length ? avatarImages : [null, null, null];
 
@@ -223,14 +232,26 @@ function CountdownTimer({
         <div className="countdown__ended-no-purchase">
           <div className="countdown__ended-content">
             <div className="countdown__ended-stats">
-              <div className="countdown__ended-stat" style={{ display: "flex", justifyContent: "space-between" }}>
-                <span className="countdown__ended-stat-label">Total Raised</span>
-                <span className="countdown__ended-stat-value">
-                  ${soldUsdc}
+              <div
+                className="countdown__ended-stat"
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <span className="countdown__ended-stat-label">
+                  Total Raised
                 </span>
+                <span className="countdown__ended-stat-value">${soldUsdc}</span>
               </div>
-              <div className="countdown__ended-stat" style={{ display: "flex", margin: "10px 0", justifyContent: "space-between" }}>
-                <span className="countdown__ended-stat-label">Total Tokens Sold</span>
+              <div
+                className="countdown__ended-stat"
+                style={{
+                  display: "flex",
+                  margin: "10px 0",
+                  justifyContent: "space-between",
+                }}
+              >
+                <span className="countdown__ended-stat-label">
+                  Total Tokens Sold
+                </span>
                 <span className="countdown__ended-stat-value">
                   {formattedSold} CORP
                 </span>
@@ -244,26 +265,60 @@ function CountdownTimer({
     return (
       <div className="countdown__ended-with-purchase">
         <div className="countdown__ended-header">
-          <h3 className="countdown__ended-title">Thank you for participating!</h3>
+          <h3 className="countdown__ended-title">
+            Thank you for participating!
+          </h3>
         </div>
         <div className="countdown__ended-content">
           <div className="countdown__ended-stats">
-            <div className="countdown__ended-stat" style={{ display: "flex", justifyContent: "space-between" }}>
-              <span className="countdown__ended-stat-label">Total Vested Amount</span>
+            <div
+              className="countdown__ended-stat"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <span className="countdown__ended-stat-label">
+                Total Vested Amount
+              </span>
               <span className="countdown__ended-stat-value">
-                {new Intl.NumberFormat("en-US").format(withdrawableAmounts?.total || 0)} CORP
+                {new Intl.NumberFormat("en-US").format(
+                  withdrawableAmounts?.total || 0
+                )}{" "}
+                CORP
               </span>
             </div>
-            <div className="countdown__ended-stat" style={{ display: "flex", margin: "10px 0", justifyContent: "space-between" }}>
-              <span className="countdown__ended-stat-label">Already Withdrawn</span>
+            <div
+              className="countdown__ended-stat"
+              style={{
+                display: "flex",
+                margin: "10px 0",
+                justifyContent: "space-between",
+              }}
+            >
+              <span className="countdown__ended-stat-label">
+                Already Withdrawn
+              </span>
               <span className="countdown__ended-stat-value">
-                {new Intl.NumberFormat("en-US").format(withdrawableAmounts?.withdrawn || 0)} CORP
+                {new Intl.NumberFormat("en-US").format(
+                  withdrawableAmounts?.withdrawn || 0
+                )}{" "}
+                CORP
               </span>
             </div>
-            <div className="countdown__ended-stat" style={{ display: "flex", margin: "10px 0", justifyContent: "space-between" }}>
-              <span className="countdown__ended-stat-label">Available to Withdraw</span>
+            <div
+              className="countdown__ended-stat"
+              style={{
+                display: "flex",
+                margin: "10px 0",
+                justifyContent: "space-between",
+              }}
+            >
+              <span className="countdown__ended-stat-label">
+                Available to Withdraw
+              </span>
               <span className="countdown__ended-stat-value countdown__ended-stat-value--highlight">
-                {new Intl.NumberFormat("en-US").format(withdrawableAmounts?.withdrawable || 0)} CORP
+                {new Intl.NumberFormat("en-US").format(
+                  withdrawableAmounts?.withdrawable || 0
+                )}{" "}
+                CORP
               </span>
             </div>
           </div>
@@ -289,7 +344,9 @@ function CountdownTimer({
         <div className="countdown__panel">
           <div className="countdown__error">
             <div className="countdown__error-icon">⚠️</div>
-            <div className="countdown__error-text">Failed to load presale data</div>
+            <div className="countdown__error-text">
+              Failed to load presale data
+            </div>
             <div className="countdown__error-subtext">{error}</div>
           </div>
         </div>
@@ -308,8 +365,9 @@ function CountdownTimer({
               {timeUnits.map((unit, index) => (
                 <div
                   key={unit.label}
-                  className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
-                    }`}
+                  className={`countdown__unit ${
+                    index > 0 ? "countdown__unit--divider" : ""
+                  }`}
                 >
                   <div className={`countdown__value ${unit.numberColor}`}>
                     {unit.value}
@@ -343,8 +401,9 @@ function CountdownTimer({
               {timeUnits.map((unit, index) => (
                 <div
                   key={unit.label}
-                  className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
-                    }`}
+                  className={`countdown__unit ${
+                    index > 0 ? "countdown__unit--divider" : ""
+                  }`}
                 >
                   <div className={`countdown__value ${unit.numberColor}`}>
                     {unit.value}
@@ -355,7 +414,9 @@ function CountdownTimer({
             </div>
             <div className="countdown__price">
               <span className="countdown__price-label">Presale price</span>
-              <span className="countdown__price-value">${(exchangeRate / EXCHANGE_RATE_DECIMALS).toFixed(3)}</span>
+              <span className="countdown__price-value">
+                ${(exchangeRate / EXCHANGE_RATE_DECIMALS).toFixed(3)}
+              </span>
             </div>
             <div className="countdown__progress">
               <div className="countdown__progress-row">
@@ -376,8 +437,9 @@ function CountdownTimer({
             <div className="countdown__presale-options">
               <button
                 type="button"
-                className={`countdown__option ${paymentMethod === "usdc" ? "countdown__option--active" : ""
-                  }`}
+                className={`countdown__option ${
+                  paymentMethod === "usdc" ? "countdown__option--active" : ""
+                }`}
                 onClick={() => setPaymentMethod("usdc")}
                 aria-pressed={paymentMethod === "usdc"}
               >
@@ -386,8 +448,9 @@ function CountdownTimer({
               <span className="countdown__option-divider">or</span>
               <button
                 type="button"
-                className={`countdown__option ${paymentMethod === "card" ? "countdown__option--active" : ""
-                  }`}
+                className={`countdown__option ${
+                  paymentMethod === "card" ? "countdown__option--active" : ""
+                }`}
                 onClick={() => setPaymentMethod("card")}
                 aria-pressed={paymentMethod === "card"}
               >
@@ -482,23 +545,21 @@ function CountdownTimer({
                 ? "Processing..."
                 : connected
                   ? "Buy CORP"
-                  : "Connect Wallet"
-              }
+                  : "Connect Wallet"}
             </button>
           </div>
         ) : isEnded ? (
           // Presale Ended - Enhanced Claim UI
-          <div className="countdown__ended">
-            {renderClaimUI()}
-          </div>
+          <div className="countdown__ended">{renderClaimUI()}</div>
         ) : (
           // Fallback state
           <div className="countdown__grid">
             {timeUnits.map((unit, index) => (
               <div
                 key={unit.label}
-                className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
-                  }`}
+                className={`countdown__unit ${
+                  index > 0 ? "countdown__unit--divider" : ""
+                }`}
               >
                 <div className={`countdown__value ${unit.numberColor}`}>
                   {unit.value}

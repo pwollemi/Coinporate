@@ -95,7 +95,9 @@ function StakingPage() {
                     alt=""
                     aria-hidden="true"
                   />
-                  <span className="staking-presale__pill-text"><strong>Corp</strong> Strategy</span>
+                  <span className="staking-presale__pill-text">
+                    <strong>Corp</strong> Strategy
+                  </span>
                 </div>
                 <div className="staking-presale__meta-row">
                   <span className="staking-presale__meta">
@@ -108,22 +110,29 @@ function StakingPage() {
                 <div className="staking-presale__stats">
                   <div className="staking-presale__stat">
                     <span className="staking-presale__stat-label">TVL</span>
-                    <strong className="staking-presale__stat-value">$128.7M</strong>
+                    <strong className="staking-presale__stat-value">
+                      $128.7M
+                    </strong>
                   </div>
                   <div className="staking-presale__stat">
                     <span className="staking-presale__stat-label">APY</span>
-                    <strong className="staking-presale__stat-value">5.3%</strong>
+                    <strong className="staking-presale__stat-value">
+                      5.3%
+                    </strong>
                   </div>
                 </div>
                 <p className="staking-presale__copy">
                   Lido strategy gives users exposure to a range of leading DeFi
-                  protocols targeting increased rewards, plus additional <span className="staking-presale__copy-highlight">CORP </span>
+                  protocols targeting increased rewards, plus additional{" "}
+                  <span className="staking-presale__copy-highlight">CORP </span>
                   points
                 </p>
                 <div className="staking-presale__tabs">
                   <button
                     className={`staking-presale__tab ${
-                      stakingTab === "deposit" ? "staking-presale__tab--active" : ""
+                      stakingTab === "deposit"
+                        ? "staking-presale__tab--active"
+                        : ""
                     }`}
                     type="button"
                     onClick={() => setStakingTab("deposit")}
@@ -132,7 +141,9 @@ function StakingPage() {
                   </button>
                   <button
                     className={`staking-presale__tab ${
-                      stakingTab === "withdraw" ? "staking-presale__tab--active" : ""
+                      stakingTab === "withdraw"
+                        ? "staking-presale__tab--active"
+                        : ""
                     }`}
                     type="button"
                     onClick={() => setStakingTab("withdraw")}
@@ -178,7 +189,10 @@ function StakingPage() {
                   <div className="staking-presale__summary-item">
                     <span className="staking-presale__summary-label">
                       You will receive
-                      <span className="staking-presale__info" aria-hidden="true">
+                      <span
+                        className="staking-presale__info"
+                        aria-hidden="true"
+                      >
                         <img src={questionIcon} alt="" aria-hidden="true" />
                       </span>
                     </span>
@@ -195,21 +209,32 @@ function StakingPage() {
                   <div className="staking-presale__summary-item">
                     <span className="staking-presale__summary-label">
                       Waiting time
-                      <span className="staking-presale__info" aria-hidden="true">
+                      <span
+                        className="staking-presale__info"
+                        aria-hidden="true"
+                      >
                         <img src={questionIcon} alt="" aria-hidden="true" />
                       </span>
                     </span>
-                    <strong className="staking-presale__summary-value">24 hours</strong>
+                    <strong className="staking-presale__summary-value">
+                      24 hours
+                    </strong>
                   </div>
                 </div>
                 <p className="staking-presale__note">
-                  <span className="staking-presale__note-icon" aria-hidden="true">
+                  <span
+                    className="staking-presale__note-icon"
+                    aria-hidden="true"
+                  >
                     <img src={coinporateIcon} alt="" />
                   </span>
                   Withdrawals are only in WTH, regardless to deposit asset(s).
                 </p>
                 <button className="staking-presale__cta" type="button">
-                  <span className="staking-presale__cta-icon" aria-hidden="true">
+                  <span
+                    className="staking-presale__cta-icon"
+                    aria-hidden="true"
+                  >
                     <svg viewBox="0 0 24 24" role="presentation">
                       <path
                         d="M6 7.5C6 6.12 7.12 5 8.5 5h7c1.38 0 2.5 1.12 2.5 2.5v1H6v-1z"
@@ -237,8 +262,9 @@ function StakingPage() {
                 </button>
                 <p className="staking-presale__legal">
                   Corp service relies on third-party infrastructure provided by
-                  Mellow. <br/>By processing, you are subject to Mellow's terms of
-                  service and privacy notice.
+                  Mellow. <br />
+                  By processing, you are subject to Mellow's terms of service
+                  and privacy notice.
                 </p>
                 <p className="staking-presale__legal">
                   Note, that the vault involves protocol, slashing and others
@@ -316,10 +342,26 @@ function StakingPage() {
                 are assigned to defined roles within the platform, such as:
               </p>
               <div className="staking-flow__badges">
-                <span>enabling access<br />to certain features</span>
-                <span>supporting network<br />operations</span>
-                <span>participating<br />in platform processes</span>
-                <span>helping maintain<br />system integrity</span>
+                <span>
+                  enabling access
+                  <br />
+                  to certain features
+                </span>
+                <span>
+                  supporting network
+                  <br />
+                  operations
+                </span>
+                <span>
+                  participating
+                  <br />
+                  in platform processes
+                </span>
+                <span>
+                  helping maintain
+                  <br />
+                  system integrity
+                </span>
               </div>
               <p className="staking-flow__note">
                 Staking is a technical and operational mechanism that connects
