@@ -284,6 +284,10 @@ export async function executeDeposit(
 
         const tx = new Transaction().add(depositIx);
         const txid = await sendTx(tx, connection);
+
+        // Wait for transaction confirmation
+        await connection.confirmTransaction(txid, "confirmed");
+
         return { success: true, txid };
     } catch (error) {
         console.error("Deposit failed:", error);
@@ -323,6 +327,10 @@ export async function executeWithdraw(
 
         const tx = new Transaction().add(depositIx);
         const txid = await sendTx(tx, connection);
+
+        // Wait for transaction confirmation
+        await connection.confirmTransaction(txid, "confirmed");
+
         return { success: true, txid };
     } catch (error) {
         console.error("Deposit failed:", error);
