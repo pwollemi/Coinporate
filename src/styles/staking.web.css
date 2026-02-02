@@ -4,7 +4,6 @@
    Staking Overview, Staking Ecosystem
    ============================================ */
 
-
 .staking {
   background: #ffffff;
   color: #0f3d34;
@@ -44,7 +43,11 @@
   width: min(505px, 92vw);
   height: 668px;
   border-radius: 26px;
-  background: linear-gradient(180deg, rgba(7, 12, 12, 0.96), rgba(6, 9, 10, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(7, 12, 12, 0.96),
+    rgba(6, 9, 10, 0.9)
+  );
   border: 1px solid rgba(140, 167, 150, 0.35);
   padding: 46px 22px 26px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
@@ -111,7 +114,7 @@
   font-size: 10px;
   letter-spacing: 0px;
   text-transform: uppercase;
-  color: rgb(121,144,135);
+  color: rgb(121, 144, 135);
 }
 
 .staking-presale__meta strong {
@@ -141,7 +144,7 @@
   display: inline;
   font-family: Roboto Mono;
   text-transform: uppercase;
-  color: rgb(121,144,135);
+  color: rgb(121, 144, 135);
   font-weight: 500;
   font-style: Medium;
   font-size: 20.8px;
@@ -246,11 +249,9 @@
   width: 20px;
   height: 20px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #00d4aa 0%, #0ea5e9 100%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .staking-presale__token-icon img {
@@ -345,7 +346,6 @@
   letter-spacing: -0.31px;
   text-align: center;
   text-transform: uppercase;
-
 }
 
 .staking-presale__info {
@@ -380,8 +380,6 @@
   letter-spacing: -0.31px;
   text-align: center;
   text-transform: uppercase;
-
-  
 }
 
 .staking-presale__summary-icon {
@@ -442,7 +440,6 @@
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-
 }
 
 .staking-presale__cta-icon {
@@ -561,7 +558,6 @@
   font-style: Bold;
   font-size: 32px;
   line-height: 160%;
-
 }
 
 .staking-overview__panel h2 {
@@ -570,7 +566,6 @@
   font-weight: 400;
   font-size: 32px;
   line-height: 120%;
-
 }
 
 .staking-overview__content {
@@ -593,7 +588,6 @@
   font-size: 18px;
   line-height: 160%;
   letter-spacing: -0.45px;
-
 }
 
 .staking-overview__copy em {
@@ -611,7 +605,6 @@
   font-size: 18px;
   line-height: 160%;
   letter-spacing: -0.45px;
-
 }
 
 .staking-overview__cta {
@@ -757,7 +750,6 @@
   font-size: 24px;
   line-height: 100%;
   letter-spacing: -0.44px;
-
 }
 
 .staking-step p {
@@ -768,7 +760,6 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.44px;
-
 }
 
 .staking-steps__cta {
@@ -810,7 +801,8 @@
 
 .staking-platform {
   padding: 273px 0 90px;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       80% 70% at 50% 0%,
       rgba(219, 255, 109, 0.08) 0%,
       rgba(6, 6, 6, 0) 55%
@@ -905,7 +897,6 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.44px;
-
 }
 
 .staking-platform__cta {
@@ -948,11 +939,11 @@
 }
 
 .staking-rewards__content {
-    display: flex;
-    flex-direction: column;
-    min-height: 474px;
-    align-items: flex-start;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 474px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .staking-rewards__content h3 {
@@ -965,7 +956,8 @@
   color: #0f3d34;
 }
 
-.staking-rewards__content ul {    margin: 15px 0 24px;
+.staking-rewards__content ul {
+  margin: 15px 0 24px;
   padding: 0;
   list-style: none;
   display: grid;
@@ -1043,7 +1035,6 @@
   font-size: 104px;
   line-height: 100%;
   letter-spacing: 0%;
-
 }
 
 .staking-not__list {
@@ -1125,7 +1116,7 @@
   font-size: 48px;
   line-height: 110%;
   text-align: center;
-  color: #00382F;
+  color: #00382f;
 }
 
 .staking-ecosystem__inner > p {
@@ -1148,7 +1139,7 @@
 .staking-ecosystem__card {
   width: 280px;
   height: 244px;
-  background: #DBFF6D;
+  background: #dbff6d;
   border-radius: 20px;
   padding: 36px;
   display: flex;
@@ -1165,7 +1156,7 @@
   font-size: 32px;
   line-height: 39px;
   letter-spacing: -0.44px;
-  color: #00382F;
+  color: #00382f;
 }
 
 .staking-ecosystem__card img {
@@ -1197,4 +1188,3 @@
   width: 16px;
   height: 16px;
 }
-
