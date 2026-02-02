@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/wallet-adapter-ledger": "^0.9.29",
+    "@solana/wallet-adapter-phantom": "^0.9.26",
     "@solana/wallet-adapter-react": "^0.15.39",
     "@solana/wallet-adapter-react-ui": "^0.9.39",
-    "@solana/wallet-adapter-phantom": "^0.9.26",
     "@solana/wallet-adapter-solflare": "^0.6.32",
-    "@solana/wallet-adapter-ledger": "^0.9.29",
-    "@solana/web3.js": "^1.98.0",
+    "@solana/web3.js": "^1.98.4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^13.5.0",
+    "assert": "^2.1.0",
+    "bs58": "^6.0.0",
     "buffer": "^6.0.3",
     "embla-carousel-react": "^8.6.0",
     "react": "^19.2.3",
@@ -21,9 +25,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,json,css,scss,md}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,scss,md}\""
@@ -47,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
     "prettier": "^3.2.5"

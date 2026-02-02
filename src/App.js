@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import AcademyPage from "./pages/AcademyPage";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import { ToastProvider } from "./components/ToastProvider";
 import StakingPage from "./pages/StakingPage";
 import { navLinks } from "./data/content";
 import { X_URL, DISCORD_URL } from "./data/constants";
@@ -10,6 +11,7 @@ import heroLogo from "./assets/coinporate-logo-nav.svg";
 import iconWallet from "./assets/coinporate/icons/wallet.svg";
 import socialX from "./assets/social-x.svg";
 import socialDiscord from "./assets/social-discord.svg";
+import "./styles/toast.css";
 
 function WhitepaperRedirect({ onOpen }) {
   useEffect(() => {
@@ -68,29 +70,31 @@ function App() {
   );
 
   return (
-    <div className="page">
-      <div className="page__frame">
-        {header}
+    <ToastProvider>
+      <div className="page">
+        <div className="page__frame">
+          {header}
 
-        {isStaking ? (
-          <StakingPage />
-        ) : isAcademy ? (
-          <AcademyPage />
-        ) : isWhitepaper ? (
-          <WhitepaperRedirect onOpen={() => navigate("/")} />
-        ) : (
-          <HomePage header={header} onWhitepaperClick={handleWhitepaperClick} />
-        )}
-        <SiteFooter
-          logo={heroLogo}
-          socialX={socialX}
-          socialDiscord={socialDiscord}
-          onWhitepaperClick={handleWhitepaperClick}
-          xUrl={X_URL}
-          discordUrl={DISCORD_URL}
-        />
+          {isStaking ? (
+            <StakingPage />
+          ) : isAcademy ? (
+            <AcademyPage />
+          ) : isWhitepaper ? (
+            <WhitepaperRedirect onOpen={() => navigate("/")} />
+          ) : (
+            <HomePage header={header} onWhitepaperClick={handleWhitepaperClick} />
+          )}
+          <SiteFooter
+            logo={heroLogo}
+            socialX={socialX}
+            socialDiscord={socialDiscord}
+            onWhitepaperClick={handleWhitepaperClick}
+            xUrl={X_URL}
+            discordUrl={DISCORD_URL}
+          />
+        </div>
       </div>
-    </div>
+    </ToastProvider>
   );
 }
 

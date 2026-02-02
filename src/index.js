@@ -14,6 +14,7 @@ import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import { LedgerWalletAdapter } from "@solana/wallet-adapter-ledger";
 import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
+import { PRESALE_CONFIG } from "./data/constants";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -22,7 +23,7 @@ if (!window.Buffer) {
 }
 
 function Root() {
-  const endpoint = useMemo(() => clusterApiUrl("mainnet-beta"), []);
+  const endpoint = useMemo(() => clusterApiUrl(PRESALE_CONFIG.network), []);
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
