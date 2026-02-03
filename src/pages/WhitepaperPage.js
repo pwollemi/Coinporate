@@ -129,7 +129,11 @@ const contentSections = [
         type: "list",
         title:
           "A crypto airdrop is when a project distributes free tokens to users' wallets, usually to:",
-        items: ["reward early supporters", "increase awareness", "encourage platform usage"],
+        items: [
+          "reward early supporters",
+          "increase awareness",
+          "encourage platform usage",
+        ],
       },
       {
         type: "list",
@@ -241,9 +245,7 @@ function WhitepaperPage() {
       })),
     []
   );
-  const [activeTocId, setActiveTocId] = useState(
-    sectionIds[0]?.id ?? null
-  );
+  const [activeTocId, setActiveTocId] = useState(sectionIds[0]?.id ?? null);
 
   const handleScrollTo = (id) => {
     const el = document.getElementById(id);
@@ -340,8 +342,9 @@ function WhitepaperPage() {
               <p className="whitepaper-block__list-title">{block.title}</p>
             )}
             <ListTag
-              className={`whitepaper-block__list ${block.ordered ? "whitepaper-block__list--ordered" : ""
-                }`.trim()}
+              className={`whitepaper-block__list ${
+                block.ordered ? "whitepaper-block__list--ordered" : ""
+              }`.trim()}
             >
               {block.items.map((item, itemIndex) => (
                 <li key={`item-${index}-${itemIndex}`}>{item}</li>
@@ -355,8 +358,9 @@ function WhitepaperPage() {
         return (
           <div
             key={`callout-${index}`}
-            className={`whitepaper-callout whitepaper-callout--${block.variant} ${block.align === "center" ? "whitepaper-callout--center" : ""
-              }`.trim()}
+            className={`whitepaper-callout whitepaper-callout--${block.variant} ${
+              block.align === "center" ? "whitepaper-callout--center" : ""
+            }`.trim()}
           >
             {icon && <span className="whitepaper-callout__icon">{icon}</span>}
             <div className="whitepaper-callout__text">{block.content}</div>
@@ -411,8 +415,9 @@ function WhitepaperPage() {
                     <li key={item}>
                       <button
                         type="button"
-                        className={`whitepaper-toc__button ${isActive ? "whitepaper-toc__button--active" : ""
-                          }`.trim()}
+                        className={`whitepaper-toc__button ${
+                          isActive ? "whitepaper-toc__button--active" : ""
+                        }`.trim()}
                         aria-current={isActive ? "true" : undefined}
                         onClick={() => handleScrollTo(targetId)}
                       >
@@ -429,10 +434,11 @@ function WhitepaperPage() {
               const sectionId = section.title
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, "-");
-              const titleClassName = `whitepaper-block__title ${section.titleStyle === "hero"
+              const titleClassName = `whitepaper-block__title ${
+                section.titleStyle === "hero"
                   ? "whitepaper-block__title--hero"
                   : "whitepaper-block__title--mono"
-                }`;
+              }`;
               return (
                 <article
                   key={section.title}

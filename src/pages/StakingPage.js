@@ -21,7 +21,6 @@ import ecosystemIconTwo from "../source/staking/7.svg";
 import ecosystemIconThree from "../source/staking/8.svg";
 import ecosystemIconFour from "../source/staking/9.svg";
 import coinporateIcon from "../source/staking/coinporate.svg";
-import stakingLogo from "../assets/coinporate/svgs/coinporate_staking.svg";
 import coloredLogo from "../source/staking/coloredLogo.svg";
 import questionIcon from "../source/staking/quetion.svg";
 import heroTexture from "../assets/coinporate/hero-texture.png";
@@ -61,15 +60,13 @@ function StakingPage() {
             <div className="staking-intro__content">
               <div className="staking-intro__token">
                 <span className="staking-intro__token-ring">
-                  <img
-                    src={coloredLogo}
-                    alt="Coinporate token"
-                  />
+                  <img src={coloredLogo} alt="Coinporate token" />
                 </span>
               </div>
               <h1 className="staking-intro__title">Coinporate Staking</h1>
               <p className="staking-intro__subtitle">
-                Stake your <strong>CORP</strong> to earn daily rewards with <strong>CORP</strong>
+                Stake your <strong>CORP</strong> to earn daily rewards with{" "}
+                <strong>CORP</strong>
               </p>
               <div className="staking-intro__brand">
                 <img src={coloredLogo} alt="" aria-hidden="true" />
@@ -149,16 +146,16 @@ function StakingPage() {
                   </div>
                 </div>
                 <p className="staking-presale__copy">
-                  Coinporate strategy gives users exposure to a range of leading DeFi
-                  protocols targeting increased rewards, plus additional{" "}
+                  Coinporate strategy gives users exposure to a range of leading
+                  DeFi protocols targeting increased rewards, plus additional{" "}
                   <span className="staking-presale__copy-highlight">CORP </span>
                   points
                 </p>
                 <div className="staking-presale__tabs">
                   <button
                     className={`staking-presale__tab ${stakingTab === "deposit"
-                      ? "staking-presale__tab--active"
-                      : ""
+                        ? "staking-presale__tab--active"
+                        : ""
                       }`}
                     type="button"
                     onClick={() => setStakingTab("deposit")}
@@ -167,8 +164,8 @@ function StakingPage() {
                   </button>
                   <button
                     className={`staking-presale__tab ${stakingTab === "withdraw"
-                      ? "staking-presale__tab--active"
-                      : ""
+                        ? "staking-presale__tab--active"
+                        : ""
                       }`}
                     type="button"
                     onClick={() => setStakingTab("withdraw")}
