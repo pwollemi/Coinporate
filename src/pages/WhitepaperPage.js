@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import heroImage from "../source/airdrop/5b5c6083d5384cbcc5839503d28c9ee4cefb953a.png";
+import iconRing from "../assets/coinporate/icons/ring.svg";
 
 const contentSections = [
   {
@@ -243,9 +244,10 @@ function WhitepaperPage() {
 
   const handleScrollTo = (id) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el) {
+      return;
     }
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   useEffect(() => {
@@ -366,6 +368,23 @@ function WhitepaperPage() {
 
   return (
     <main className="whitepaper">
+      <section className="whitepaper-hero" aria-hidden="true">
+        <div className="whitepaper-hero__video-wrap">
+          <video
+            className="whitepaper-hero__video"
+            src="/media/token-head.mp4"
+            poster={heroImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="whitepaper-hero__veil" />
+        </div>
+        <img className="whitepaper-hero__ring" src={iconRing} alt="" />
+        <div className="whitepaper-hero__title">Whitepaper</div>
+      </section>
+      <h1 className="visually-hidden">Coinporate Whitepaper</h1>
       <section className="whitepaper-body">
         <div className="whitepaper-body__inner">
           <aside className="whitepaper-toc">

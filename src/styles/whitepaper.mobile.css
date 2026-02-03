@@ -3,18 +3,63 @@
    Media queries for responsive design
    ============================================ */
 
+@media (max-width: 1400px) {
+  .whitepaper-body__inner {
+    padding: 0 80px;
+    grid-template-columns: 280px minmax(0, 1fr);
+    column-gap: 80px;
+    align-items: flex-start;
+  }
+
+  .whitepaper-content {
+    max-width: 100%;
+  }
+
+  .whitepaper-block__image {
+    width: 100%;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 1100px) {
+  .whitepaper-hero {
+    height: 420px;
+    margin-bottom: 80px;
+  }
+
+  .whitepaper-hero__title {
+    font-size: 240px;
+    bottom: -72px;
+  }
+
   .whitepaper-body {
     padding: 90px 0 120px;
   }
 
   .whitepaper-body__inner {
     grid-template-columns: 1fr;
+    align-items: flex-start;
     gap: 48px;
     padding: 0 40px;
+    min-height: auto;
   }
 
   .whitepaper-content {
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .whitepaper-toc {
+    position: static;
+    transform: none;
+  }
+
+  .whitepaper-block__image {
+    width: 100%;
+    margin-left: 0;
     max-width: 100%;
   }
 }
@@ -26,25 +71,46 @@
 }
 
 @media (max-width: 720px) {
+  .whitepaper-hero {
+    height: 320px;
+    margin-bottom: 60px;
+  }
+
+  .whitepaper-hero__title {
+    font-size: 170px;
+    bottom: -60px;
+  }
+
+  .whitepaper-hero__ring {
+    width: 150%;
+  }
+
   .whitepaper-block__title--hero {
-    font-size: 30px;
+    font-size: 34px;
+    line-height: 42px;
   }
 
   .whitepaper-block__title--mono {
-    font-size: 15px;
-    letter-spacing: 0.12em;
+    font-size: 18px;
+    line-height: 24px;
   }
 
   .whitepaper-block__paragraph--lead {
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 140%;
   }
 
   .whitepaper-callout--warn .whitepaper-callout__text {
     font-size: 16px;
+    line-height: 22px;
   }
 
   .whitepaper-block__image img {
     height: 210px;
+  }
+
+  .whitepaper-callout--soft {
+    padding: 40px 28px;
   }
 }
 
