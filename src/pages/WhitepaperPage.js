@@ -1,73 +1,228 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import heroImage from "../source/whitepaper/5b5c6083d5384cbcc5839503d28c9ee4cefb953a.png";
-
-const tocItems = [
-  "What does staking crypto mean?",
-  "Which Solana wallet should I use?",
-  "What is an ICO or IDO coin?",
-  "What is a crypto airdrop?",
-  "How do you claim a crypto airdrop?",
-];
+import heroImage from "../source/airdrop/5b5c6083d5384cbcc5839503d28c9ee4cefb953a.png";
 
 const contentSections = [
   {
-    eyebrow: "FOR YOU",
     title: "What does staking crypto mean?",
-    text: "Staking crypto means locking your cryptocurrency tokens for a period of time to support a platform or network and, in return, earn rewards.",
-    bullets: [
-      "Stake to earn rewards for securing the network.",
-      "Rewards are paid in CORP and partner tokens.",
-      "Unstaking may require a cooldown period.",
+    titleStyle: "hero",
+    blocks: [
+      {
+        type: "paragraph",
+        variant: "lead",
+        content:
+          "Staking crypto means locking your cryptocurrency tokens for a period of time to support a platform or network and, in return, earn rewards.",
+      },
+      {
+        type: "image",
+        src: heroImage,
+        alt: "Staking crypto illustration",
+      },
+      {
+        type: "list",
+        title: "When you stake crypto:",
+        items: [
+          "you already own the tokens",
+          "you voluntarily lock them in a smart contract",
+          "you may receive rewards such as:",
+          "additional tokens",
+          "platform benefits",
+          "access to ecosystem features",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "soft",
+        align: "center",
+        content:
+          "Staking is commonly used to encourage long-term participation and reduce short-term speculation. Within Coinporate, staking will allow users to actively participate in the ecosystem and support platform growth.",
+      },
     ],
-    note: "Staking boosts liquidity and is often used as a basis for ecosystem-wide reward programs.",
-    image: heroImage,
   },
   {
-    eyebrow: "WHICH SOLANA WALLET SHOULD I USE?",
     title: "Which Solana wallet should I use?",
-    text: "Phantom, Solflare, and Backpack are the most commonly used Solana wallets. Choose one that supports hardware wallet connections and in-app swaps.",
-    bullets: [
-      "Phantom: fastest setup and broad app support.",
-      "Solflare: strong staking tools and hardware options.",
-      "Backpack: multi-chain and security focused.",
+    titleStyle: "mono",
+    blocks: [
+      {
+        type: "paragraph",
+        variant: "accent",
+        content: (
+          <>
+            To interact with <strong>Solana-based tokens</strong> (including
+            CORP), you will need a <strong>Solana-compatible wallet</strong>.
+          </>
+        ),
+      },
+      {
+        type: "list",
+        title: "Popular and widely trusted Solana wallets include:",
+        items: [<em>Phantom Wallet</em>, <em>Solflare</em>, <em>Backpack</em>],
+      },
+      {
+        type: "list",
+        title: "These wallets allow you to:",
+        items: [
+          "store Solana tokens",
+          "connect to decentralized applications",
+          "participate in token sales, staking, and airdrops",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "outline",
+        align: "center",
+        icon: "spark",
+        content: (
+          <>
+            For most users, <em>Phantom</em> is the easiest and most
+            beginner-friendly option.
+          </>
+        ),
+      },
     ],
-    cta: "Learn more about wallets",
   },
   {
-    eyebrow: "WHAT IS AN ICO OR IDO COIN?",
-    title: "What is an ICO or IDO coin?",
-    text: "An ICO or IDO is a fundraising mechanism where tokens are sold to early participants before listing on public markets.",
-    bullets: [
-      "ICO: initial coin offering (early public sale).",
-      "IDO: initial DEX offering (launch on a DEX).",
-      "IDO listings can be faster and more liquid.",
+    title: "What is an ICO crypto coin?",
+    titleStyle: "mono",
+    blocks: [
+      {
+        type: "paragraph",
+        variant: "accent",
+        content: (
+          <>
+            An <strong>ICO (Initial Coin Offering)</strong> is a method used by
+            crypto projects to introduce a new token to the public.
+          </>
+        ),
+      },
+      {
+        type: "list",
+        title: "In an ICO:",
+        items: [
+          "a project offers tokens for sale at an early stage",
+          "participants purchase tokens before the platform or product is fully launched",
+          "funds are typically used to build and grow the project",
+        ],
+      },
+      {
+        type: "paragraph",
+        content:
+          "Coinporate's approach follows a structured and transparent pre-sale model, where the CORP token is introduced first and later used within the Coinporate platform once it goes live.",
+      },
     ],
-    cta: "View token sale glossary",
   },
   {
-    eyebrow: "WHAT IS A CRYPTO AIRDROP?",
     title: "What is a crypto airdrop?",
-    text: "A crypto airdrop is a distribution of tokens to a group of wallet addresses, often used to reward early users or communities.",
-    bullets: [
-      "Airdrops can be based on on-chain activity.",
-      "Some require tasks such as staking or referrals.",
-      "Always verify official sources before claiming.",
+    titleStyle: "mono",
+    blocks: [
+      {
+        type: "paragraph",
+        variant: "accent",
+        content: (
+          <>
+            An <strong>ICO (Initial Coin Offering)</strong> is a method used by
+            crypto projects to introduce a new token to the public.
+          </>
+        ),
+      },
+      {
+        type: "list",
+        title:
+          "A crypto airdrop is when a project distributes free tokens to users' wallets, usually to:",
+        items: ["reward early supporters", "increase awareness", "encourage platform usage"],
+      },
+      {
+        type: "list",
+        title: "Airdrops may be given to users who:",
+        items: [
+          "hold a specific token",
+          "use a platform early",
+          "complete simple on-chain actions",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "outline",
+        align: "center",
+        icon: "spark",
+        content:
+          "Airdrops are a common way to grow a community while decentralizing token ownership.",
+      },
     ],
-    cta: "Check airdrop eligibility",
   },
   {
-    eyebrow: "HOW DO YOU CLAIM A CRYPTO AIRDROP?",
     title: "How do you claim a crypto airdrop?",
-    text: "Visit the official claim page, connect your wallet, and follow the instructions. Never share your seed phrase.",
-    bullets: [
-      "Use a verified URL shared by the team.",
-      "Approve only the necessary permissions.",
-      "Confirm token receipt after the transaction.",
+    titleStyle: "mono",
+    blocks: [
+      {
+        type: "paragraph",
+        variant: "accent",
+        content: (
+          <>
+            An <strong>ICO (Initial Coin Offering)</strong> is a method used by
+            crypto projects to introduce a new token to the public.
+          </>
+        ),
+      },
+      {
+        type: "list",
+        ordered: true,
+        title: "To claim a crypto airdrop, users usually need to:",
+        items: [
+          "Connect their crypto wallet to the official project website",
+          "Verify eligibility (based on wallet activity or participation)",
+          "Confirm the claim transaction",
+          "Receive tokens directly into their wallet",
+        ],
+      },
+      {
+        type: "callout",
+        variant: "warn",
+        align: "center",
+        icon: "info",
+        content:
+          "Always make sure you are using the official Coinporate website and links. Never connect your wallet to unknown or unverified sources.",
+      },
     ],
-    highlight:
-      "Always make sure you are using the official Coinporate website and links.",
   },
 ];
+
+const tocItems = contentSections.map((section) => section.title);
+
+const calloutIcons = {
+  spark: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 3.2l1.9 4.1 4.6.6-3.4 3.1.9 4.5-4-2.1-4 2.1.9-4.5-3.4-3.1 4.6-.6L12 3.2z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  info: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <line
+        x1="12"
+        y1="10"
+        x2="12"
+        y2="16"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+      <circle cx="12" cy="7.5" r="1" fill="currentColor" />
+    </svg>
+  ),
+};
 
 function WhitepaperPage() {
   const tocListRef = useRef(null);
@@ -147,6 +302,68 @@ function WhitepaperPage() {
     };
   }, []);
 
+  const renderBlock = (block, index) => {
+    switch (block.type) {
+      case "paragraph": {
+        const variantClass =
+          block.variant === "lead"
+            ? "whitepaper-block__paragraph--lead"
+            : block.variant === "accent"
+              ? "whitepaper-block__paragraph--accent"
+              : "";
+        return (
+          <p
+            key={`paragraph-${index}`}
+            className={`whitepaper-block__paragraph ${variantClass}`.trim()}
+          >
+            {block.content}
+          </p>
+        );
+      }
+      case "image":
+        return (
+          <div key={`image-${index}`} className="whitepaper-block__image">
+            <img src={block.src} alt={block.alt || ""} />
+          </div>
+        );
+      case "list": {
+        const ListTag = block.ordered ? "ol" : "ul";
+        return (
+          <div key={`list-${index}`} className="whitepaper-block__list-group">
+            {block.title && (
+              <p className="whitepaper-block__list-title">{block.title}</p>
+            )}
+            <ListTag
+              className={`whitepaper-block__list ${
+                block.ordered ? "whitepaper-block__list--ordered" : ""
+              }`.trim()}
+            >
+              {block.items.map((item, itemIndex) => (
+                <li key={`item-${index}-${itemIndex}`}>{item}</li>
+              ))}
+            </ListTag>
+          </div>
+        );
+      }
+      case "callout": {
+        const icon = block.icon ? calloutIcons[block.icon] : null;
+        return (
+          <div
+            key={`callout-${index}`}
+            className={`whitepaper-callout whitepaper-callout--${block.variant} ${
+              block.align === "center" ? "whitepaper-callout--center" : ""
+            }`.trim()}
+          >
+            {icon && <span className="whitepaper-callout__icon">{icon}</span>}
+            <div className="whitepaper-callout__text">{block.content}</div>
+          </div>
+        );
+      }
+      default:
+        return null;
+    }
+  };
+
   return (
     <main className="whitepaper">
       <section className="whitepaper-body">
@@ -188,43 +405,23 @@ function WhitepaperPage() {
               const sectionId = section.title
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, "-");
+              const titleClassName = `whitepaper-block__title ${
+                section.titleStyle === "hero"
+                  ? "whitepaper-block__title--hero"
+                  : "whitepaper-block__title--mono"
+              }`;
               return (
                 <article
                   key={section.title}
                   className="whitepaper-block"
                   id={sectionId}
                 >
-                  <span className="whitepaper-block__eyebrow">
-                    {section.eyebrow}
-                  </span>
-                  <h2>{section.title}</h2>
-                  <p>{section.text}</p>
-                  {section.image && (
-                    <div className="whitepaper-block__image">
-                      <img src={section.image} alt={section.title} />
-                      <div className="whitepaper-block__badge">CORP</div>
-                    </div>
-                  )}
-                  {section.bullets && (
-                    <ul className="whitepaper-block__list">
-                      {section.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
-                  )}
-                  {section.note && (
-                    <div className="whitepaper-block__note">{section.note}</div>
-                  )}
-                  {section.cta && (
-                    <button className="whitepaper-block__cta" type="button">
-                      {section.cta}
-                    </button>
-                  )}
-                  {section.highlight && (
-                    <div className="whitepaper-block__highlight">
-                      {section.highlight}
-                    </div>
-                  )}
+                  <h2 className={titleClassName}>{section.title}</h2>
+                  <div className="whitepaper-block__content">
+                    {section.blocks.map((block, blockIndex) =>
+                      renderBlock(block, blockIndex)
+                    )}
+                  </div>
                   {index !== contentSections.length - 1 && (
                     <div className="whitepaper-block__divider" />
                   )}
