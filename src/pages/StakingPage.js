@@ -21,6 +21,8 @@ import ecosystemIconTwo from "../source/staking/7.svg";
 import ecosystemIconThree from "../source/staking/8.svg";
 import ecosystemIconFour from "../source/staking/9.svg";
 import coinporateIcon from "../source/staking/coinporate.svg";
+import stakingLogo from "../assets/coinporate/svgs/coinporate_staking.svg";
+import coloredLogo from "../source/staking/coloredLogo.svg";
 import questionIcon from "../source/staking/quetion.svg";
 import heroTexture from "../assets/coinporate/hero-texture.png";
 import heroTriangles from "../assets/hero-triangles.svg";
@@ -51,6 +53,31 @@ function StakingPage() {
   return (
     <>
       <main className="staking">
+        <section className="staking-intro">
+          <div className="staking-intro__inner">
+            <div className="staking-intro__bg" aria-hidden="true">
+              <img src={coinporateIcon} alt="" />
+            </div>
+            <div className="staking-intro__content">
+              <div className="staking-intro__token">
+                <span className="staking-intro__token-ring">
+                  <img
+                    src={coloredLogo}
+                    alt="Coinporate token"
+                  />
+                </span>
+              </div>
+              <h1 className="staking-intro__title">Coinporate Staking</h1>
+              <p className="staking-intro__subtitle">
+                Stake your <strong>CORP</strong> to earn daily rewards with <strong>CORP</strong>
+              </p>
+              <div className="staking-intro__brand">
+                <img src={coloredLogo} alt="" aria-hidden="true" />
+                <span>coinporate</span>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="staking-presale">
           <div className="staking-presale__inner">
             <video
@@ -130,8 +157,8 @@ function StakingPage() {
                 <div className="staking-presale__tabs">
                   <button
                     className={`staking-presale__tab ${stakingTab === "deposit"
-                        ? "staking-presale__tab--active"
-                        : ""
+                      ? "staking-presale__tab--active"
+                      : ""
                       }`}
                     type="button"
                     onClick={() => setStakingTab("deposit")}
@@ -140,8 +167,8 @@ function StakingPage() {
                   </button>
                   <button
                     className={`staking-presale__tab ${stakingTab === "withdraw"
-                        ? "staking-presale__tab--active"
-                        : ""
+                      ? "staking-presale__tab--active"
+                      : ""
                       }`}
                     type="button"
                     onClick={() => setStakingTab("withdraw")}
@@ -170,7 +197,7 @@ function StakingPage() {
                       className="staking-presale__amount"
                       type="text"
                       inputMode="decimal"
-                      placeholder="ETH AMOUNT"
+                      placeholder="CORP AMOUNT"
                       value={stakeAmount}
                       onChange={(event) => setStakeAmount(event.target.value)}
                     />

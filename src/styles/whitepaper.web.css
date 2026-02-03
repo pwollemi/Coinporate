@@ -58,7 +58,7 @@
 .whitepaper-hero__title {
   position: absolute;
   left: 24px;
-  bottom: -50px;
+  bottom: -52px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 320px;
@@ -140,6 +140,11 @@
   font-weight: 400;
   color: #192729;
   cursor: pointer;
+}
+
+.whitepaper-toc__button--active {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
 }
 
 .whitepaper-toc__button:hover,
@@ -338,6 +343,7 @@
   background: #ffffff;
   width: 100%;
   max-width: 537px;
+  align-items: center;
 }
 
 .whitepaper-callout--warn {
@@ -347,6 +353,7 @@
   background: #ffffff;
   width: 100%;
   max-width: 537px;
+  align-items: center;
 }
 
 .whitepaper-callout--warn .whitepaper-callout__text {
