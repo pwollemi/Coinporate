@@ -37,6 +37,10 @@ function SiteHeader({
       onNavigate?.("/staking");
       return;
     }
+    if (link === "Airdrop") {
+      onNavigate?.("/airdrop");
+      return;
+    }
     onNavigate?.("/");
   };
 

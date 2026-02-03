@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import HomePage from "./pages/HomePage";
 import AcademyPage from "./pages/AcademyPage";
+import WhitepaperPage from "./pages/WhitepaperPage";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import { ToastProvider } from "./components/ToastProvider";
@@ -57,6 +58,7 @@ function App() {
   const isStaking = normalizedRoute === "/staking";
   const isAcademy = normalizedRoute === "/academy";
   const isWhitepaper = normalizedRoute === "/whitepaper";
+  const isAirdrop = normalizedRoute === "/airdrop";
 
   const header = (
     <SiteHeader
@@ -81,6 +83,8 @@ function App() {
             <AcademyPage />
           ) : isWhitepaper ? (
             <WhitepaperRedirect onOpen={() => navigate("/")} />
+          ) : isAirdrop ? (
+            <WhitepaperPage />
           ) : (
             <HomePage
               header={header}
