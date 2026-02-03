@@ -122,29 +122,27 @@ function StakingPage() {
                   </div>
                 </div>
                 <p className="staking-presale__copy">
-                  Lido strategy gives users exposure to a range of leading DeFi
+                  Coinporate strategy gives users exposure to a range of leading DeFi
                   protocols targeting increased rewards, plus additional{" "}
                   <span className="staking-presale__copy-highlight">CORP </span>
                   points
                 </p>
                 <div className="staking-presale__tabs">
                   <button
-                    className={`staking-presale__tab ${
-                      stakingTab === "deposit"
+                    className={`staking-presale__tab ${stakingTab === "deposit"
                         ? "staking-presale__tab--active"
                         : ""
-                    }`}
+                      }`}
                     type="button"
                     onClick={() => setStakingTab("deposit")}
                   >
                     Deposit
                   </button>
                   <button
-                    className={`staking-presale__tab ${
-                      stakingTab === "withdraw"
+                    className={`staking-presale__tab ${stakingTab === "withdraw"
                         ? "staking-presale__tab--active"
                         : ""
-                    }`}
+                      }`}
                     type="button"
                     onClick={() => setStakingTab("withdraw")}
                   >
