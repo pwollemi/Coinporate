@@ -14,9 +14,9 @@ const getSlugFromPath = (path) => {
 const buildSectionId = (value) =>
   value
     ? value
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "")
     : "";
 
 const renderParagraphText = (text) => {
@@ -72,9 +72,7 @@ function AcademyDetailPage({ route }) {
     [sections]
   );
 
-  const [activeTocId, setActiveTocId] = useState(
-    sectionIds[0]?.id ?? null
-  );
+  const [activeTocId, setActiveTocId] = useState(sectionIds[0]?.id ?? null);
 
   useEffect(() => {
     setActiveTocId(sectionIds[0]?.id ?? null);
@@ -194,7 +192,8 @@ function AcademyDetailPage({ route }) {
           setPendingScrollId(null);
         } else {
           const targetTop = targetEl.getBoundingClientRect().top + scrollY;
-          const reachedTarget = Math.abs(scrollY - targetTop) <= 2 || isAtBottom;
+          const reachedTarget =
+            Math.abs(scrollY - targetTop) <= 2 || isAtBottom;
           if (reachedTarget) {
             setPendingScrollId(null);
           }
@@ -275,8 +274,9 @@ function AcademyDetailPage({ route }) {
                     <li key={id || title}>
                       <button
                         type="button"
-                        className={`academy-detail-toc__button ${isActive ? "academy-detail-toc__button--active" : ""
-                          }`.trim()}
+                        className={`academy-detail-toc__button ${
+                          isActive ? "academy-detail-toc__button--active" : ""
+                        }`.trim()}
                         aria-current={isActive ? "true" : undefined}
                         onClick={() => handleScrollTo(id)}
                       >
@@ -293,10 +293,11 @@ function AcademyDetailPage({ route }) {
               sections.map((section, index) => {
                 const sectionId = buildSectionId(section.title);
                 const isActive = activeTocId === sectionId;
-                const titleClassName = `academy-detail-block__title ${isActive
-                  ? "academy-detail-block__title--hero"
-                  : "academy-detail-block__title--mono"
-                  }`;
+                const titleClassName = `academy-detail-block__title ${
+                  isActive
+                    ? "academy-detail-block__title--hero"
+                    : "academy-detail-block__title--mono"
+                }`;
                 const paragraphs = section.paragraphs || [];
                 const listItems = section.list || [];
                 const ListTag = section.ordered ? "ol" : "ul";
@@ -328,10 +329,11 @@ function AcademyDetailPage({ route }) {
                             </p>
                           )}
                           <ListTag
-                            className={`academy-detail-block__list ${section.ordered
-                              ? "academy-detail-block__list--ordered"
-                              : ""
-                              }`.trim()}
+                            className={`academy-detail-block__list ${
+                              section.ordered
+                                ? "academy-detail-block__list--ordered"
+                                : ""
+                            }`.trim()}
                           >
                             {listItems.map((item, itemIndex) => (
                               <li key={`item-${index}-${itemIndex}`}>{item}</li>

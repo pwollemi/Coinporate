@@ -46,8 +46,7 @@ function App() {
 
   const isStaking = normalizedRoute === "/staking";
   const isAcademy = normalizedRoute === "/academy";
-  const isAcademyDetail =
-    normalizedRoute.startsWith("/academy/") && !isAcademy;
+  const isAcademyDetail = normalizedRoute.startsWith("/academy/") && !isAcademy;
   const isWhitepaper = normalizedRoute === "/whitepaper";
 
   const header = (
@@ -75,9 +74,7 @@ function App() {
           ) : isWhitepaper ? (
             <WhitepaperPage />
           ) : (
-            <HomePage
-              header={header}
-            />
+            <HomePage header={header} />
           )}
           <SiteFooter
             logo={heroLogo}

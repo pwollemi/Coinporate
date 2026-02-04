@@ -2,12 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { ConnectWalletButton, ConnectWalletLabel } from "./ConnectWalletButton";
 
-function SiteHeader({
-  navLinks,
-  logo,
-  iconWallet,
-  onNavigate,
-}) {
+function SiteHeader({ navLinks, logo, iconWallet, onNavigate }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { connected, publicKey, disconnect } = useWallet();
 

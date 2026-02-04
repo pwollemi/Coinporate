@@ -33,12 +33,7 @@ export const countdownUnits = [
   { value: "43", label: "seconds", numberColor: "countdown__value--light" },
 ];
 
-export const navLinks = [
-  "About",
-  "How to earn",
-  "Staking",
-  "Whitepaper",
-];
+export const navLinks = ["About", "How to earn", "Staking", "Whitepaper"];
 
 export const tokenFeatures = [
   { icon: iconCrown, label: "Design symbolic brand assets" },

@@ -62,10 +62,18 @@ function DiscordPresenceWidget({
       <div className="discord-widget__panel">
         <div className="discord-widget__brand" aria-hidden="true">
           {brandIconSrc ? (
-            <img className="discord-widget__brand-image" src={brandIconSrc} alt="" />
+            <img
+              className="discord-widget__brand-image"
+              src={brandIconSrc}
+              alt=""
+            />
           ) : null}
           <span className="discord-widget__audio" aria-hidden="true">
-            <img className="discord-widget__audio-icon" src={audioIconSrc} alt="" />
+            <img
+              className="discord-widget__audio-icon"
+              src={audioIconSrc}
+              alt=""
+            />
           </span>
         </div>
         <div className="discord-widget__status">
@@ -77,7 +85,9 @@ function DiscordPresenceWidget({
               <span
                 key={avatar || `slot-${index}`}
                 className={`discord-widget__avatar ${avatar ? "" : "discord-widget__avatar--placeholder"}`.trim()}
-                style={avatar ? { backgroundImage: `url(${avatar})` } : undefined}
+                style={
+                  avatar ? { backgroundImage: `url(${avatar})` } : undefined
+                }
               />
             ))}
           </div>

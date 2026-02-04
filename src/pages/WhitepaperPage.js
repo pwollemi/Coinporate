@@ -427,8 +427,9 @@ function WhitepaperPage() {
               <p className="whitepaper-block__list-title">{block.title}</p>
             )}
             <ListTag
-              className={`whitepaper-block__list ${block.ordered ? "whitepaper-block__list--ordered" : ""
-                }`.trim()}
+              className={`whitepaper-block__list ${
+                block.ordered ? "whitepaper-block__list--ordered" : ""
+              }`.trim()}
             >
               {block.items.map((item, itemIndex) => (
                 <li key={`item-${index}-${itemIndex}`}>{item}</li>
@@ -442,8 +443,9 @@ function WhitepaperPage() {
         return (
           <div
             key={`callout-${index}`}
-            className={`whitepaper-callout whitepaper-callout--${block.variant} ${block.align === "center" ? "whitepaper-callout--center" : ""
-              }`.trim()}
+            className={`whitepaper-callout whitepaper-callout--${block.variant} ${
+              block.align === "center" ? "whitepaper-callout--center" : ""
+            }`.trim()}
           >
             {icon && <span className="whitepaper-callout__icon">{icon}</span>}
             <div className="whitepaper-callout__text">{block.content}</div>
@@ -498,8 +500,9 @@ function WhitepaperPage() {
                     <li key={item}>
                       <button
                         type="button"
-                        className={`whitepaper-toc__button ${isActive ? "whitepaper-toc__button--active" : ""
-                          }`.trim()}
+                        className={`whitepaper-toc__button ${
+                          isActive ? "whitepaper-toc__button--active" : ""
+                        }`.trim()}
                         aria-current={isActive ? "true" : undefined}
                         onClick={() => handleScrollTo(targetId)}
                       >
@@ -555,10 +558,11 @@ function WhitepaperPage() {
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, "-");
               const isActive = activeTocId === sectionId;
-              const titleClassName = `whitepaper-block__title ${isActive
-                ? "whitepaper-block__title--hero"
-                : "whitepaper-block__title--mono"
-                }`;
+              const titleClassName = `whitepaper-block__title ${
+                isActive
+                  ? "whitepaper-block__title--hero"
+                  : "whitepaper-block__title--mono"
+              }`;
               return (
                 <article
                   key={section.title}

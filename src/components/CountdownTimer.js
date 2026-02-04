@@ -565,8 +565,8 @@ function CountdownTimer({
                 : connecting
                   ? "Connecting..."
                   : connected
-                  ? "Buy CORP"
-                  : "Connect Wallet"}
+                    ? "Buy CORP"
+                    : "Connect Wallet"}
             </button>
           </div>
         ) : isEnded ? (
