@@ -1,26 +1,21 @@
 /* ============================================
-   WHITEPAPER MOBILE/RESPONSIVE STYLES
-   Media queries for responsive design
+   ACADEMY DETAIL MOBILE/RESPONSIVE STYLES
+   Media queries for academy detail responsive design
    ============================================ */
 
 @media (max-width: 1400px) {
-  .whitepaper-body__inner {
+  .academy-detail-body__inner {
     padding: 0 80px;
     grid-template-columns: 280px minmax(0, 1fr);
     column-gap: 80px;
     align-items: flex-start;
   }
 
-  .whitepaper-hero__title {
-    font-size: 240px;
-    bottom: -58px;
-  }
-
-  .whitepaper-content {
+  .academy-detail-content {
     max-width: 100%;
   }
 
-  .whitepaper-block__image {
+  .academy-detail-block__image {
     width: 100%;
     margin-left: 0;
     max-width: 100%;
@@ -28,21 +23,21 @@
 }
 
 @media (max-width: 1100px) {
-  .whitepaper-hero {
+  .academy-detail-hero {
     height: 420px;
     margin-bottom: 80px;
   }
 
-  .whitepaper-hero__title {
-    font-size: 190px;
-    bottom: -52px;
+  .academy-detail-hero__title {
+    font-size: 240px;
+    bottom: -72px;
   }
 
-  .whitepaper-body {
+  .academy-detail-body {
     padding: 90px 0 120px;
   }
 
-  .whitepaper-body__inner {
+  .academy-detail-body__inner {
     grid-template-columns: 1fr;
     align-items: flex-start;
     gap: 48px;
@@ -50,23 +45,19 @@
     min-height: auto;
   }
 
-  .whitepaper-content {
+  .academy-detail-content {
     max-width: 100%;
     max-height: none;
     overflow: visible;
     padding-right: 0;
   }
 
-  .whitepaper-toc {
+  .academy-detail-toc {
     position: static;
     transform: none;
   }
 
-  .whitepaper-download {
-    max-width: 420px;
-  }
-
-  .whitepaper-block__image {
+  .academy-detail-block__image {
     width: 100%;
     margin-left: 0;
     max-width: 100%;
@@ -74,98 +65,81 @@
 }
 
 @media (max-width: 900px) {
-  .whitepaper-hero__title {
-    font-size: 130px;
-    bottom: -26px;
-  }
-
-  .whitepaper-toc__body {
+  .academy-detail-toc__body {
     grid-template-columns: 10px 1fr;
   }
 }
 
 @media (max-width: 720px) {
-  .whitepaper-hero {
+  .academy-detail-hero {
     height: 320px;
     margin-bottom: 60px;
   }
 
-  .whitepaper-hero__title {
-    font-size: 52px;
+  .academy-detail-hero__title {
+    font-size: 60px;
     bottom: 0px;
     width: 100%;
     left: 0;
     text-align: center;
   }
 
-  .whitepaper-hero__ring {
+  .academy-detail-hero__ring {
     width: 150%;
   }
 
-  .whitepaper-block__title--hero {
+  .academy-detail-block__title--hero {
     font-size: 34px;
     line-height: 42px;
   }
 
-  .whitepaper-block__title--mono {
+  .academy-detail-block__title--mono {
     font-size: 18px;
     line-height: 24px;
   }
 
-  .whitepaper-block__paragraph--lead {
-    font-size: 18px;
-    line-height: 140%;
+  .academy-detail-block__paragraph {
+    font-size: 15px;
+    line-height: 170%;
   }
 
-  .whitepaper-callout--warn .whitepaper-callout__text {
+  .academy-detail-block__paragraph--lead {
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  .academy-detail-callout--warn .academy-detail-callout__text {
     font-size: 16px;
     line-height: 22px;
   }
 
-  .whitepaper-block__image img {
+  .academy-detail-block__image img {
     height: 210px;
   }
 
-  .whitepaper-callout--soft {
+  .academy-detail-callout--soft {
     padding: 40px 28px;
-  }
-
-  .whitepaper-download {
-    padding: 12px 14px;
-  }
-
-  .whitepaper-download__title {
-    font-size: 13px;
   }
 }
 
 @media (max-width: 640px) {
-  .whitepaper-body__inner {
+  .academy-detail-body__inner {
     padding: 0 20px;
   }
 
-  .whitepaper-toc {
+  .academy-detail-toc {
     font-size: 11px;
   }
 
-  .whitepaper-toc__button {
+  .academy-detail-toc__button {
     font-size: 12px;
   }
 
-  .whitepaper-download {
-    max-width: none;
-    border-radius: 14px;
-  }
-
-  .whitepaper-download__meta {
-    font-size: 9px;
-  }
-
-  .whitepaper-callout {
+  .academy-detail-callout {
     width: 100%;
   }
 
-  .whitepaper-callout--outline {
+  .academy-detail-callout--outline {
     border-radius: 18px;
   }
 }

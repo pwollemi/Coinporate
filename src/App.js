@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import HomePage from "./pages/HomePage";
 import AcademyPage from "./pages/AcademyPage";
+import AcademyDetailPage from "./pages/AcademyDetailPage";
 import WhitepaperPage from "./pages/WhitepaperPage";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
@@ -14,14 +15,6 @@ import socialX from "./assets/social-x.svg";
 import socialDiscord from "./assets/social-discord.svg";
 import "./styles/toast.css";
 
-function WhitepaperRedirect({ onOpen }) {
-  useEffect(() => {
-    window.open("/coinporate_whitepaper.pdf", "_blank", "noopener,noreferrer");
-    onOpen();
-  }, [onOpen]);
-  return null;
-}
-
 function App() {
   const [route, setRoute] = useState(() => window.location.pathname || "/");
 
@@ -33,21 +26,17 @@ function App() {
   }, [route]);
 
   const navigate = useCallback(
-    (path) => {
+    (path, state) => {
       const nextPath = path.startsWith("/") ? path : `/${path}`;
       if (nextPath === normalizedRoute) {
         return;
       }
-      window.history.pushState({}, "", nextPath);
+      window.history.pushState(state ?? {}, "", nextPath);
       setRoute(nextPath);
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
     [normalizedRoute]
   );
-
-  const handleWhitepaperClick = useCallback(() => {
-    window.open("/coinporate_whitepaper.pdf", "_blank", "noopener,noreferrer");
-  }, []);
 
   useEffect(() => {
     const handlePop = () => setRoute(window.location.pathname || "/");
@@ -57,8 +46,9 @@ function App() {
 
   const isStaking = normalizedRoute === "/staking";
   const isAcademy = normalizedRoute === "/academy";
+  const isAcademyDetail =
+    normalizedRoute.startsWith("/academy/") && !isAcademy;
   const isWhitepaper = normalizedRoute === "/whitepaper";
-  const isAirdrop = normalizedRoute === "/airdrop";
 
   const header = (
     <SiteHeader
@@ -66,7 +56,6 @@ function App() {
       logo={heroLogo}
       iconWallet={iconWallet}
       onNavigate={navigate}
-      onWhitepaperClick={handleWhitepaperClick}
       variant={"dark"}
     />
   );
@@ -79,23 +68,23 @@ function App() {
 
           {isStaking ? (
             <StakingPage />
+          ) : isAcademyDetail ? (
+            <AcademyDetailPage route={normalizedRoute} onNavigate={navigate} />
           ) : isAcademy ? (
-            <AcademyPage />
+            <AcademyPage onNavigate={navigate} />
           ) : isWhitepaper ? (
-            <WhitepaperRedirect onOpen={() => navigate("/")} />
-          ) : isAirdrop ? (
             <WhitepaperPage />
           ) : (
             <HomePage
               header={header}
-              onWhitepaperClick={handleWhitepaperClick}
             />
           )}
           <SiteFooter
             logo={heroLogo}
             socialX={socialX}
             socialDiscord={socialDiscord}
-            onWhitepaperClick={handleWhitepaperClick}
+            navLinks={navLinks}
+            onNavigate={navigate}
             xUrl={X_URL}
             discordUrl={DISCORD_URL}
           />

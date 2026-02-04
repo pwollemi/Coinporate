@@ -4,6 +4,10 @@
    ============================================ */
 
 @media (max-width: 1440px) {
+  .hero {
+    height: calc(100vh - 170px);
+  }
+
   .hero__layout {
     padding: 64px 48px 96px;
   }
@@ -47,7 +51,11 @@
     padding: 48px 24px;
   }
   .hero__nav {
-    padding: 28px 48px 0;
+    padding: 30px 48px 100px;
+  }
+
+  .hero__widget-sticky {
+    right: 48px;
   }
 
   .hero__nav-center {
@@ -459,7 +467,8 @@
   }
 
   .hero__social,
-  .hero__scroll {
+  .hero__scroll,
+  .hero__floating {
     display: none;
   }
 
@@ -570,7 +579,7 @@
   }
 
   .token-intro__a {
-    width: 160%;
+    width: 100%;
     height: auto;
     min-height: 120%;
     top: 50%;

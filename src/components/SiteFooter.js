@@ -1,32 +1,68 @@
+import { Fragment } from "react";
+
 function SiteFooter({
   logo,
   socialX,
   socialDiscord,
-  onWhitepaperClick,
+  navLinks = [],
+  onNavigate,
   xUrl,
   discordUrl,
 }) {
+  const footerLinks =
+    navLinks.length > 0
+      ? navLinks
+      : ["About", "How to earn", "Staking", "Whitepaper"];
+
+  const handleNavClick = (link) => {
+    if (link === "Whitepaper") {
+      onNavigate?.("/whitepaper");
+      return;
+    }
+    if (link === "How to earn") {
+      onNavigate?.("/academy");
+      return;
+    }
+    if (link === "Staking") {
+      onNavigate?.("/staking");
+      return;
+    }
+    if (link === "Airdrop") {
+      onNavigate?.("/airdrop");
+      return;
+    }
+    onNavigate?.("/");
+  };
+
   return (
     <footer className="footer">
       <div className="footer__row">
-        <img className="footer__logo" src={logo} alt="coinporate" />
+        <button
+          className="footer__logo-button"
+          type="button"
+          onClick={() => onNavigate?.("/")}
+          aria-label="Go to home"
+        >
+          <img className="footer__logo" src={logo} alt="coinporate" />
+        </button>
         <div className="footer__content">
           <nav className="footer__nav">
-            <span>About</span>
-            <span className="footer__separator">|</span>
-            <span>How to earn</span>
-            <span className="footer__separator">|</span>
-            <span>Staking</span>
-            <span className="footer__separator">|</span>
-            <button
-              className="footer__nav-link"
-              type="button"
-              onClick={onWhitepaperClick}
-            >
-              Whitepaper
-            </button>
-            <span className="footer__separator">|</span>
-            <span>Presale</span>
+            {footerLinks.map((link, index) => (
+              <Fragment key={link}>
+                <button
+                  className="footer__nav-link"
+                  type="button"
+                  onClick={() => handleNavClick(link)}
+                >
+                  {link}
+                </button>
+                {index < footerLinks.length - 1 && (
+                  <span className="footer__separator" aria-hidden="true">
+                    |
+                  </span>
+                )}
+              </Fragment>
+            ))}
           </nav>
           <div className="footer__social">
             <img

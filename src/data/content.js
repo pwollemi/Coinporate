@@ -38,7 +38,6 @@ export const navLinks = [
   "How to earn",
   "Staking",
   "Whitepaper",
-  "Airdrop",
 ];
 
 export const tokenFeatures = [

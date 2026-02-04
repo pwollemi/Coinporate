@@ -7,8 +7,6 @@ function SiteHeader({
   logo,
   iconWallet,
   onNavigate,
-  onWhitepaperClick,
-  variant = "dark",
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { connected, publicKey, disconnect } = useWallet();
@@ -26,7 +24,7 @@ function SiteHeader({
 
   const handleNavClick = (link) => {
     if (link === "Whitepaper") {
-      onWhitepaperClick?.();
+      onNavigate?.("/whitepaper");
       return;
     }
     if (link === "How to earn") {

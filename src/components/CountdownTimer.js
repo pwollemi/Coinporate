@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useConnection } from "@solana/wallet-adapter-react";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useToast } from "./ToastProvider";
 import CountdownPill from "./CountdownPill";
 import { executeDeposit, executeWithdraw } from "../utils/solana";
@@ -39,7 +40,9 @@ function CountdownTimer({
   userActiveValue = null,
   onPresaleEnded,
 }) {
-  const { connected, wallet, connect, sendTransaction } = useWallet();
+  const { connected, connecting, wallet, connect, sendTransaction } =
+    useWallet();
+  const { setVisible } = useWalletModal();
   const { connection } = useConnection();
   const { showToast } = useToast();
 
@@ -149,7 +152,15 @@ function CountdownTimer({
 
   const handleBuyCorp = async () => {
     if (!connected || !wallet) {
-      connect();
+      if (!wallet) {
+        setVisible(true);
+      } else {
+        try {
+          await connect();
+        } catch (error) {
+          // Wallet adapter handles its own error reporting/logging.
+        }
+      }
       return;
     }
 
@@ -194,7 +205,15 @@ function CountdownTimer({
 
   const handleClaimCorp = async () => {
     if (!connected || !wallet) {
-      connect();
+      if (!wallet) {
+        setVisible(true);
+      } else {
+        try {
+          await connect();
+        } catch (error) {
+          // Wallet adapter handles its own error reporting/logging.
+        }
+      }
       return;
     }
 
@@ -539,11 +558,13 @@ function CountdownTimer({
               className="countdown__action"
               type="button"
               onClick={handleBuyCorp}
-              disabled={isProcessing || !connected}
+              disabled={isProcessing || connecting}
             >
               {isProcessing
                 ? "Processing..."
-                : connected
+                : connecting
+                  ? "Connecting..."
+                  : connected
                   ? "Buy CORP"
                   : "Connect Wallet"}
             </button>

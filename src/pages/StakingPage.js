@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import PrimaryButton from "../components/PrimaryButton";
 // import FaqBlock from "../components/FaqBlock";
 // import { faqItems } from "../data/content";
@@ -31,6 +33,8 @@ import heroVideoDesktop from "../assets/coinporate/videos/coinporate-desktop_108
 function StakingPage() {
   const [stakingTab, setStakingTab] = useState("deposit");
   const [stakeAmount, setStakeAmount] = useState("");
+  const { connected, connecting, wallet, connect } = useWallet();
+  const { setVisible } = useWalletModal();
 
   useEffect(() => {
     document.title = "Crypto Staking Explained | How Staking Works";
@@ -48,6 +52,33 @@ function StakingPage() {
       document.getElementsByTagName("head")[0].appendChild(meta);
     }
   }, []);
+
+  const handleStakingAction = async () => {
+    if (connecting) {
+      return;
+    }
+
+    if (!connected || !wallet) {
+      if (!wallet) {
+        setVisible(true);
+      } else {
+        try {
+          await connect();
+        } catch (error) {
+          // Wallet adapter handles its own error reporting/logging.
+        }
+      }
+      return;
+    }
+  };
+
+  const stakingActionLabel = connecting
+    ? "Connecting..."
+    : connected
+      ? stakingTab === "withdraw"
+        ? "Withdraw"
+        : "Deposit"
+      : "Connect wallet";
 
   return (
     <>
@@ -153,20 +184,22 @@ function StakingPage() {
                 </p>
                 <div className="staking-presale__tabs">
                   <button
-                    className={`staking-presale__tab ${stakingTab === "deposit"
+                    className={`staking-presale__tab ${
+                      stakingTab === "deposit"
                         ? "staking-presale__tab--active"
                         : ""
-                      }`}
+                    }`}
                     type="button"
                     onClick={() => setStakingTab("deposit")}
                   >
                     Deposit
                   </button>
                   <button
-                    className={`staking-presale__tab ${stakingTab === "withdraw"
+                    className={`staking-presale__tab ${
+                      stakingTab === "withdraw"
                         ? "staking-presale__tab--active"
                         : ""
-                      }`}
+                    }`}
                     type="button"
                     onClick={() => setStakingTab("withdraw")}
                   >
@@ -252,7 +285,12 @@ function StakingPage() {
                   </span>
                   Withdrawals are only in WTH, regardless to deposit asset(s).
                 </p>
-                <button className="staking-presale__cta" type="button">
+                <button
+                  className="staking-presale__cta"
+                  type="button"
+                  onClick={handleStakingAction}
+                  disabled={connecting}
+                >
                   <span
                     className="staking-presale__cta-icon"
                     aria-hidden="true"
@@ -279,7 +317,7 @@ function StakingPage() {
                     </svg>
                   </span>
                   <span className="staking-presale__cta-text">
-                    Connect wallet
+                    {stakingActionLabel}
                   </span>
                 </button>
                 <p className="staking-presale__legal">

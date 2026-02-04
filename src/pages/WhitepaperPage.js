@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import heroImage from "../source/airdrop/5b5c6083d5384cbcc5839503d28c9ee4cefb953a.png";
 import iconRing from "../assets/coinporate/icons/ring.svg";
 
+const WHITEPAPER_DOWNLOAD_PATH = "/Coinporate_Whitepaper.pdf";
+
 const contentSections = [
   {
     title: "What does staking crypto mean?",
@@ -232,9 +234,10 @@ const calloutIcons = {
 function WhitepaperPage() {
   const tocListRef = useRef(null);
   const contentRef = useRef(null);
+  const pendingScrollRef = useRef(null);
   const [tocHeight, setTocHeight] = useState(0);
   const [thumbStyle, setThumbStyle] = useState({
-    height: "35%",
+    height: "32px",
     transform: "translateY(0)",
   });
   const sectionIds = useMemo(
@@ -246,14 +249,58 @@ function WhitepaperPage() {
     []
   );
   const [activeTocId, setActiveTocId] = useState(sectionIds[0]?.id ?? null);
+  const [pendingScrollId, setPendingScrollId] = useState(null);
+
+  useEffect(() => {
+    pendingScrollRef.current = pendingScrollId;
+  }, [pendingScrollId]);
+
+  const updateThumbForIndex = (index) => {
+    if (!tocListRef.current) {
+      return;
+    }
+    const listItems = tocListRef.current.querySelectorAll("li");
+    if (!listItems.length) {
+      return;
+    }
+    const listRect = tocListRef.current.getBoundingClientRect();
+    const listHeight = listRect.height;
+    if (listHeight <= 0) {
+      return;
+    }
+    setTocHeight(listHeight);
+
+    const safeIndex = Math.min(listItems.length - 1, Math.max(0, index));
+    const itemRect = listItems[safeIndex].getBoundingClientRect();
+    const itemHeight = itemRect.height;
+    const minThumb = 32;
+    const maxThumb = listHeight;
+    const thumbHeight = Math.min(maxThumb, Math.max(minThumb, itemHeight));
+    const maxOffset = Math.max(0, listHeight - thumbHeight);
+    const maxIndex = Math.max(1, listItems.length - 1);
+    const progress = maxIndex === 0 ? 0 : safeIndex / maxIndex;
+    const thumbOffset = progress * maxOffset;
+    setThumbStyle({
+      height: `${thumbHeight}px`,
+      transform: `translateY(${thumbOffset}px)`,
+    });
+  };
 
   const handleScrollTo = (id) => {
     const el = document.getElementById(id);
     if (!el) {
       return;
     }
+    if (activeTocId === id) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     setActiveTocId(id);
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setPendingScrollId(id);
+    const targetIndex = sectionIds.findIndex((section) => section.id === id);
+    if (targetIndex >= 0) {
+      updateThumbForIndex(targetIndex);
+    }
   };
 
   useEffect(() => {
@@ -274,31 +321,69 @@ function WhitepaperPage() {
   }, []);
 
   useEffect(() => {
+    if (!pendingScrollId) {
+      return;
+    }
+    const el = document.getElementById(pendingScrollId);
+    if (!el) {
+      setPendingScrollId(null);
+      return;
+    }
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [pendingScrollId]);
+
+  useEffect(() => {
     const updateTocMetrics = () => {
       if (!tocListRef.current || !contentRef.current) {
         return;
       }
-      const tocListHeight = tocListRef.current.offsetHeight;
-      setTocHeight(tocListHeight);
-
-      const contentRect = contentRef.current.getBoundingClientRect();
-      const contentTop = contentRect.top + window.scrollY;
-      const contentHeight = contentRef.current.offsetHeight;
+      const scrollY = window.scrollY;
       const viewport = window.innerHeight;
-      const maxScroll = contentHeight - viewport;
-      if (maxScroll <= 0) {
-        setThumbStyle({ height: "35%", transform: "translateY(0)" });
-        return;
+      const contentRect = contentRef.current.getBoundingClientRect();
+      const contentTop = contentRect.top + scrollY;
+      const contentHeight = contentRef.current.offsetHeight;
+      const contentBottom = contentTop + contentHeight;
+      const isAtBottom = scrollY + viewport >= contentBottom - 1;
+      const pendingId = pendingScrollRef.current;
+
+      const anchor = scrollY + viewport * 0.25;
+      let nextActiveId = sectionIds[0]?.id ?? null;
+      if (pendingId) {
+        nextActiveId = pendingId;
+        const targetEl = document.getElementById(pendingId);
+        if (!targetEl) {
+          setPendingScrollId(null);
+        } else {
+          const targetTop = targetEl.getBoundingClientRect().top + scrollY;
+          const reachedTarget =
+            Math.abs(scrollY - targetTop) <= 2 || isAtBottom;
+          if (reachedTarget) {
+            setPendingScrollId(null);
+          }
+        }
+      } else {
+        sectionIds.forEach(({ id }) => {
+          const sectionEl = document.getElementById(id);
+          if (!sectionEl) {
+            return;
+          }
+          const sectionTop = sectionEl.getBoundingClientRect().top + scrollY;
+          if (anchor >= sectionTop) {
+            nextActiveId = id;
+          }
+        });
+        if (isAtBottom && sectionIds.length) {
+          nextActiveId = sectionIds[sectionIds.length - 1].id;
+        }
       }
-      const rawProgress = (window.scrollY - contentTop) / maxScroll;
-      const progress = Math.min(1, Math.max(0, rawProgress));
-      const rawThumb = (viewport / contentHeight) * 100;
-      const thumbHeight = Math.min(60, Math.max(18, rawThumb));
-      const thumbOffset = progress * (100 - thumbHeight);
-      setThumbStyle({
-        height: `${thumbHeight}%`,
-        transform: `translateY(${thumbOffset}%)`,
-      });
+      if (nextActiveId) {
+        setActiveTocId((prev) => (prev === nextActiveId ? prev : nextActiveId));
+      }
+      const activeIndex = Math.max(
+        0,
+        sectionIds.findIndex(({ id }) => id === nextActiveId)
+      );
+      updateThumbForIndex(activeIndex);
     };
 
     updateTocMetrics();
@@ -308,7 +393,7 @@ function WhitepaperPage() {
       window.removeEventListener("scroll", updateTocMetrics);
       window.removeEventListener("resize", updateTocMetrics);
     };
-  }, []);
+  }, [sectionIds]);
 
   const renderBlock = (block, index) => {
     switch (block.type) {
@@ -342,9 +427,8 @@ function WhitepaperPage() {
               <p className="whitepaper-block__list-title">{block.title}</p>
             )}
             <ListTag
-              className={`whitepaper-block__list ${
-                block.ordered ? "whitepaper-block__list--ordered" : ""
-              }`.trim()}
+              className={`whitepaper-block__list ${block.ordered ? "whitepaper-block__list--ordered" : ""
+                }`.trim()}
             >
               {block.items.map((item, itemIndex) => (
                 <li key={`item-${index}-${itemIndex}`}>{item}</li>
@@ -358,9 +442,8 @@ function WhitepaperPage() {
         return (
           <div
             key={`callout-${index}`}
-            className={`whitepaper-callout whitepaper-callout--${block.variant} ${
-              block.align === "center" ? "whitepaper-callout--center" : ""
-            }`.trim()}
+            className={`whitepaper-callout whitepaper-callout--${block.variant} ${block.align === "center" ? "whitepaper-callout--center" : ""
+              }`.trim()}
           >
             {icon && <span className="whitepaper-callout__icon">{icon}</span>}
             <div className="whitepaper-callout__text">{block.content}</div>
@@ -415,9 +498,8 @@ function WhitepaperPage() {
                     <li key={item}>
                       <button
                         type="button"
-                        className={`whitepaper-toc__button ${
-                          isActive ? "whitepaper-toc__button--active" : ""
-                        }`.trim()}
+                        className={`whitepaper-toc__button ${isActive ? "whitepaper-toc__button--active" : ""
+                          }`.trim()}
                         aria-current={isActive ? "true" : undefined}
                         onClick={() => handleScrollTo(targetId)}
                       >
@@ -428,17 +510,55 @@ function WhitepaperPage() {
                 })}
               </ul>
             </div>
+            <a
+              className="whitepaper-download"
+              href={WHITEPAPER_DOWNLOAD_PATH}
+              download="Coinporate_Whitepaper.pdf"
+              aria-label="Download Coinporate whitepaper PDF"
+            >
+              <span className="whitepaper-download__copy">
+                <span className="whitepaper-download__title">
+                  Download Whitepaper
+                </span>
+                <span className="whitepaper-download__meta">
+                  PDF for offline reading
+                </span>
+              </span>
+              <span className="whitepaper-download__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 4v10"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="m7.8 10.8 4.2 4.2 4.2-4.2"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M5 18h14"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </a>
           </aside>
           <div className="whitepaper-content" ref={contentRef}>
             {contentSections.map((section, index) => {
               const sectionId = section.title
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, "-");
-              const titleClassName = `whitepaper-block__title ${
-                section.titleStyle === "hero"
-                  ? "whitepaper-block__title--hero"
-                  : "whitepaper-block__title--mono"
-              }`;
+              const isActive = activeTocId === sectionId;
+              const titleClassName = `whitepaper-block__title ${isActive
+                ? "whitepaper-block__title--hero"
+                : "whitepaper-block__title--mono"
+                }`;
               return (
                 <article
                   key={section.title}
