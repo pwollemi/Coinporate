@@ -12,14 +12,14 @@ function SiteFooter({
   const footerLinks =
     navLinks.length > 0
       ? navLinks
-      : ["About", "How to earn", "Staking", "Whitepaper"];
+      : ["About", "Academy", "Staking", "Whitepaper"];
 
   const handleNavClick = (link) => {
     if (link === "Whitepaper") {
       onNavigate?.("/whitepaper");
       return;
     }
-    if (link === "How to earn") {
+    if (link === "Academy") {
       onNavigate?.("/academy");
       return;
     }

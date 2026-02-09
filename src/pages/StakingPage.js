@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import PrimaryButton from "../components/PrimaryButton";
+import { usePresaleState } from "../hooks/usePresaleState";
 // import FaqBlock from "../components/FaqBlock";
 // import { faqItems } from "../data/content";
 import spiralArt from "../source/66577c52a096ad868c800581b396a8f0dc1bd26e.png";
@@ -30,11 +31,28 @@ import heroTriangles from "../assets/hero-triangles.svg";
 import heroVideoMobile from "../assets/coinporate/videos/coinporate-mobile-1080HD.mp4";
 import heroVideoDesktop from "../assets/coinporate/videos/coinporate-desktop_1080HD.mp4";
 
-function StakingPage() {
+function StakingPage({ onNavigate }) {
+  const handleWhitepaperClick = () => {
+    if (onNavigate) {
+      onNavigate("/whitepaper");
+      return;
+    }
+    window.location.href = "/whitepaper";
+  };
+  const handleJoinCoinporate = () => {
+    if (onNavigate) {
+      onNavigate("/");
+      return;
+    }
+    window.location.href = "/";
+  };
+
   const [stakingTab, setStakingTab] = useState("deposit");
   const [stakeAmount, setStakeAmount] = useState("");
   const { connected, connecting, wallet, connect } = useWallet();
   const { setVisible } = useWalletModal();
+  const { isEnded } = usePresaleState();
+  const isStakingLocked = !isEnded;
 
   useEffect(() => {
     document.title = "Crypto Staking Explained | How Staking Works";
@@ -54,6 +72,9 @@ function StakingPage() {
   }, []);
 
   const handleStakingAction = async () => {
+    if (isStakingLocked) {
+      return;
+    }
     if (connecting) {
       return;
     }
@@ -142,194 +163,225 @@ function StakingPage() {
               aria-hidden="true"
             />
             <div className="staking-presale__content">
-              <div className="staking-presale__card">
-                <div className="staking-presale__pill">
-                  <img
-                    className="staking-presale__pill-icon"
-                    src={coinporateIcon}
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  <span className="staking-presale__pill-text">
-                    <strong>Corp</strong> Strategy
-                  </span>
-                </div>
-                <div className="staking-presale__meta-row">
-                  <span className="staking-presale__meta">
-                    Curated by <strong>Coinporate</strong>
-                  </span>
-                  <span className="staking-presale__meta">
-                    Infra provider <strong>Coinporate</strong>
-                  </span>
-                </div>
-                <div className="staking-presale__stats">
-                  <div className="staking-presale__stat">
-                    <span className="staking-presale__stat-label">TVL</span>
-                    <strong className="staking-presale__stat-value">
-                      $128.7M
-                    </strong>
-                  </div>
-                  <div className="staking-presale__stat">
-                    <span className="staking-presale__stat-label">APY</span>
-                    <strong className="staking-presale__stat-value">
-                      5.3%
-                    </strong>
-                  </div>
-                </div>
-                <p className="staking-presale__copy">
-                  Coinporate strategy gives users exposure to a range of leading
-                  DeFi protocols targeting increased rewards, plus additional{" "}
-                  <span className="staking-presale__copy-highlight">CORP </span>
-                  points
-                </p>
-                <div className="staking-presale__tabs">
-                  <button
-                    className={`staking-presale__tab ${
-                      stakingTab === "deposit"
-                        ? "staking-presale__tab--active"
-                        : ""
-                    }`}
-                    type="button"
-                    onClick={() => setStakingTab("deposit")}
-                  >
-                    Deposit
-                  </button>
-                  <button
-                    className={`staking-presale__tab ${
-                      stakingTab === "withdraw"
-                        ? "staking-presale__tab--active"
-                        : ""
-                    }`}
-                    type="button"
-                    onClick={() => setStakingTab("withdraw")}
-                  >
-                    Withdraw
-                  </button>
-                </div>
-                <div className="staking-presale__field">
-                  <span className="staking-presale__field-label">
-                    Available to deposit
-                  </span>
-                  <div className="staking-presale__input">
-                    <div className="staking-presale__token">
-                      <span className="staking-presale__token-icon">
-                        <img src={coinporateIcon} alt="" aria-hidden="true" />
-                      </span>
-                      <span className="staking-presale__token-name">CORP</span>
-                      <span
-                        className="staking-presale__token-caret"
-                        aria-hidden="true"
-                      >
-                        ▾
-                      </span>
-                    </div>
-                    <input
-                      className="staking-presale__amount"
-                      type="text"
-                      inputMode="decimal"
-                      placeholder="CORP AMOUNT"
-                      value={stakeAmount}
-                      onChange={(event) => setStakeAmount(event.target.value)}
+              <div
+                className={`staking-presale__card ${
+                  isStakingLocked ? "staking-presale__card--locked" : ""
+                }`}
+              >
+                <div className="staking-presale__card-body">
+                  <div className="staking-presale__pill">
+                    <img
+                      className="staking-presale__pill-icon"
+                      src={coinporateIcon}
+                      alt=""
+                      aria-hidden="true"
                     />
+                    <span className="staking-presale__pill-text">
+                      <strong>Corp</strong> Strategy
+                    </span>
+                  </div>
+                  <div className="staking-presale__meta-row">
+                    <span className="staking-presale__meta">
+                      Curated by <strong>Coinporate</strong>
+                    </span>
+                    <span className="staking-presale__meta">
+                      Infra provider <strong>Coinporate</strong>
+                    </span>
+                  </div>
+                  <div className="staking-presale__stats">
+                    <div className="staking-presale__stat">
+                      <span className="staking-presale__stat-label">TVL</span>
+                      <strong className="staking-presale__stat-value">
+                        $128.7M
+                      </strong>
+                    </div>
+                    <div className="staking-presale__stat">
+                      <span className="staking-presale__stat-label">APY</span>
+                      <strong className="staking-presale__stat-value">
+                        5.3%
+                      </strong>
+                    </div>
+                  </div>
+                  <p className="staking-presale__copy">
+                    Coinporate strategy gives users exposure to a range of
+                    leading DeFi protocols targeting increased rewards, plus
+                    additional{" "}
+                    <span className="staking-presale__copy-highlight">
+                      CORP{" "}
+                    </span>
+                    points
+                  </p>
+                  <div className="staking-presale__tabs">
                     <button
-                      className="staking-presale__max"
+                      className={`staking-presale__tab ${
+                        stakingTab === "deposit"
+                          ? "staking-presale__tab--active"
+                          : ""
+                      }`}
                       type="button"
-                      onClick={() => setStakeAmount("MAX")}
+                      onClick={() => setStakingTab("deposit")}
+                      disabled={isStakingLocked}
                     >
-                      Max
+                      Deposit
+                    </button>
+                    <button
+                      className={`staking-presale__tab ${
+                        stakingTab === "withdraw"
+                          ? "staking-presale__tab--active"
+                          : ""
+                      }`}
+                      type="button"
+                      onClick={() => setStakingTab("withdraw")}
+                      disabled={isStakingLocked}
+                    >
+                      Withdraw
                     </button>
                   </div>
-                </div>
-                <div className="staking-presale__summary">
-                  <div className="staking-presale__summary-item">
-                    <span className="staking-presale__summary-label">
-                      You will receive
-                      <span
-                        className="staking-presale__info"
-                        aria-hidden="true"
-                      >
-                        <img src={questionIcon} alt="" aria-hidden="true" />
-                      </span>
+                  <div className="staking-presale__field">
+                    <span className="staking-presale__field-label">
+                      Available to deposit
                     </span>
-                    <strong className="staking-presale__summary-value">
-                      0,00
-                      <img
-                        className="staking-presale__summary-icon"
-                        src={coinporateIcon}
-                        alt=""
-                        aria-hidden="true"
+                    <div className="staking-presale__input">
+                      <div className="staking-presale__token">
+                        <span className="staking-presale__token-icon">
+                          <img src={coinporateIcon} alt="" aria-hidden="true" />
+                        </span>
+                        <span className="staking-presale__token-name">
+                          CORP
+                        </span>
+                        <span
+                          className="staking-presale__token-caret"
+                          aria-hidden="true"
+                        >
+                          ▾
+                        </span>
+                      </div>
+                      <input
+                        className="staking-presale__amount"
+                        type="text"
+                        inputMode="decimal"
+                        placeholder="CORP AMOUNT"
+                        value={stakeAmount}
+                        onChange={(event) => setStakeAmount(event.target.value)}
+                        disabled={isStakingLocked}
                       />
-                    </strong>
-                  </div>
-                  <div className="staking-presale__summary-item">
-                    <span className="staking-presale__summary-label">
-                      Waiting time
-                      <span
-                        className="staking-presale__info"
-                        aria-hidden="true"
+                      <button
+                        className="staking-presale__max"
+                        type="button"
+                        onClick={() => setStakeAmount("MAX")}
+                        disabled={isStakingLocked}
                       >
-                        <img src={questionIcon} alt="" aria-hidden="true" />
-                      </span>
-                    </span>
-                    <strong className="staking-presale__summary-value">
-                      24 hours
-                    </strong>
+                        Max
+                      </button>
+                    </div>
                   </div>
+                  <div className="staking-presale__summary">
+                    <div className="staking-presale__summary-item">
+                      <span className="staking-presale__summary-label">
+                        You will receive
+                        <span
+                          className="staking-presale__info"
+                          aria-hidden="true"
+                        >
+                          <img src={questionIcon} alt="" aria-hidden="true" />
+                        </span>
+                      </span>
+                      <strong className="staking-presale__summary-value">
+                        0,00
+                        <img
+                          className="staking-presale__summary-icon"
+                          src={coinporateIcon}
+                          alt=""
+                          aria-hidden="true"
+                        />
+                      </strong>
+                    </div>
+                    <div className="staking-presale__summary-item">
+                      <span className="staking-presale__summary-label">
+                        Waiting time
+                        <span
+                          className="staking-presale__info"
+                          aria-hidden="true"
+                        >
+                          <img src={questionIcon} alt="" aria-hidden="true" />
+                        </span>
+                      </span>
+                      <strong className="staking-presale__summary-value">
+                        24 hours
+                      </strong>
+                    </div>
+                  </div>
+                  <p className="staking-presale__note">
+                    <span
+                      className="staking-presale__note-icon"
+                      aria-hidden="true"
+                    >
+                      <img src={coinporateIcon} alt="" />
+                    </span>
+                    Withdrawals are only in WTH, regardless to deposit asset(s).
+                  </p>
+                  <button
+                    className="staking-presale__cta"
+                    type="button"
+                    onClick={handleStakingAction}
+                    disabled={connecting || isStakingLocked}
+                  >
+                    <span
+                      className="staking-presale__cta-icon"
+                      aria-hidden="true"
+                    >
+                      <svg viewBox="0 0 24 24" role="presentation">
+                        <path
+                          d="M6 7.5C6 6.12 7.12 5 8.5 5h7c1.38 0 2.5 1.12 2.5 2.5v1H6v-1z"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                        />
+                        <rect
+                          x="4"
+                          y="8.5"
+                          width="16"
+                          height="10.5"
+                          rx="2.2"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                        />
+                        <circle cx="16.5" cy="13.8" r="1" fill="currentColor" />
+                      </svg>
+                    </span>
+                    <span className="staking-presale__cta-text">
+                      {stakingActionLabel}
+                    </span>
+                  </button>
+                  <p className="staking-presale__legal">
+                    Corp service relies on third-party infrastructure provided
+                    by Mellow. <br />
+                    By processing, you are subject to Mellow's terms of service
+                    and privacy notice.
+                  </p>
+                  <p className="staking-presale__legal">
+                    Note, that the vault involves protocol, slashing and others
+                    risks. You can find more details in the FAQ.
+                  </p>
                 </div>
-                <p className="staking-presale__note">
-                  <span
-                    className="staking-presale__note-icon"
-                    aria-hidden="true"
+                {isStakingLocked ? (
+                  <div
+                    className="staking-presale__lock"
+                    role="status"
+                    aria-live="polite"
                   >
-                    <img src={coinporateIcon} alt="" />
-                  </span>
-                  Withdrawals are only in WTH, regardless to deposit asset(s).
-                </p>
-                <button
-                  className="staking-presale__cta"
-                  type="button"
-                  onClick={handleStakingAction}
-                  disabled={connecting}
-                >
-                  <span
-                    className="staking-presale__cta-icon"
-                    aria-hidden="true"
-                  >
-                    <svg viewBox="0 0 24 24" role="presentation">
-                      <path
-                        d="M6 7.5C6 6.12 7.12 5 8.5 5h7c1.38 0 2.5 1.12 2.5 2.5v1H6v-1z"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                      />
-                      <rect
-                        x="4"
-                        y="8.5"
-                        width="16"
-                        height="10.5"
-                        rx="2.2"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                      />
-                      <circle cx="16.5" cy="13.8" r="1" fill="currentColor" />
-                    </svg>
-                  </span>
-                  <span className="staking-presale__cta-text">
-                    {stakingActionLabel}
-                  </span>
-                </button>
-                <p className="staking-presale__legal">
-                  Corp service relies on third-party infrastructure provided by
-                  Mellow. <br />
-                  By processing, you are subject to Mellow's terms of service
-                  and privacy notice.
-                </p>
-                <p className="staking-presale__legal">
-                  Note, that the vault involves protocol, slashing and others
-                  risks. You can find more details in the FAQ.
-                </p>
+                    <div className="staking-presale__lock-panel">
+                      <span className="staking-presale__lock-title">
+                        Staking Unavailable
+                      </span>
+                      <span className="staking-presale__lock-text">
+                        Staking will be available once the presale ends.
+                      </span>
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -373,6 +425,7 @@ function StakingPage() {
               <PrimaryButton
                 className="btn--pill staking-overview__cta"
                 type="button"
+                onClick={handleWhitepaperClick}
               >
                 <img
                   src={starIcon}
@@ -472,6 +525,7 @@ function StakingPage() {
             <PrimaryButton
               className="btn--pill staking-steps__cta"
               type="button"
+              onClick={handleJoinCoinporate}
             >
               <img src={starIcon} alt="" className="staking-steps__cta-icon" />
               Join Coinporate <span aria-hidden="true">→</span>
@@ -538,6 +592,7 @@ function StakingPage() {
             <PrimaryButton
               className="btn--pill staking-platform__cta"
               type="button"
+              onClick={handleJoinCoinporate}
             >
               <img
                 src={starIcon}
@@ -579,6 +634,7 @@ function StakingPage() {
               <PrimaryButton
                 className="btn--pill staking-rewards__cta"
                 type="button"
+                onClick={handleWhitepaperClick}
               >
                 <img
                   src={starIcon}
@@ -665,6 +721,7 @@ function StakingPage() {
             <PrimaryButton
               className="btn--pill staking-ecosystem__cta"
               type="button"
+              onClick={handleJoinCoinporate}
             >
               <img
                 src={starIcon}

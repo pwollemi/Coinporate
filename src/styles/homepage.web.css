@@ -347,6 +347,7 @@
   right: 80px;
   bottom: 74px;
   z-index: 45;
+  display: none;
 }
 
 .hero__social {
@@ -763,13 +764,14 @@
 .countdown__progress {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
 .countdown__progress-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 11px;
   text-transform: uppercase;
@@ -777,10 +779,18 @@
 }
 
 .countdown__progress-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   font-weight: 600;
 }
 
 .countdown__progress-value {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
 }
@@ -843,6 +853,7 @@
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: 12px;
   align-items: center;
+  display: none;
 }
 
 .countdown__option-divider {
@@ -938,6 +949,11 @@
   letter-spacing: 0.05em;
   cursor: pointer;
   box-shadow: var(--shadow-accent);
+}
+
+.countdown__discord {
+  display: flex;
+  justify-content: center;
 }
 
 .countdown__grid--presale .countdown__value {
@@ -1755,10 +1771,14 @@
   width: 100%;
   height: 600px;
   display: grid;
-  grid-template-columns: 20fr 14fr 10fr 10fr 8fr 5fr 5fr;
+  grid-template-columns: 20fr 10fr 15fr 5fr 20fr 30fr;
   gap: 0;
   align-items: top;
   z-index: 2;
+}
+
+.distribution__download {
+  margin-top: -12px;
 }
 
 .distribution-item {

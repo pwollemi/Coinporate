@@ -29,8 +29,9 @@
   }
 
   .academy-detail-hero__title {
-    font-size: 240px;
-    bottom: -72px;
+    font-size: clamp(30px, 4.6vw, 52px);
+    width: min(720px, 92vw);
+    margin-left: clamp(20px, 6vw, 80px);
   }
 
   .academy-detail-body {
@@ -55,6 +56,9 @@
   .academy-detail-toc {
     position: static;
     transform: none;
+    padding: 22px 20px;
+    border-radius: 22px;
+    box-shadow: 0 18px 28px rgba(0, 56, 47, 0.12);
   }
 
   .academy-detail-block__image {
@@ -66,7 +70,16 @@
 
 @media (max-width: 900px) {
   .academy-detail-toc__body {
-    grid-template-columns: 10px 1fr;
+    grid-template-columns: 8px 1fr;
+    gap: 12px;
+  }
+
+  .academy-detail-toc__button {
+    padding: 9px 10px 9px 18px;
+  }
+
+  .academy-detail-toc__button::before {
+    left: 6px;
   }
 }
 
@@ -77,15 +90,10 @@
   }
 
   .academy-detail-hero__title {
-    font-size: 60px;
-    bottom: 0px;
-    width: 100%;
-    left: 0;
-    text-align: center;
-  }
-
-  .academy-detail-hero__ring {
-    width: 150%;
+    font-size: clamp(28px, 7vw, 40px);
+    width: min(520px, 92vw);
+    margin-left: 20px;
+    text-align: left;
   }
 
   .academy-detail-block__title--hero {
@@ -117,6 +125,11 @@
     height: 210px;
   }
 
+  .academy-detail-block__image iframe,
+  .academy-detail-block__image video {
+    height: 210px;
+  }
+
   .academy-detail-callout--soft {
     padding: 40px 28px;
   }
@@ -129,6 +142,19 @@
 
   .academy-detail-toc {
     font-size: 11px;
+  }
+
+  .academy-detail-toc__label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .academy-detail-toc__current {
+    padding: 10px 12px;
+  }
+
+  .academy-detail-toc__current-title {
+    font-size: 12px;
   }
 
   .academy-detail-toc__button {

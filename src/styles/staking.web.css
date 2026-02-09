@@ -161,6 +161,66 @@
   position: relative;
 }
 
+.staking-presale__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.staking-presale__card--locked .staking-presale__card-body {
+  filter: blur(4px);
+  opacity: 0.45;
+  pointer-events: none;
+  user-select: none;
+}
+
+.staking-presale__lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  z-index: 2;
+}
+
+.staking-presale__lock-panel {
+  max-width: 320px;
+  border-radius: 16px;
+  padding: 18px 20px;
+  background: rgba(11, 18, 17, 0.9);
+  border: 1px solid rgba(219, 255, 109, 0.45);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5);
+}
+
+.staking-presale__lock-title {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(219, 255, 109, 0.95);
+}
+
+.staking-presale__lock-text {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.staking-presale__tab:disabled,
+.staking-presale__max:disabled,
+.staking-presale__cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .staking-presale__pill {
   position: absolute;
   top: -16px;

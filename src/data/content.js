@@ -33,7 +33,7 @@ export const countdownUnits = [
   { value: "43", label: "seconds", numberColor: "countdown__value--light" },
 ];
 
-export const navLinks = ["About", "How to earn", "Staking", "Whitepaper"];
+export const navLinks = ["About", "Academy", "Staking", "Whitepaper"];
 
 export const tokenFeatures = [
   { icon: iconCrown, label: "Design symbolic brand assets" },
@@ -183,13 +183,12 @@ export const liquidityCards = [
 ];
 
 export const distributionItems = [
-  { value: "48%", label: "Public Sale" },
-  { value: "14%", label: "Liquidity (DEX/CEX)" },
-  { value: "10%", label: "Team & Advisors" },
-  { value: "10%", label: "Community Rewards & Staking" },
-  { value: "8%", label: "Ecosystem / Strategic Reserve" },
-  { value: "5%", label: "Development and Operations" },
-  { value: "5%", label: "Marketing & Partnerships" },
+  { value: "20%", label: "Presale" },
+  { value: "10%", label: "Liquidity" },
+  { value: "15%", label: "Team" },
+  { value: "5%", label: "Advisors" },
+  { value: "20%", label: "Marketing & Partnerships" },
+  { value: "30%", label: "Community Rewards & Staking" },
 ];
 
 export const investCards = [
@@ -239,22 +238,22 @@ export const investCards = [
 
 export const tokenMarkers = [
   {
-    label: "Soft cap",
-    value: "$250,000",
+    label: "Presale price",
+    value: "$0.005",
+    sub: "Presale allocation 20%",
     left: "21%",
   },
   {
-    label: "Hard cap",
-    value: "$1.5M",
-    sub: "Bonding Curve Max Raise",
-    detail:
-      "100% of raised funds go toward development, platform participation mechanisms, and community growth",
+    label: "Target raise",
+    value: "$100,000",
+    sub: "Presale goal",
     left: "51%",
   },
   {
-    label: "Bonus",
-    sub: "First 500 participants:",
-    detail: "Eligible for airdrop snapshot",
+    label: "Listing price",
+    value: "$0.006",
+    sub: "FDV: $600,000",
+    detail: "Total supply × listing price",
     left: "81%",
   },
 ];

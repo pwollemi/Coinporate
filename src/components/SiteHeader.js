@@ -22,7 +22,7 @@ function SiteHeader({ navLinks, logo, iconWallet, onNavigate }) {
       onNavigate?.("/whitepaper");
       return;
     }
-    if (link === "How to earn") {
+    if (link === "Academy") {
       onNavigate?.("/academy");
       return;
     }

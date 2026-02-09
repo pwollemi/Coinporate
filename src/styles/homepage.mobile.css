@@ -490,6 +490,12 @@
     padding: 35px 0 0 0;
   }
 
+  .distribution__download {
+    margin-top: 0;
+    width: 100%;
+    max-width: 280px;
+  }
+
   .distribution__art {
     width: 100%;
     object-fit: cover;
@@ -733,6 +739,21 @@
   .countdown__end-pill {
     font-size: 12px;
     padding: 6px 14px;
+  }
+
+  .countdown__progress-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .countdown__progress-label,
+  .countdown__progress-value {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .countdown__presale-options,

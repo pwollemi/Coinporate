@@ -276,6 +276,10 @@
     gap: 8px;
   }
 
+  .staking-presale__card-body {
+    gap: 8px;
+  }
+
   .staking-presale__pill {
     width: auto;
     padding: 6px 20px;
@@ -412,6 +416,20 @@
   .staking-presale__legal {
     font-size: 11px;
     line-height: 1.5;
+  }
+
+  .staking-presale__lock-panel {
+    max-width: 260px;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .staking-presale__lock-title {
+    font-size: 10px;
+  }
+
+  .staking-presale__lock-text {
+    font-size: 12px;
   }
 
   /* Staking Hero */

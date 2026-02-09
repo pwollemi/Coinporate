@@ -66,7 +66,7 @@ function App() {
           {header}
 
           {isStaking ? (
-            <StakingPage />
+            <StakingPage onNavigate={navigate} />
           ) : isAcademyDetail ? (
             <AcademyDetailPage route={normalizedRoute} onNavigate={navigate} />
           ) : isAcademy ? (
@@ -74,7 +74,7 @@ function App() {
           ) : isWhitepaper ? (
             <WhitepaperPage />
           ) : (
-            <HomePage header={header} />
+            <HomePage header={header} onNavigate={navigate} />
           )}
           <SiteFooter
             logo={heroLogo}

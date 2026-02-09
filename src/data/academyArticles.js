@@ -1,53 +1,23 @@
-import cardWallet from "../source/academy/874d467f1492d761e85e4f34213a35a1c95d8eb2.jpg";
-import cardEarth from "../source/academy/41621fd23245fbca571f7094a0dbf548fa4dae52.jpg";
-import cardRobot from "../source/academy/6b5ab7dfd150065a2824a0fef96d1407349a3f83.jpg";
 import heroBackground from "../source/academyDetail/background.png";
+import solanaOverview from "../source/academy/solana-beginner/solana-overview.png";
+import solanaFirstTransaction from "../source/academy/solana-beginner/solana-first-transaction.png";
+import metamaskDownload from "../source/academy/solana-beginner/metamask-download.png";
+import metamaskSetupOptions from "../source/academy/solana-beginner/metamask-setup-options.png";
+import metamaskRecoveryPhrase from "../source/academy/solana-beginner/metamask-recovery-phrase.png";
+import metamaskWalletSettings from "../source/academy/solana-beginner/metamask-wallet-settings.png";
+import metamaskSolanaNetwork from "../source/academy/solana-beginner/metamask-solana-network.png";
+import metamaskAddFunds from "../source/academy/solana-beginner/metamask-add-funds.png";
+import metamaskTokenMarketplace from "../source/academy/solana-beginner/metamask-token-marketplace.png";
+import metamaskReceiveCrypto from "../source/academy/solana-beginner/metamask-receive-crypto.png";
+import metamaskTransferCrypto from "../source/academy/solana-beginner/metamask-transfer-crypto.png";
+import ledgerLiveDownload from "../source/academy/solana-beginner/ledger-live-download.png";
+import ledgerLiveGetStarted from "../source/academy/solana-beginner/ledger-live-get-started.png";
 
 const defaultSections = [
   {
     title: "Introduction",
     paragraphs: [
-      "Transaction fees can look tiny per swap or transfer, but over time they add up. This article breaks down where costs come from and how to keep more value in your wallet. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-      "Whether you are using Solana, Ethereum, or a multi-chain app, the same principles apply: understand the fee mechanics, reduce unnecessary actions, and batch when you can. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
-    ],
-  },
-  {
-    title: "The Hidden Cost of Moving Money",
-    paragraphs: [
-      "Fees are rarely just the base network charge. Slippage, bridge costs, approvals, and failed transactions can quietly stack on top of one another. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
-      "When you add each small cost together, the total can feel like a tax on every move you make. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
-    ],
-  },
-  {
-    title: "Why Most People Overpay Without Realizing It",
-    paragraphs: [
-      "Most users click through default settings, which often prioritize speed over cost. That is great for urgency, but expensive for routine activity. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
-      "Timing also matters. Congested hours mean higher fees, while quieter windows can be significantly cheaper. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-    ],
-  },
-  {
-    title: "Smart Strategies to Reduce Your Fees",
-    paragraphs: [
-      "You do not need complex tactics to see results. A few consistent habits can cut costs dramatically over time. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
-    ],
-    list: [
-      "Batch actions together instead of submitting them one by one.",
-      "Use low-fee networks or rollups for routine transfers.",
-      "Set manual gas limits and priorities when the network is calm.",
-      "Avoid unnecessary approvals and revoke old ones periodically.",
-    ],
-  },
-  {
-    title: "The Compounding Effect of Small Savings",
-    paragraphs: [
-      "Saving a few cents per transaction sounds minor, but across hundreds of actions it becomes meaningful. That is capital you can reinvest instead of losing to friction. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-      "Over a year, consistent fee discipline can add up to real gains. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-    ],
-  },
-  {
-    title: "Conclusion",
-    paragraphs: [
-      "You do not need to be an expert to lower your costs. Understand the fee path, act with intention, and treat every move as a chance to optimize. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
+      "More academy content is coming soon. Check back for fresh lessons and walkthroughs.",
     ],
   },
 ];
@@ -56,503 +26,289 @@ const baseArticles = [
   {
     id: 1,
     difficulty: "Easy",
-    title: "Reduce transaction fees on Solana",
-    text: "Learn simple tactics to lower costs when sending tokens, swapping, and interacting with on-chain apps.",
-    image: cardWallet,
-    time: "5 min",
-    date: "2025-01-14",
-    categories: ["Fees", "Blockchain", "Solana"],
+    title:
+      "Solana Beginner Tutorial (2026): Wallets, DEXs, Staking, First Steps & Safety",
+    text: "Get into crypto in 2026 with this step-by-step Solana beginner tutorial: learn key blockchain concepts, how to set up wallets, and discover key safety rules.",
+    detailSubtitle:
+      "Get into crypto in 2026 with this step-by-step Solana beginner tutorial: learn key blockchain concepts, how to set up wallets, and discover key safety rules.",
+    image: solanaOverview,
+    heroImage: solanaOverview,
+    time: "12 min",
+    date: "2026-02-09",
+    categories: ["Blockchain", "Wallets", "Staking", "Security"],
     sections: [
+      {
+        title: "Solana Beginner: Key Takeaways",
+        list: [
+          "Solana (SOL) is great for beginners: fast, low-fee, and easy to use.",
+          "Wallets: store your tokens securely and manage private keys safely.",
+          "DEXs vs CEXs: centralized exchanges for convenience; decentralized for full control.",
+          "Safety first: protect your seed phrase, avoid fake apps, and do not chase FOMO projects.",
+        ],
+      },
       {
         title: "Introduction",
         paragraphs: [
-          "Transaction fees on Solana are small, but frequent actions can add up quickly. This guide explains where those costs come from and how to keep more value in your wallet. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
+          "What started as an obscure cryptography experiment in 2008 has become a staple of modern digital finance.",
+          "As conventional savings accounts no longer offer meaningful returns, more and more people are turning to cryptocurrencies.",
+          "This is not a fringe movement. In 2026, about 30% of Americans own crypto, and over half of them report profits. That means you do not need technical skills or a large budget to start successfully.",
+          "For beginners, Solana (SOL) is a smart choice: fast, affordable, and designed for everyday users, not just tech wizards.",
+          "In this Solana beginner tutorial, you will learn crypto basics, how to set up your first wallet, where and how to trade, and how to start exploring decentralized finance. By the end, you will be ready to take your first steps and learn as you go.",
         ],
       },
       {
-        title: "The Hidden Cost of Moving Money",
+        title: "Crypto 101: blockchain, Bitcoin, and beyond",
         paragraphs: [
-          "Priority fees, failed transactions, and unnecessary approvals can quietly increase the total cost of every swap, transfer, or token action. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
+          "You have heard the terms: crypto, Bitcoin, blockchain, but what do they actually mean?",
+        ],
+        list: [
+          "Cryptocurrency is a digital asset stored on a blockchain, a secure, shared ledger that records all transactions transparently. Instead of relying on banks or governments, decentralized networks maintain blockchains worldwide.",
+          "To use crypto, you need a wallet, which acts like your personal account. We will cover wallets in detail shortly.",
+          "Bitcoin remains the dominant cryptocurrency. In 2026, 74% of crypto users own Bitcoin, largely because it excels as a long-term store of value.",
+          "Solana, by contrast, focuses on usability. Growing in popularity since 2024, Solana is now the choice of 20% of users who enjoy its near-instant transactions, low fees, and support for everyday apps.",
+        ],
+        tailParagraphs: [
+          "In short: Bitcoin stores value, while Solana powers everyday use. That is why many users keep both.",
         ],
       },
       {
-        title: "Why Most People Overpay Without Realizing It",
+        title: "Solana beginner concepts you need to know",
         paragraphs: [
-          "Default settings often prioritize speed over cost. If you never check fee settings, you are likely paying more than you need to for routine activity. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
+          "If you are new to Solana, fret not. A few core ideas will help you start confidently:",
+        ],
+        list: [
+          "Solana is a blockchain that records and confirms transactions on a public ledger.",
+          "It has tokens: digital assets used for payments, staking rewards, or governance. Solana's native token is SOL, but the network supports thousands of others.",
+          "You access tokens through a wallet, which stores your private keys: the credentials that prove ownership.",
+          "Finally, validators are computers that process transactions and secure the network. With over 1,000 validators worldwide, Solana remains decentralized, reliable, and censorship-resistant.",
         ],
       },
       {
-        title: "Practical Ways to Lower Solana Fees",
-        paragraphs: [
-          "Batch actions together, avoid spammy routes, and use wallets that let you set priority fees manually when the network is calm. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    difficulty: "Easy",
-    title: "What is a crypto wallet?",
-    text: "A friendly introduction to hot vs cold wallets, seed phrases, and safe self-custody.",
-    image: cardEarth,
-    time: "5 min",
-    date: "2025-01-10",
-    categories: ["Wallets", "Security"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "A crypto wallet is your gateway to sending, receiving, and storing digital assets. It manages the keys that prove ownership of your funds. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
+        title: "Why is Solana great for crypto beginners?",
+        paragraphs: ["The key reasons crypto beginners choose Solana:"],
+        list: [
+          "Speed and low fees: Thousands of transactions per second; fees under $0.01.",
+          "Accessibility: Anyone with internet access can use it - no bank account or credit check required.",
+          "Beginner-friendly: Designed for everyday users, not developers.",
+          "Safe sandbox: Solana is ideal for experimenting with small amounts and learning quickly.",
         ],
       },
       {
-        title: "Hot vs Cold Wallets",
-        paragraphs: [
-          "Hot wallets stay connected to the internet for convenience, while cold wallets keep keys offline for stronger security. The right choice depends on how often you transact. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
+        title: "What can you do with Solana?",
+        paragraphs: ["Even as a complete Solana beginner, you can:"],
+        list: [
+          "Send money globally in seconds.",
+          "Trade digital assets.",
+          "Collect NFTs and digital art.",
+          "Play blockchain-based games.",
+          "Earn yield via staking or DeFi apps.",
+          "Join communities built around shared interests.",
+        ],
+        media: [
+          {
+            type: "image",
+            src: solanaOverview,
+            alt: "Solana ecosystem overview",
+          },
+          {
+            type: "video",
+            src: "https://www.youtube.com/embed/GZ-bYOCMfmE",
+            title: "Solana beginner overview",
+          },
         ],
       },
       {
-        title: "Seed Phrases and Recovery",
+        title: "DEXs and CEXs: Solana beginner explanation",
         paragraphs: [
-          "Your seed phrase is the master key to your wallet. Anyone with it can control your funds, so store it offline and never share it. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
+          "When trading crypto, you will encounter two platform types:",
+          "Centralized Exchanges (CEXs) like Coinbase or Binance require accounts and identity verification. They are convenient but hold custody of your funds.",
+          "Decentralized Exchanges (DEXs) on Solana like Raydium or Orca let you trade directly from your wallet. No registration, no intermediaries, and full control of your assets.",
+        ],
+        listTitle: "CEXs vs DEXs in short:",
+        list: [
+          "DEXs equal freedom, but at the price of responsibility. Irreversible transactions mean that security is completely up to you.",
+          "CEXs are good for beginners to buy SOL, and then move it to a wallet to explore DEXs safely.",
         ],
       },
       {
-        title: "Everyday Safety Habits",
-        paragraphs: [
-          "Use hardware wallets for large balances, enable passcodes, and double-check addresses before every send. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
+        title: "3 steps to get started on Solana",
+        list: [
+          "Set up a wallet. Wallets are free apps you can install in minutes. They store your keys and let you interact with the network.",
+          "Get some SOL. SOL, Solana's native token, is what you need to start exploring the network. Just a tiny amount is enough to cover transaction fees and experiment with a few transactions.",
+          "Make your first transaction. Send SOL, swap tokens on a DEX, or try a Solana app. Transactions confirm in seconds, making it easy to learn safely.",
         ],
-      },
-    ],
-  },
-  {
-    id: 3,
-    difficulty: "Easy",
-    title: "Crypto basics: tokens and gas",
-    text: "Understand token types, network fees, and why gas fluctuates across blockchains.",
-    image: cardRobot,
-    time: "5 min",
-    date: "2024-12-28",
-    categories: ["Blockchain", "Fees"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Tokens represent value or utility on a blockchain, and gas is the fee you pay to use the network. Understanding both helps you avoid surprises. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
+        media: [
+          {
+            type: "image",
+            src: solanaFirstTransaction,
+            alt: "Solana first transaction example",
+          },
         ],
       },
       {
-        title: "Tokens vs Coins",
+        title: "Solana beginner guide: How to set up your first wallet?",
         paragraphs: [
-          "Coins are native to a blockchain, while tokens are built on top of it. Each type follows different rules for fees and transfers. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
+          "Your wallet is the most important tool in crypto. It is the software that lets you access the Solana network, manage your tokens, and interact with apps.",
+          "Think of a wallet as three things in one:",
+        ],
+        list: [
+          "A password manager that stores your private keys.",
+          "A bank account viewer that shows your balances.",
+          "A digital signature tool that approves transactions.",
         ],
       },
       {
-        title: "How Gas Works",
+        title: "What are the key Solana wallet types?",
+        paragraphs: ["There are two main wallet categories:"],
+        list: [
+          "Software wallets: Browser extensions, mobile apps, or desktop apps. These are quick to set up and ideal for beginners.",
+          "Hardware wallets: Physical devices that store keys offline, offering maximum security.",
+          "Hot wallets (e.g. MetaMask, Phantom): Connected to the internet and best for small amounts and daily use.",
+          "Cold wallets (e.g. Ledger): Offline storage designed for long-term security.",
+        ],
+        tailParagraphs: ["Below, we will walk through how to set up both."],
+      },
+      {
+        title: "How to set up a hot wallet (MetaMask)",
         paragraphs: [
-          "Gas is the cost of computation. Simple transfers cost less, while complex smart contract actions cost more. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
+          "MetaMask is one of the most popular wallets and enables Solana access through its interface.",
+          "Using MetaMask is similar to modern banking apps; the difference is that you control the assets, not a company.",
+        ],
+        listTitle: "Step-by-step",
+        list: [
+          "Download MetaMask. Visit MetaMask's official website and download the wallet for your platform (browser extension, mobile app, or web app). Verify URLs to avoid scam or phishing.",
+          "Install the app and select Create a new wallet.",
+          "Choose your setup and recovery option. MetaMask offers two setup options: sign in using Google or Apple; create a wallet using a Secret Recovery Phrase (SRP).",
+          "Using an SRP gives you full control without sharing personal information like email. Choose this option if privacy matters to you. You will receive a list of recovery words: this is your only backup.",
+          "Important: Write your recovery phrase on paper and store it offline. Never take screenshots or save it digitally. If you lose it, or someone else captures it, your assets may be gone forever. MetaMask will not be able to recover your credentials.",
+          "Set a password. Choose a strong password to protect access to the wallet on your device. This password does not replace your recovery phrase, it only protects local access.",
+          "Finalize your wallet setup. Once inside MetaMask, take a moment to name your wallet, review network settings, and set your preferred currency.",
+          "You can see that Solana is available as a default network.",
+          "Add funds to get ready to start buying, swapping, sending, and receiving SOL.",
+          "Token Marketplace lets you use your debit or credit card to securely pay for your chosen Solana token.",
+          "Receive Crypto gives you a list of wallet addresses and QR codes you can use to receive tokens and collectibles on Solana.",
+          "Transfer crypto enables you to transfer crypto directly to your wallet for free from CEXs like Coinbase and Binance.",
+        ],
+        media: [
+          {
+            type: "image",
+            src: metamaskDownload,
+            alt: "MetaMask download screen",
+          },
+          {
+            type: "image",
+            src: metamaskSetupOptions,
+            alt: "MetaMask setup options",
+          },
+          {
+            type: "image",
+            src: metamaskRecoveryPhrase,
+            alt: "MetaMask recovery phrase prompt",
+          },
+          {
+            type: "image",
+            src: metamaskWalletSettings,
+            alt: "MetaMask wallet settings",
+          },
+          {
+            type: "image",
+            src: metamaskSolanaNetwork,
+            alt: "Solana network in MetaMask",
+          },
+          {
+            type: "image",
+            src: metamaskAddFunds,
+            alt: "Add funds in MetaMask",
+          },
+          {
+            type: "image",
+            src: metamaskTokenMarketplace,
+            alt: "MetaMask token marketplace",
+          },
+          {
+            type: "image",
+            src: metamaskReceiveCrypto,
+            alt: "Receive crypto in MetaMask",
+          },
+          {
+            type: "image",
+            src: metamaskTransferCrypto,
+            alt: "Transfer crypto in MetaMask",
+          },
         ],
       },
       {
-        title: "Why Fees Change",
+        title: "How to add Solana to Ledger Wallet (cold wallet)",
         paragraphs: [
-          "Network congestion, block space demand, and priority settings can make fees rise or fall throughout the day. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
+          "Ledger wallet keeps your crypto secure by storing your private keys offline. While the app shows your balances, the physical device protects and signs transactions.",
         ],
-      },
-    ],
-  },
-  {
-    id: 4,
-    difficulty: "Easy",
-    title: "How staking rewards are calculated",
-    text: "Explore APR, lockups, and how validator performance impacts yield.",
-    image: cardWallet,
-    time: "5 min",
-    date: "2024-12-10",
-    categories: ["Staking", "Yield"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Staking rewards depend on protocol rules, validator performance, and how long you keep assets locked. This article breaks down the key inputs. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
+        listTitle: "Step-by-step",
+        list: [
+          "Download Ledger Live to your desktop or mobile from the official website. Ledger Live is the companion app you will use to manage accounts, install apps, and view your portfolio.",
+          'Once installed, open the app and choose "Get Started."',
+          'Set up your Ledger device. Connect your Ledger device to your computer or phone and select "Set up as new device." You will create a PIN code directly on the device and receive a 24-word recovery phrase.',
+          "Important: Write it down on paper and store it offline. Never take screenshots or store it digitally. Anyone with this phrase can access your funds.",
+          "Install the Solana App. In the Ledger Live app, go to Manager, enable the connection on your device, and search for Solana. Install the Solana app to allow your Ledger to interact with the Solana blockchain.",
+          "Add a Solana Account. Go to Accounts -> Add account, select Solana, and confirm on your Ledger device. Ledger Live will create a Solana account linked to your hardware wallet.",
+          "Receive SOL. Your Solana wallet is now ready: you can use it to receive SOL by copying the wallet address from Ledger Live and sending a small amount to it.",
         ],
-      },
-      {
-        title: "APR vs APY",
-        paragraphs: [
-          "APR shows simple annual returns, while APY includes compounding. The difference can matter over longer periods. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-        ],
-      },
-      {
-        title: "Validator Performance",
-        paragraphs: [
-          "Uptime, commission, and penalties all affect what you earn. A reliable validator can make a meaningful difference. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
+        media: [
+          {
+            type: "image",
+            src: ledgerLiveDownload,
+            alt: "Ledger Live download",
+          },
+          {
+            type: "image",
+            src: ledgerLiveGetStarted,
+            alt: "Ledger Live get started",
+          },
         ],
       },
       {
-        title: "Lockups and Compounding",
+        title:
+          "Next steps on Solana: buy-and-hold, staking, and trading on Solana DEXs",
         paragraphs: [
-          "Longer lockups often yield higher rewards, but reduce flexibility. Decide how much liquidity you need before committing. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
+          "Once you are comfortable using a wallet to send and receive SOL, you can start exploring Solana without unnecessary risks. Here are some of the most accessible options:",
         ],
-      },
-    ],
-  },
-  {
-    id: 5,
-    difficulty: "Easy",
-    title: "Avoid common crypto scams",
-    text: "Spot phishing, fake airdrops, and malicious approvals before they cost you funds.",
-    image: cardEarth,
-    time: "5 min",
-    date: "2024-11-21",
-    categories: ["Security", "Wallets"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Scams target urgency and curiosity. Learning the common patterns helps you protect your wallet before damage is done. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
+        list: [
+          "Buy-and-hold SOL: Purchase SOL via a centralized exchange or directly in wallets like MetaMask or Phantom, then hold it as you learn the ecosystem.",
+          "Staking SOL: Delegate your SOL to a validator to help secure the network and earn about 5-7% annual rewards (2026). Your SOL stays in your wallet, you retain ownership, and rewards accumulate automatically, making it a safe way to earn as you learn.",
+          "Swap tokens on decentralized exchanges like Raydium or Orca. This is not day trading, but a practical way to learn how transactions work and understand token prices.",
+        ],
+        tailParagraphs: [
+          "We will dive deeper into Solana DEXs in the next article. For now, remember: start small, treat each step as learning, and avoid risky all-in bets.",
         ],
       },
       {
-        title: "Phishing and Fake Sites",
+        title: "Safety for Solana beginners",
         paragraphs: [
-          "Attackers mimic real brands with lookalike URLs and social posts. Always verify the domain before connecting a wallet. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
+          "Solana is beginner-friendly, but smart habits pay off, especially when it comes to security:",
+          "Avoid losing your seed phrase or private keys. If you lose them, you lose access to your funds permanently. Write them on paper, and store them offline in different places. And, of course, never share them with anyone.",
+          "Be cautious about fake wallets and phishing websites. Download Solana wallets only from official websites and trusted app stores, and double-check links before clicking.",
+        ],
+        list: [
+          "Be cautious of schemes and influencers promising quick profits. Crypto rewards patience and learning, not hype. Likewise, avoid panicking during price dips. Short-term volatility is normal.",
+          "Finally, steer clear of risky moves like leverage trading, going all-in, or chasing FOMO projects. Solana rewards steady learning, not rushed decisions.",
         ],
       },
       {
-        title: "Malicious Approvals and Drainers",
+        title: "Solana beginner journey: from curious to confident",
         paragraphs: [
-          "Some sites trick users into granting unlimited token approvals, then drain funds. Revoke old approvals regularly. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
+          "Solana's speed, low fees, and beginner-focused design make it perfect for newcomers. But crypto is a tool, and success depends on how you use it.",
+          "Start by securing a wallet, adding some SOL, and completing a few basic transactions. Once comfortable, you can explore decentralized exchanges and staking, all while learning safely and confidently.",
+          "That is exactly what the next article in our Solana Beginner Guide series will cover: a practical, hands-on look at Solana DEXs and how to use them confidently.",
+          "The next move is yours: set up your wallet, send a small amount of SOL, and make your first transaction. Learning by doing is the fastest way to gain confidence. Are you in?",
         ],
       },
       {
-        title: "Red Flags and Safe Practices",
-        paragraphs: [
-          "Unexpected DMs, unrealistic promises, and urgent countdowns are red flags. Slow down and verify every step. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 6,
-    difficulty: "Easy",
-    title: "What is a blockchain explorer?",
-    text: "Learn how to track transactions, token transfers, and on-chain activity.",
-    image: cardRobot,
-    time: "5 min",
-    date: "2024-11-02",
-    categories: ["Blockchain", "Security"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "A blockchain explorer is a public search tool that lets you inspect on-chain activity in real time. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
-        ],
-      },
-      {
-        title: "Reading a Transaction",
-        paragraphs: [
-          "You can see the sender, receiver, fees, status, and block confirmation to verify whether a transfer succeeded. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-        ],
-      },
-      {
-        title: "Tokens, Events, and Contracts",
-        paragraphs: [
-          "Explorers show token transfers, smart contract calls, and event logs, which help you trace complex activity. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-        ],
-      },
-      {
-        title: "How to Verify Activity",
-        paragraphs: [
-          "Use explorers to confirm deposits, troubleshoot delays, and cross-check addresses before you trust them. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 7,
-    difficulty: "Medium",
-    title: "Yield strategies: staking vs liquidity",
-    text: "Compare passive yield options and understand the risks of impermanent loss.",
-    image: cardWallet,
-    time: "7 min",
-    date: "2024-10-18",
-    categories: ["Yield", "Staking", "Tokenomics"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Staking and liquidity providing can both generate yield, but they come with different risks and tradeoffs. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
-        ],
-      },
-      {
-        title: "Staking Yield Basics",
-        paragraphs: [
-          "Staking rewards are tied to network security and validator performance. Returns are typically more predictable. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
-        ],
-      },
-      {
-        title: "Liquidity Providing and Impermanent Loss",
-        paragraphs: [
-          "Liquidity pools earn fees, but price swings can reduce your value versus holding. This is the core tradeoff. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
-        ],
-      },
-      {
-        title: "Choosing a Strategy",
-        paragraphs: [
-          "Consider your time horizon, risk tolerance, and need for liquidity before choosing between the two. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 8,
-    difficulty: "Medium",
-    title: "Understanding token unlock schedules",
-    text: "Learn how vesting impacts supply, price volatility, and investor strategy.",
-    image: cardEarth,
-    time: "7 min",
-    date: "2024-10-01",
-    categories: ["Tokenomics", "Regulation"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Unlock schedules control when tokens become available to sell or transfer. They shape supply and market expectations. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
-        ],
-      },
-      {
-        title: "Vesting Basics",
-        paragraphs: [
-          "Vesting spreads token distribution over time to align teams and investors with long-term goals. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-        ],
-      },
-      {
-        title: "Market Impact of Unlocks",
-        paragraphs: [
-          "Large unlocks can increase selling pressure, especially if liquidity is thin. This is why schedules matter. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-        ],
-      },
-      {
-        title: "How to Read a Schedule",
-        paragraphs: [
-          "Look for cliffs, linear vesting periods, and the total percentage unlocked each month or quarter. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 9,
-    difficulty: "Medium",
-    title: "How liquidity pools work",
-    text: "A practical guide to AMMs, pool ratios, and trading fees.",
-    image: cardRobot,
-    time: "7 min",
-    date: "2024-09-12",
-    categories: ["Yield", "Fees", "Blockchain"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Liquidity pools power decentralized trading by allowing users to swap against shared reserves instead of order books. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
-        ],
-      },
-      {
-        title: "AMMs and Pricing",
-        paragraphs: [
-          "Automated market makers set prices based on pool ratios. As trades happen, the ratio shifts and the price changes. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
-        ],
-      },
-      {
-        title: "Pool Ratios and Fees",
-        paragraphs: [
-          "LPs earn a portion of trading fees, which are distributed based on their share of the pool. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
-        ],
-      },
-      {
-        title: "Risks and Best Practices",
-        paragraphs: [
-          "Impermanent loss, low liquidity, and volatile pairs increase risk. Choose pools that match your risk profile. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 10,
-    difficulty: "Medium",
-    title: "Tokenomics for founders",
-    text: "Design emission schedules, incentives, and sustainable community rewards.",
-    image: cardWallet,
-    time: "7 min",
-    date: "2024-08-27",
-    categories: ["Tokenomics", "Blockchain"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Tokenomics defines how value flows through your ecosystem. Strong design aligns incentives across users, investors, and builders. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
-        ],
-      },
-      {
-        title: "Supply and Emission Design",
-        paragraphs: [
-          "Decide on total supply, inflation, and how new tokens enter circulation. Clarity here builds trust. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-        ],
-      },
-      {
-        title: "Incentives and Alignment",
-        paragraphs: [
-          "Rewards should encourage real usage, not just speculation. Tie emissions to measurable participation. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-        ],
-      },
-      {
-        title: "Governance and Sustainability",
-        paragraphs: [
-          "Make governance transparent and plan for long-term funding so the token can support the project beyond launch. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 11,
-    difficulty: "Hard",
-    title: "Advanced staking: validator selection",
-    text: "Learn how commission, uptime, and delegation strategies affect returns.",
-    image: cardEarth,
-    time: "9 min",
-    date: "2024-08-03",
-    categories: ["Staking", "Yield", "Security"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Validator choice directly affects rewards, reliability, and security. Picking well is an active strategy, not a one-time decision. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
-        ],
-      },
-      {
-        title: "Commission and Uptime",
-        paragraphs: [
-          "Lower commission can increase yields, but uptime and slashing history are just as important. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
-        ],
-      },
-      {
-        title: "Delegation Strategy",
-        paragraphs: [
-          "Spreading stake across multiple validators reduces risk and helps decentralize the network. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
-        ],
-      },
-      {
-        title: "Monitoring and Rebalancing",
-        paragraphs: [
-          "Regularly check performance metrics and move stake when a validator's reliability drops. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 12,
-    difficulty: "Hard",
-    title: "Managing DAO treasuries",
-    text: "Best practices for treasury diversification, on-chain reporting, and security.",
-    image: cardRobot,
-    time: "9 min",
-    date: "2024-07-15",
-    categories: ["Security", "Tokenomics"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "DAO treasuries need clear policies for spending, diversification, and transparency. Without them, funds erode quickly. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
-        ],
-      },
-      {
-        title: "Diversification and Risk",
-        paragraphs: [
-          "Holding only the native token creates concentration risk. Many treasuries balance stablecoins, blue chips, and yield assets. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-        ],
-      },
-      {
-        title: "On-chain Reporting",
-        paragraphs: [
-          "Regular reports build trust and make governance decisions easier. Standardize dashboards and update on a predictable cadence. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-        ],
-      },
-      {
-        title: "Security and Controls",
-        paragraphs: [
-          "Multi-sig wallets, spending limits, and approvals reduce risk and make treasury operations safer. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 13,
-    difficulty: "Hard",
-    title: "Cross-chain bridging risks",
-    text: "Understand bridge security models, attack vectors, and safety checks.",
-    image: cardWallet,
-    time: "9 min",
-    date: "2024-06-22",
-    categories: ["Security", "Blockchain"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Bridges connect ecosystems, but they are also high-value targets. Understanding how they work helps you reduce risk. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. If you only remember one thing, make it this: small optimizations repeated consistently beat one-time tweaks, and they keep working long after the initial setup.",
-        ],
-      },
-      {
-        title: "Bridge Security Models",
-        paragraphs: [
-          "Some bridges rely on multisigs, others on light clients or relayers. Each model has different trust assumptions. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. You'll get a clearer sense of when to act, when to wait, and how to evaluate whether a tool or platform is actually helping you or just adding friction.",
-        ],
-      },
-      {
-        title: "Common Attack Vectors",
-        paragraphs: [
-          "Smart contract bugs, compromised keys, and weak validation logic can lead to large losses. It also explains the context, tradeoffs, and the few decisions that matter most in practice. In practice, the biggest savings come from small habits: checking fee settings, timing actions during quieter windows, and avoiding unnecessary transactions that add no real value. When you add those up across weeks or months, the impact is larger than most people expect. This is designed to be actionable on day one, with no special tools required beyond the settings you already have access to.",
-        ],
-      },
-      {
-        title: "Safety Checks Before Bridging",
-        paragraphs: [
-          "Verify the official bridge, start with small transfers, and monitor confirmations on both chains. You'll see how the idea applies in real scenarios and which small choices tend to have outsized effects. We'll also walk through the typical decision points so you can spot where costs creep in, compare options quickly, and choose the path that fits your goals instead of defaulting to whatever the app suggests. We also highlight simple benchmarks you can use to measure progress so you know if your changes are actually improving outcomes.",
-        ],
-      },
-    ],
-  },
-  {
-    id: 14,
-    difficulty: "Hard",
-    title: "On-chain compliance and regulation",
-    text: "How teams handle KYC, AML, and reporting across jurisdictions.",
-    image: cardEarth,
-    time: "9 min",
-    date: "2024-06-01",
-    categories: ["Regulation", "Security"],
-    sections: [
-      {
-        title: "Introduction",
-        paragraphs: [
-          "Compliance requirements vary by region, but most teams face some mix of identity checks, monitoring, and reporting. The goal is to move past definitions and into practical steps you can apply immediately. The focus here is clarity: what actually moves the needle, what is noise, and how to build a simple routine that keeps you efficient without slowing you down. The examples are deliberately straightforward so you can adapt the pattern to your own workflow without overhauling everything.",
-        ],
-      },
-      {
-        title: "KYC and AML Basics",
-        paragraphs: [
-          "Know-your-customer and anti-money-laundering checks help verify users and reduce financial crime risk. We connect the concept to everyday decisions so you can act with more confidence and less guesswork. Think of this as a practical playbook you can revisit whenever you are about to make a transaction, adjust settings, or evaluate a new product or protocol. Once you internalize the pattern, you will spend less time second-guessing and more time moving quickly with confidence.",
-        ],
-      },
-      {
-        title: "Jurisdictional Considerations",
-        paragraphs: [
-          "Rules differ across countries, so teams often tailor onboarding and disclosures to each market. Expect concrete examples, common pitfalls, and a clearer sense of what to prioritize. These details may feel minor in isolation, but they compound into real savings and a smoother experience over time. To make it practical, we call out the exact moments people tend to skip, the defaults that quietly cost more, and the quick checks that prevent the most common mistakes.",
-        ],
-      },
-      {
-        title: "Transparent Reporting",
-        paragraphs: [
-          "Clear documentation and audit trails make it easier to satisfy regulators and build user trust. By the end, you should have a simple mental checklist for using this idea well. By the end, you should be able to explain the tradeoffs in plain language and make confident decisions without second-guessing yourself. We also translate the jargon into everyday language so you can explain the idea to a teammate or friend without losing the important nuances.",
+        title: "Solana Beginner FAQ",
+        list: [
+          "Why is Solana great for crypto newcomers? Solana is fast, low-fee, and beginner-friendly, letting you explore crypto safely with small amounts.",
+          "What is the best wallet for a Solana beginner? Hot wallets like MetaMask or Phantom are great for daily use, while cold wallets like Ledger offer long-term security. Many users combine both.",
+          "Should a Solana beginner start with a CEX or DEX? Beginners often buy SOL on CEXs for convenience, then transfer it to a wallet to explore DEXs safely and keep full control.",
+          "How can a Solana beginner earn rewards? Stake SOL with validators, hold SOL or top tokens, or practice swapping tokens on DEXs.",
+          "What mistakes should Solana beginners avoid? Losing seed phrases, using fake wallets, trusting influencers blindly, panicking during dips, or chasing FOMO projects.",
         ],
       },
     ],
@@ -568,7 +324,7 @@ const slugify = (value) =>
 export const academyArticles = baseArticles.map((article) => ({
   ...article,
   slug: article.slug || slugify(article.title),
-  heroImage: heroBackground,
+  heroImage: article.heroImage || heroBackground,
   detailSubtitle: article.detailSubtitle || article.text,
   sections: article.sections || defaultSections,
 }));

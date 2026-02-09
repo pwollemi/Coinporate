@@ -81,7 +81,14 @@ const getWidget = async () => {
   return data;
 };
 
-function HomePage() {
+function HomePage({ onNavigate }) {
+  const handleJoinPresale = () => {
+    if (onNavigate) {
+      onNavigate("/");
+      return;
+    }
+    window.location.href = "/";
+  };
   const defaultLiquidityIndex = Math.max(
     0,
     liquidityCards.findIndex((card) => card.active)
@@ -264,6 +271,7 @@ function HomePage() {
               <PrimaryButton
                 className="btn--cta hero__cta-button"
                 type="button"
+                onClick={handleJoinPresale}
               >
                 <span className="btn__icon" aria-hidden="true">
                   <img
@@ -371,7 +379,11 @@ function HomePage() {
               <PrimaryButton
                 className="btn--pill platform__cta"
                 type="button"
-                onClick={() => window.open("/whitepaper", "_blank")}
+                onClick={() =>
+                  onNavigate
+                    ? onNavigate("/whitepaper")
+                    : (window.location.href = "/whitepaper")
+                }
               >
                 <span className="btn__icon" aria-hidden="true">
                   <img
@@ -491,7 +503,11 @@ function HomePage() {
               ))}
             </div>
           </div>
-          <PrimaryButton className="btn--pill liquidity__cta" type="button">
+          <PrimaryButton
+            className="btn--pill liquidity__cta"
+            type="button"
+            onClick={handleJoinPresale}
+          >
             <span className="btn__icon" aria-hidden="true">
               <img
                 src={require("../assets/coinporate/svgs/star.svg").default}
@@ -526,6 +542,13 @@ function HomePage() {
               />
             ))}
           </div>
+          <a
+            className="btn btn--pill distribution__download"
+            href="/tokenomics.pdf"
+            download="Coinporate_Tokenomics.pdf"
+          >
+            Download Tokenomics PDF
+          </a>
           <img
             className="distribution__art"
             src={liquidMetal}

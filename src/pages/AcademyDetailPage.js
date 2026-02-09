@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { academyArticles } from "../data/academyArticles";
 import heroImage from "../source/airdrop/5b5c6083d5384cbcc5839503d28c9ee4cefb953a.png";
-import iconRing from "../assets/coinporate/icons/ring.svg";
 
 const getSlugFromPath = (path) => {
   if (!path) {
@@ -61,31 +60,60 @@ function AcademyDetailPage({ route }) {
   }, [slug]);
 
   const heroPoster = article?.heroImage || heroImage;
-  const sections = article?.sections ?? [];
+  const sections = useMemo(() => article?.sections ?? [], [article?.sections]);
 
-  const sectionIds = useMemo(
+  const tocSections = useMemo(
     () =>
-      sections.map((section) => ({
-        id: buildSectionId(section.title),
-        title: section.title,
-      })),
+      sections.map((section, index) => {
+        const title = section.title;
+        const id = buildSectionId(title);
+        const displayIndex = String(index + 1).padStart(2, "0");
+        return {
+          id,
+          title,
+          displayTitle: `${displayIndex}. ${title}`,
+        };
+      }),
     [sections]
   );
 
-  const [activeTocId, setActiveTocId] = useState(sectionIds[0]?.id ?? null);
+  const [activeTocId, setActiveTocId] = useState(tocSections[0]?.id ?? null);
+  const activeTitle =
+    tocSections.find(({ id }) => id === activeTocId)?.displayTitle ??
+    tocSections[0]?.displayTitle ??
+    "Overview";
 
   useEffect(() => {
-    setActiveTocId(sectionIds[0]?.id ?? null);
+    setActiveTocId(tocSections[0]?.id ?? null);
     setPendingScrollId(null);
-    if (!sectionIds.length) {
+    if (!tocSections.length) {
       setTocHeight(0);
       setThumbStyle({ height: "32px", transform: "translateY(0)" });
     }
-  }, [sectionIds]);
+  }, [tocSections]);
 
   useEffect(() => {
     pendingScrollRef.current = pendingScrollId;
   }, [pendingScrollId]);
+
+  useEffect(() => {
+    const list = tocListRef.current;
+    if (!list || list.scrollHeight <= list.clientHeight + 1) {
+      return;
+    }
+    const activeButton = list.querySelector('button[aria-current="true"]');
+    if (!activeButton) {
+      return;
+    }
+    const listRect = list.getBoundingClientRect();
+    const buttonRect = activeButton.getBoundingClientRect();
+    const padding = 8;
+    if (buttonRect.top < listRect.top + padding) {
+      list.scrollTop -= listRect.top - buttonRect.top + padding;
+    } else if (buttonRect.bottom > listRect.bottom - padding) {
+      list.scrollTop += buttonRect.bottom - listRect.bottom + padding;
+    }
+  }, [activeTocId]);
 
   const updateThumbForIndex = (index) => {
     if (!tocListRef.current) {
@@ -129,7 +157,7 @@ function AcademyDetailPage({ route }) {
     }
     setActiveTocId(id);
     setPendingScrollId(id);
-    const targetIndex = sectionIds.findIndex((section) => section.id === id);
+    const targetIndex = tocSections.findIndex((section) => section.id === id);
     if (targetIndex >= 0) {
       updateThumbForIndex(targetIndex);
     }
@@ -167,7 +195,7 @@ function AcademyDetailPage({ route }) {
   }, [pendingScrollId]);
 
   useEffect(() => {
-    if (!sectionIds.length) {
+    if (!tocSections.length) {
       return;
     }
     const updateTocMetrics = () => {
@@ -184,7 +212,7 @@ function AcademyDetailPage({ route }) {
       const pendingId = pendingScrollRef.current;
 
       const anchor = scrollY + viewport * 0.25;
-      let nextActiveId = sectionIds[0]?.id ?? null;
+      let nextActiveId = tocSections[0]?.id ?? null;
       if (pendingId) {
         nextActiveId = pendingId;
         const targetEl = document.getElementById(pendingId);
@@ -199,7 +227,7 @@ function AcademyDetailPage({ route }) {
           }
         }
       } else {
-        sectionIds.forEach(({ id }) => {
+        tocSections.forEach(({ id }) => {
           const sectionEl = document.getElementById(id);
           if (!sectionEl) {
             return;
@@ -209,8 +237,8 @@ function AcademyDetailPage({ route }) {
             nextActiveId = id;
           }
         });
-        if (isAtBottom && sectionIds.length) {
-          nextActiveId = sectionIds[sectionIds.length - 1].id;
+        if (isAtBottom && tocSections.length) {
+          nextActiveId = tocSections[tocSections.length - 1].id;
         }
       }
       if (nextActiveId) {
@@ -218,7 +246,7 @@ function AcademyDetailPage({ route }) {
       }
       const activeIndex = Math.max(
         0,
-        sectionIds.findIndex(({ id }) => id === nextActiveId)
+        tocSections.findIndex(({ id }) => id === nextActiveId)
       );
       updateThumbForIndex(activeIndex);
     };
@@ -230,24 +258,20 @@ function AcademyDetailPage({ route }) {
       window.removeEventListener("scroll", updateTocMetrics);
       window.removeEventListener("resize", updateTocMetrics);
     };
-  }, [sectionIds]);
+  }, [tocSections]);
 
   return (
     <main className="academy-detail">
       <section className="academy-detail-hero" aria-hidden="true">
         <div className="academy-detail-hero__video-wrap">
-          <video
-            className="academy-detail-hero__video"
-            src="/media/token-head.mp4"
-            poster={heroPoster}
-            autoPlay
-            muted
-            loop
-            playsInline
+          <img
+            className="academy-detail-hero__image"
+            src={heroPoster}
+            alt=""
+            loading="eager"
           />
           <div className="academy-detail-hero__veil" />
         </div>
-        <img className="academy-detail-hero__ring" src={iconRing} alt="" />
         <div className="academy-detail-hero__title">
           {article?.title || "Academy"}
         </div>
@@ -259,6 +283,14 @@ function AcademyDetailPage({ route }) {
         <div className="academy-detail-body__inner">
           <aside className="academy-detail-toc">
             <span className="academy-detail-toc__label">FIND TOPIC</span>
+            <div className="academy-detail-toc__current" aria-live="polite">
+              <span className="academy-detail-toc__current-label">
+                Current section
+              </span>
+              <span className="academy-detail-toc__current-title">
+                {activeTitle}
+              </span>
+            </div>
             <div className="academy-detail-toc__body">
               <div
                 className="academy-detail-toc__scroll"
@@ -268,7 +300,7 @@ function AcademyDetailPage({ route }) {
                 <div className="academy-detail-toc__thumb" style={thumbStyle} />
               </div>
               <ul ref={tocListRef}>
-                {sectionIds.map(({ id, title }) => {
+                {tocSections.map(({ id, title, displayTitle }) => {
                   const isActive = activeTocId === id;
                   return (
                     <li key={id || title}>
@@ -280,7 +312,7 @@ function AcademyDetailPage({ route }) {
                         aria-current={isActive ? "true" : undefined}
                         onClick={() => handleScrollTo(id)}
                       >
-                        {title}
+                        {displayTitle || title}
                       </button>
                     </li>
                   );
@@ -300,6 +332,8 @@ function AcademyDetailPage({ route }) {
                 }`;
                 const paragraphs = section.paragraphs || [];
                 const listItems = section.list || [];
+                const tailParagraphs = section.tailParagraphs || [];
+                const mediaItems = section.media || [];
                 const ListTag = section.ordered ? "ol" : "ul";
 
                 return (
@@ -341,6 +375,46 @@ function AcademyDetailPage({ route }) {
                           </ListTag>
                         </div>
                       )}
+                      {tailParagraphs.map((paragraph, paragraphIndex) => {
+                        return (
+                          <p
+                            key={`tail-paragraph-${index}-${paragraphIndex}`}
+                            className={`academy-detail-block__paragraph 
+                              }`.trim()}
+                          >
+                            {renderParagraphText(paragraph)}
+                          </p>
+                        );
+                      })}
+                      {mediaItems.map((item, mediaIndex) => {
+                        const mediaType = item?.type || "image";
+                        const mediaKey = `media-${index}-${mediaIndex}`;
+                        if (!item?.src) {
+                          return null;
+                        }
+                        return (
+                          <div
+                            className="academy-detail-block__image"
+                            key={mediaKey}
+                          >
+                            {mediaType === "video" ? (
+                              <iframe
+                                src={item.src}
+                                title={item.title || "Academy video"}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                loading="lazy"
+                              />
+                            ) : (
+                              <img
+                                src={item.src}
+                                alt={item.alt || ""}
+                                loading="lazy"
+                              />
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                     {index !== sections.length - 1 && (
                       <div className="academy-detail-block__divider" />
