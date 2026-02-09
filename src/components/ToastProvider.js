@@ -17,19 +17,20 @@ export const ToastProvider = ({ children }) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }, []);
 
-  const showToast = useCallback((message, type = "info", duration = 3000) => {
-    const id = Date.now() + Math.random();
-    const toast = { id, message, type, duration };
+  const showToast = useCallback(
+    (message, type = "info", duration = 3000) => {
+      const id = Date.now() + Math.random();
+      const toast = { id, message, type, duration };
 
-    setToasts((prev) => [...prev, toast]);
+      setToasts((prev) => [...prev, toast]);
 
-    // Auto-remove toast after duration
-    setTimeout(() => {
-      removeToast(id);
-    }, duration);
-  }, [removeToast]);
-
-
+      // Auto-remove toast after duration
+      setTimeout(() => {
+        removeToast(id);
+      }, duration);
+    },
+    [removeToast]
+  );
 
   const toastTypes = {
     success: "toast--success",

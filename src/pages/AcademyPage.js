@@ -1,8 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { partnerLogos } from "../data/content";
-import cardWallet from "../source/academy/874d467f1492d761e85e4f34213a35a1c95d8eb2.jpg";
-import cardEarth from "../source/academy/41621fd23245fbca571f7094a0dbf548fa4dae52.jpg";
-import cardRobot from "../source/academy/6b5ab7dfd150065a2824a0fef96d1407349a3f83.jpg";
+import { academyArticles } from "../data/academyArticles";
 
 const filterChips = [
   "All topics",
@@ -16,150 +13,7 @@ const filterChips = [
   "Regulation",
 ];
 
-const academyCards = [
-  {
-    id: 1,
-    difficulty: "Easy",
-    title: "Reduce transaction fees on Solana",
-    text: "Learn simple tactics to lower costs when sending tokens, swapping, and interacting with on-chain apps.",
-    image: cardWallet,
-    time: "5 min",
-    date: "2025-01-14",
-    categories: ["Fees", "Blockchain", "Solana"],
-  },
-  {
-    id: 2,
-    difficulty: "Easy",
-    title: "What is a crypto wallet?",
-    text: "A friendly introduction to hot vs cold wallets, seed phrases, and safe self-custody.",
-    image: cardEarth,
-    time: "5 min",
-    date: "2025-01-10",
-    categories: ["Wallets", "Security"],
-  },
-  {
-    id: 3,
-    difficulty: "Easy",
-    title: "Crypto basics: tokens and gas",
-    text: "Understand token types, network fees, and why gas fluctuates across blockchains.",
-    image: cardRobot,
-    time: "5 min",
-    date: "2024-12-28",
-    categories: ["Blockchain", "Fees"],
-  },
-  {
-    id: 4,
-    difficulty: "Easy",
-    title: "How staking rewards are calculated",
-    text: "Explore APR, lockups, and how validator performance impacts yield.",
-    image: cardWallet,
-    time: "5 min",
-    date: "2024-12-10",
-    categories: ["Staking", "Yield"],
-  },
-  {
-    id: 5,
-    difficulty: "Easy",
-    title: "Avoid common crypto scams",
-    text: "Spot phishing, fake airdrops, and malicious approvals before they cost you funds.",
-    image: cardEarth,
-    time: "5 min",
-    date: "2024-11-21",
-    categories: ["Security", "Wallets"],
-  },
-  {
-    id: 6,
-    difficulty: "Easy",
-    title: "What is a blockchain explorer?",
-    text: "Learn how to track transactions, token transfers, and on-chain activity.",
-    image: cardRobot,
-    time: "5 min",
-    date: "2024-11-02",
-    categories: ["Blockchain", "Security"],
-  },
-  {
-    id: 7,
-    difficulty: "Medium",
-    title: "Yield strategies: staking vs liquidity",
-    text: "Compare passive yield options and understand the risks of impermanent loss.",
-    image: cardWallet,
-    time: "7 min",
-    date: "2024-10-18",
-    categories: ["Yield", "Staking", "Tokenomics"],
-  },
-  {
-    id: 8,
-    difficulty: "Medium",
-    title: "Understanding token unlock schedules",
-    text: "Learn how vesting impacts supply, price volatility, and investor strategy.",
-    image: cardEarth,
-    time: "7 min",
-    date: "2024-10-01",
-    categories: ["Tokenomics", "Regulation"],
-  },
-  {
-    id: 9,
-    difficulty: "Medium",
-    title: "How liquidity pools work",
-    text: "A practical guide to AMMs, pool ratios, and trading fees.",
-    image: cardRobot,
-    time: "7 min",
-    date: "2024-09-12",
-    categories: ["Yield", "Fees", "Blockchain"],
-  },
-  {
-    id: 10,
-    difficulty: "Medium",
-    title: "Tokenomics for founders",
-    text: "Design emission schedules, incentives, and sustainable community rewards.",
-    image: cardWallet,
-    time: "7 min",
-    date: "2024-08-27",
-    categories: ["Tokenomics", "Blockchain"],
-  },
-  {
-    id: 11,
-    difficulty: "Hard",
-    title: "Advanced staking: validator selection",
-    text: "Learn how commission, uptime, and delegation strategies affect returns.",
-    image: cardEarth,
-    time: "9 min",
-    date: "2024-08-03",
-    categories: ["Staking", "Yield", "Security"],
-  },
-  {
-    id: 12,
-    difficulty: "Hard",
-    title: "Managing DAO treasuries",
-    text: "Best practices for treasury diversification, on-chain reporting, and security.",
-    image: cardRobot,
-    time: "9 min",
-    date: "2024-07-15",
-    categories: ["Security", "Tokenomics"],
-  },
-  {
-    id: 13,
-    difficulty: "Hard",
-    title: "Cross-chain bridging risks",
-    text: "Understand bridge security models, attack vectors, and safety checks.",
-    image: cardWallet,
-    time: "9 min",
-    date: "2024-06-22",
-    categories: ["Security", "Blockchain"],
-  },
-  {
-    id: 14,
-    difficulty: "Hard",
-    title: "On-chain compliance and regulation",
-    text: "How teams handle KYC, AML, and reporting across jurisdictions.",
-    image: cardEarth,
-    time: "9 min",
-    date: "2024-06-01",
-    categories: ["Regulation", "Security"],
-  },
-];
-
-function AcademyPage() {
+function AcademyPage({ onNavigate }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOrder, setSortOrder] = useState("newest");
   const [searchQuery, setSearchQuery] = useState("");
@@ -168,7 +22,7 @@ function AcademyPage() {
   const itemsPerPage = 6;
   const filteredCards = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
-    return academyCards.filter((card) => {
+    return academyArticles.filter((card) => {
       const title = card.title.toLowerCase();
       const text = card.text.toLowerCase();
       const matchesSearch =
@@ -193,6 +47,12 @@ function AcademyPage() {
     const start = (currentPage - 1) * itemsPerPage;
     return sortedCards.slice(start, start + itemsPerPage);
   }, [currentPage, sortedCards]);
+  const handleOpenArticle = (article) => {
+    if (!article?.slug) {
+      return;
+    }
+    onNavigate?.(`/academy/${article.slug}`, { academyArticle: article });
+  };
 
   useEffect(() => {
     if (currentPage > totalPages) {
@@ -317,7 +177,19 @@ function AcademyPage() {
       <section className="academy__grid">
         <div className="academy__grid-inner">
           {currentCards.map((card) => (
-            <article key={card.id} className="academy-card">
+            <article
+              key={card.id}
+              className="academy-card"
+              role="button"
+              tabIndex={0}
+              onClick={() => handleOpenArticle(card)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  handleOpenArticle(card);
+                }
+              }}
+            >
               <div className="academy-card__media">
                 <img src={card.image} alt={card.title} />
                 <span className="academy-card__badge">{card.difficulty}</span>
@@ -336,7 +208,14 @@ function AcademyPage() {
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
                 <div className="academy-card__footer">
-                  <button className="academy-card__cta" type="button">
+                  <button
+                    className="academy-card__cta"
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleOpenArticle(card.slug);
+                    }}
+                  >
                     Get started
                   </button>
                   <span className="academy-card__time">{card.time}</span>
@@ -382,18 +261,6 @@ function AcademyPage() {
           >
             Next page
           </button>
-        </div>
-      </section>
-
-      <section className="partners">
-        <div className="partners__row">
-          <div className="partners__track">
-            {partnerLogos.map((logo) => (
-              <div key={logo.alt} className="partners__slide">
-                <img className="partners__logo" src={logo.src} alt={logo.alt} />
-              </div>
-            ))}
-          </div>
         </div>
       </section>
     </main>

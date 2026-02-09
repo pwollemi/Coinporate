@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useConnection } from "@solana/wallet-adapter-react";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useToast } from "./ToastProvider";
 import CountdownPill from "./CountdownPill";
 import { executeDeposit, executeWithdraw } from "../utils/solana";
@@ -39,7 +40,9 @@ function CountdownTimer({
   userActiveValue = null,
   onPresaleEnded,
 }) {
-  const { connected, wallet, connect, sendTransaction } = useWallet();
+  const { connected, connecting, wallet, connect, sendTransaction } =
+    useWallet();
+  const { setVisible } = useWalletModal();
   const { connection } = useConnection();
   const { showToast } = useToast();
 
@@ -149,7 +152,15 @@ function CountdownTimer({
 
   const handleBuyCorp = async () => {
     if (!connected || !wallet) {
-      connect();
+      if (!wallet) {
+        setVisible(true);
+      } else {
+        try {
+          await connect();
+        } catch (error) {
+          // Wallet adapter handles its own error reporting/logging.
+        }
+      }
       return;
     }
 
@@ -194,7 +205,15 @@ function CountdownTimer({
 
   const handleClaimCorp = async () => {
     if (!connected || !wallet) {
-      connect();
+      if (!wallet) {
+        setVisible(true);
+      } else {
+        try {
+          await connect();
+        } catch (error) {
+          // Wallet adapter handles its own error reporting/logging.
+        }
+      }
       return;
     }
 
@@ -421,10 +440,15 @@ function CountdownTimer({
             <div className="countdown__progress">
               <div className="countdown__progress-row">
                 <span className="countdown__progress-label">
-                  USDC raised - ${soldUsdc}
+                  <span>USDC raised</span>
+                  <span>${soldUsdc} USDC</span>
                 </span>
                 <span className="countdown__progress-value">
-                  {formattedSold} / {formattedTotal}
+                  <span>Corp Sold</span>
+                  <span>
+                    {" "}
+                    {formattedSold} / {formattedTotal} CORP
+                  </span>
                 </span>
               </div>
               <div className="countdown__progress-track" aria-hidden="true">
@@ -539,14 +563,33 @@ function CountdownTimer({
               className="countdown__action"
               type="button"
               onClick={handleBuyCorp}
-              disabled={isProcessing || !connected}
+              disabled={isProcessing || connecting}
             >
               {isProcessing
                 ? "Processing..."
-                : connected
-                  ? "Buy CORP"
-                  : "Connect Wallet"}
+                : connecting
+                  ? "Connecting..."
+                  : connected
+                    ? "Buy CORP"
+                    : "Connect Wallet"}
             </button>
+            <div className="countdown__meta">
+              <div className="countdown__avatars" aria-hidden="true">
+                {avatarSlots.map((avatar, index) => (
+                  <span
+                    key={avatar || index}
+                    className="countdown__avatar"
+                    style={
+                      avatar ? { backgroundImage: `url(${avatar})` } : undefined
+                    }
+                  />
+                ))}
+              </div>
+              <div className="countdown__meta-text">
+                <div className="countdown__meta-value">{userActiveDisplay}</div>
+                <div className="countdown__meta-label">Users Active</div>
+              </div>
+            </div>
           </div>
         ) : isEnded ? (
           // Presale Ended - Enhanced Claim UI

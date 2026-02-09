@@ -20,6 +20,10 @@
 @import "./styles/academy.web.css";
 @import "./styles/academy.mobile.css";
 
+/* Academy Detail Styles */
+@import "./styles/academyDetail.web.css";
+@import "./styles/academyDetail.mobile.css";
+
 /* Whitepaper Page Styles */
 @import "./styles/whitepaper.web.css";
 @import "./styles/whitepaper.mobile.css";

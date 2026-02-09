@@ -4,6 +4,10 @@
    ============================================ */
 
 @media (max-width: 1440px) {
+  .hero {
+    height: calc(100vh - 170px);
+  }
+
   .hero__layout {
     padding: 64px 48px 96px;
   }
@@ -47,7 +51,11 @@
     padding: 48px 24px;
   }
   .hero__nav {
-    padding: 28px 48px 0;
+    padding: 30px 48px 100px;
+  }
+
+  .hero__widget-sticky {
+    right: 48px;
   }
 
   .hero__nav-center {
@@ -459,7 +467,8 @@
   }
 
   .hero__social,
-  .hero__scroll {
+  .hero__scroll,
+  .hero__floating {
     display: none;
   }
 
@@ -479,6 +488,12 @@
 
   .distribution {
     padding: 35px 0 0 0;
+  }
+
+  .distribution__download {
+    margin-top: 0;
+    width: 100%;
+    max-width: 280px;
   }
 
   .distribution__art {
@@ -570,7 +585,7 @@
   }
 
   .token-intro__a {
-    width: 160%;
+    width: 100%;
     height: auto;
     min-height: 120%;
     top: 50%;
@@ -724,6 +739,21 @@
   .countdown__end-pill {
     font-size: 12px;
     padding: 6px 14px;
+  }
+
+  .countdown__progress-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .countdown__progress-label,
+  .countdown__progress-value {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .countdown__presale-options,

@@ -14,6 +14,7 @@ import TokenMarker from "../components/TokenMarker";
 import UseCaseBlock from "../components/UseCaseBlock";
 import HeroSection from "../components/HeroSection";
 import FaqBlock from "../components/FaqBlock";
+import DiscordPresenceWidget from "../components/DiscordPresenceWidget";
 import {
   tokenFeatures,
   useCases,
@@ -51,6 +52,8 @@ import iconCheck from "../assets/coinporate/icons/check.svg";
 import iconChevronDown from "../assets/coinporate/icons/chevron-down.svg";
 import iconArch from "../assets/coinporate/icons/icon-arch.svg";
 import headRight from "../assets/coinporate/head-right.png";
+import widgetPreviewVideo from "../source/widget/alchemizzzt8021_The_image_is_a_minimalist_surreal_digital_por_0418d5c1-f4de-4ee2-84c7-3de411bcab69_0.mp4";
+import widgetAudioIcon from "../source/widget/Union.svg";
 
 import iconLinkedIn from "../assets/coinporate/icons/linkedin-lime.svg";
 import iconX from "../assets/coinporate/icons/x-lime.svg";
@@ -78,7 +81,14 @@ const getWidget = async () => {
   return data;
 };
 
-function HomePage({ onWhitepaperClick }) {
+function HomePage({ onNavigate }) {
+  const handleJoinPresale = () => {
+    if (onNavigate) {
+      onNavigate("/");
+      return;
+    }
+    window.location.href = "/";
+  };
   const defaultLiquidityIndex = Math.max(
     0,
     liquidityCards.findIndex((card) => card.active)
@@ -192,25 +202,37 @@ function HomePage({ onWhitepaperClick }) {
         videoMobileSrc={heroVideoMobile}
         videoDesktopSrc={heroVideoDesktop}
         socialRow={
-          <div className="hero__social">
-            <span className="hero__social-label">FOLLOW</span>
-            <img
-              className="hero__social-icon"
-              src={socialX}
-              alt="X"
-              onClick={(e) => window.open(X_URL, "_blank")}
-            />
-            <img
-              className="hero__social-icon"
-              src={socialDiscord}
-              alt="Discord"
-              onClick={(e) => window.open(DISCORD_URL, "_blank")}
-            />
-            {/* <img
+          <div className="hero__floating">
+            <div className="hero__widget-sticky">
+              <DiscordPresenceWidget
+                presenceCount={presenceCount}
+                avatarUrls={avatarOffsets}
+                discordUrl={DISCORD_URL}
+                videoSrc={widgetPreviewVideo}
+                audioIconSrc={widgetAudioIcon}
+                brandIconSrc={iconBrandASmall}
+              />
+            </div>
+            <div className="hero__social">
+              <span className="hero__social-label">FOLLOW</span>
+              <img
                 className="hero__social-icon"
-                src={socialLinkedIn}
-                alt="LinkedIn"
-              /> */}
+                src={socialX}
+                alt="X"
+                onClick={(e) => window.open(X_URL, "_blank")}
+              />
+              <img
+                className="hero__social-icon"
+                src={socialDiscord}
+                alt="Discord"
+                onClick={(e) => window.open(DISCORD_URL, "_blank")}
+              />
+              {/* <img
+                  className="hero__social-icon"
+                  src={socialLinkedIn}
+                  alt="LinkedIn"
+                /> */}
+            </div>
           </div>
         }
         scrollPrompt={
@@ -249,6 +271,7 @@ function HomePage({ onWhitepaperClick }) {
               <PrimaryButton
                 className="btn--cta hero__cta-button"
                 type="button"
+                onClick={handleJoinPresale}
               >
                 <span className="btn__icon" aria-hidden="true">
                   <img
@@ -356,7 +379,11 @@ function HomePage({ onWhitepaperClick }) {
               <PrimaryButton
                 className="btn--pill platform__cta"
                 type="button"
-                onClick={onWhitepaperClick}
+                onClick={() =>
+                  onNavigate
+                    ? onNavigate("/whitepaper")
+                    : (window.location.href = "/whitepaper")
+                }
               >
                 <span className="btn__icon" aria-hidden="true">
                   <img
@@ -476,7 +503,11 @@ function HomePage({ onWhitepaperClick }) {
               ))}
             </div>
           </div>
-          <PrimaryButton className="btn--pill liquidity__cta" type="button">
+          <PrimaryButton
+            className="btn--pill liquidity__cta"
+            type="button"
+            onClick={handleJoinPresale}
+          >
             <span className="btn__icon" aria-hidden="true">
               <img
                 src={require("../assets/coinporate/svgs/star.svg").default}
@@ -511,6 +542,13 @@ function HomePage({ onWhitepaperClick }) {
               />
             ))}
           </div>
+          <a
+            className="btn btn--pill distribution__download"
+            href="/tokenomics.pdf"
+            download="Coinporate_Tokenomics.pdf"
+          >
+            Download Tokenomics PDF
+          </a>
           <img
             className="distribution__art"
             src={liquidMetal}
@@ -665,8 +703,9 @@ function HomePage({ onWhitepaperClick }) {
               {roadmapNodes.map((node) => (
                 <div
                   key={node.id}
-                  className={`roadmap__node${node.status ? ` roadmap__node--${node.status}` : ""
-                    }`}
+                  className={`roadmap__node${
+                    node.status ? ` roadmap__node--${node.status}` : ""
+                  }`}
                   style={{ left: node.left }}
                 >
                   <div className={roadmapNodeStyles[node.status]}>
@@ -713,8 +752,9 @@ function HomePage({ onWhitepaperClick }) {
                 <button
                   key={`roadmap-dot-${index}`}
                   type="button"
-                  className={`roadmap__dot${index === selectedIndex ? " roadmap__dot--active" : ""
-                    }`}
+                  className={`roadmap__dot${
+                    index === selectedIndex ? " roadmap__dot--active" : ""
+                  }`}
                   onClick={() => onDotButtonClick(index)}
                   aria-label={`Roadmap page ${index + 1}`}
                   aria-selected={index === selectedIndex}

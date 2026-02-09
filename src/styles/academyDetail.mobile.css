@@ -1,0 +1,171 @@
+/* ============================================
+   ACADEMY DETAIL MOBILE/RESPONSIVE STYLES
+   Media queries for academy detail responsive design
+   ============================================ */
+
+@media (max-width: 1400px) {
+  .academy-detail-body__inner {
+    padding: 0 80px;
+    grid-template-columns: 280px minmax(0, 1fr);
+    column-gap: 80px;
+    align-items: flex-start;
+  }
+
+  .academy-detail-content {
+    max-width: 100%;
+  }
+
+  .academy-detail-block__image {
+    width: 100%;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .academy-detail-hero {
+    height: 420px;
+    margin-bottom: 80px;
+  }
+
+  .academy-detail-hero__title {
+    font-size: clamp(30px, 4.6vw, 52px);
+    width: min(720px, 92vw);
+    margin-left: clamp(20px, 6vw, 80px);
+  }
+
+  .academy-detail-body {
+    padding: 90px 0 120px;
+  }
+
+  .academy-detail-body__inner {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    gap: 48px;
+    padding: 0 40px;
+    min-height: auto;
+  }
+
+  .academy-detail-content {
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .academy-detail-toc {
+    position: static;
+    transform: none;
+    padding: 22px 20px;
+    border-radius: 22px;
+    box-shadow: 0 18px 28px rgba(0, 56, 47, 0.12);
+  }
+
+  .academy-detail-block__image {
+    width: 100%;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .academy-detail-toc__body {
+    grid-template-columns: 8px 1fr;
+    gap: 12px;
+  }
+
+  .academy-detail-toc__button {
+    padding: 9px 10px 9px 18px;
+  }
+
+  .academy-detail-toc__button::before {
+    left: 6px;
+  }
+}
+
+@media (max-width: 720px) {
+  .academy-detail-hero {
+    height: 320px;
+    margin-bottom: 60px;
+  }
+
+  .academy-detail-hero__title {
+    font-size: clamp(28px, 7vw, 40px);
+    width: min(520px, 92vw);
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  .academy-detail-block__title--hero {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .academy-detail-block__title--mono {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .academy-detail-block__paragraph {
+    font-size: 15px;
+    line-height: 170%;
+  }
+
+  .academy-detail-block__paragraph--lead {
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  .academy-detail-callout--warn .academy-detail-callout__text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .academy-detail-block__image img {
+    height: 210px;
+  }
+
+  .academy-detail-block__image iframe,
+  .academy-detail-block__image video {
+    height: 210px;
+  }
+
+  .academy-detail-callout--soft {
+    padding: 40px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .academy-detail-body__inner {
+    padding: 0 20px;
+  }
+
+  .academy-detail-toc {
+    font-size: 11px;
+  }
+
+  .academy-detail-toc__label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .academy-detail-toc__current {
+    padding: 10px 12px;
+  }
+
+  .academy-detail-toc__current-title {
+    font-size: 12px;
+  }
+
+  .academy-detail-toc__button {
+    font-size: 12px;
+  }
+
+  .academy-detail-callout {
+    width: 100%;
+  }
+
+  .academy-detail-callout--outline {
+    border-radius: 18px;
+  }
+}

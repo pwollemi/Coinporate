@@ -4,6 +4,28 @@
    ============================================ */
 
 @media (max-width: 980px) {
+  .staking-intro {
+    padding: 100px 0 120px;
+  }
+
+  .staking-intro__inner {
+    padding: 0 28px;
+    min-height: 360px;
+  }
+
+  .staking-intro__bg img {
+    width: 680px;
+    height: 680px;
+  }
+
+  .staking-intro__title {
+    font-size: 34px;
+  }
+
+  .staking-intro__subtitle {
+    font-size: 15px;
+  }
+
   /* Staking Overview */
   .staking-overview__inner {
     grid-template-columns: 1fr;
@@ -207,6 +229,43 @@
 }
 
 @media (max-width: 640px) {
+  .staking-intro {
+    padding: 90px 0 110px;
+  }
+
+  .staking-intro__inner {
+    padding: 0 20px;
+    min-height: 320px;
+  }
+
+  .staking-intro__bg img {
+    width: 520px;
+    height: 520px;
+  }
+
+  .staking-intro__token-ring {
+    width: 60px;
+    height: 60px;
+  }
+
+  .staking-intro__token-ring img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .staking-intro__title {
+    font-size: 28px;
+  }
+
+  .staking-intro__subtitle {
+    font-size: 14px;
+  }
+
+  .staking-intro__brand {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
   .staking-presale__inner {
     padding: 48px 16px;
   }
@@ -214,6 +273,10 @@
   .staking-presale__card {
     width: 100%;
     padding: 36px 16px 20px;
+    gap: 8px;
+  }
+
+  .staking-presale__card-body {
     gap: 8px;
   }
 
@@ -353,6 +416,20 @@
   .staking-presale__legal {
     font-size: 11px;
     line-height: 1.5;
+  }
+
+  .staking-presale__lock-panel {
+    max-width: 260px;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .staking-presale__lock-title {
+    font-size: 10px;
+  }
+
+  .staking-presale__lock-text {
+    font-size: 12px;
   }
 
   /* Staking Hero */

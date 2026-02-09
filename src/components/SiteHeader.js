@@ -2,14 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { ConnectWalletButton, ConnectWalletLabel } from "./ConnectWalletButton";
 
-function SiteHeader({
-  navLinks,
-  logo,
-  iconWallet,
-  onNavigate,
-  onWhitepaperClick,
-  variant = "dark",
-}) {
+function SiteHeader({ navLinks, logo, iconWallet, onNavigate }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { connected, publicKey, disconnect } = useWallet();
 
@@ -26,10 +19,10 @@ function SiteHeader({
 
   const handleNavClick = (link) => {
     if (link === "Whitepaper") {
-      onWhitepaperClick?.();
+      onNavigate?.("/whitepaper");
       return;
     }
-    if (link === "How to earn") {
+    if (link === "Academy") {
       onNavigate?.("/academy");
       return;
     }

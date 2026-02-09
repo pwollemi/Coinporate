@@ -23,6 +23,7 @@ export function usePresaleState() {
       setLoading(true);
       setError(null);
       const presaleConfig = await fetchPresaleConfig(connection);
+      // presaleConfig.startTime = Date.now() + 100000;
       setConfig(presaleConfig);
 
       // Calculate initial status
