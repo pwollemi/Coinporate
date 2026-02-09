@@ -12,9 +12,7 @@ import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
 import { LedgerWalletAdapter } from "@solana/wallet-adapter-ledger";
-import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
-import { PRESALE_CONFIG } from "./data/constants";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

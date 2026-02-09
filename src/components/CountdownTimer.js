@@ -17,6 +17,13 @@ const SECONDS_PER_DAY = SECONDS_PER_HOUR * HOURS_PER_DAY;
 const EXCHANGE_RATE_DECIMALS = 1e6;
 
 const formatUnit = (value) => String(value).padStart(2, "0");
+const formatInputNumber = (value, decimals = 2) => {
+  if (!Number.isFinite(value)) {
+    return "";
+  }
+  const fixed = value.toFixed(decimals);
+  return fixed.endsWith(".00") ? fixed.slice(0, -3) : fixed;
+};
 
 const getTimeParts = (remainingMs) => {
   const totalSeconds = Math.max(0, Math.floor(remainingMs / MS_PER_SECOND));
@@ -144,7 +151,7 @@ function CountdownTimer({
     if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
       const expectedTokens =
         (parseFloat(amount) / exchangeRate) * EXCHANGE_RATE_DECIMALS;
-      setCorpAmount(expectedTokens.toFixed(2));
+      setCorpAmount(formatInputNumber(expectedTokens, 2));
     } else {
       setCorpAmount("");
     }
