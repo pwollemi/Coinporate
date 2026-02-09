@@ -384,9 +384,8 @@ function CountdownTimer({
               {timeUnits.map((unit, index) => (
                 <div
                   key={unit.label}
-                  className={`countdown__unit ${
-                    index > 0 ? "countdown__unit--divider" : ""
-                  }`}
+                  className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
+                    }`}
                 >
                   <div className={`countdown__value ${unit.numberColor}`}>
                     {unit.value}
@@ -420,9 +419,8 @@ function CountdownTimer({
               {timeUnits.map((unit, index) => (
                 <div
                   key={unit.label}
-                  className={`countdown__unit ${
-                    index > 0 ? "countdown__unit--divider" : ""
-                  }`}
+                  className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
+                    }`}
                 >
                   <div className={`countdown__value ${unit.numberColor}`}>
                     {unit.value}
@@ -446,8 +444,13 @@ function CountdownTimer({
                 <span className="countdown__progress-value">
                   <span>Corp Sold</span>
                   <span>
-                    {" "}
                     {formattedSold} / {formattedTotal} CORP
+                  </span>
+                </span>
+                <span className="countdown__progress-value">
+                  <span>Participants</span>
+                  <span>
+                    {config?.totalParticipants || 0}
                   </span>
                 </span>
               </div>
@@ -461,9 +464,8 @@ function CountdownTimer({
             <div className="countdown__presale-options">
               <button
                 type="button"
-                className={`countdown__option ${
-                  paymentMethod === "usdc" ? "countdown__option--active" : ""
-                }`}
+                className={`countdown__option ${paymentMethod === "usdc" ? "countdown__option--active" : ""
+                  }`}
                 onClick={() => setPaymentMethod("usdc")}
                 aria-pressed={paymentMethod === "usdc"}
               >
@@ -472,9 +474,8 @@ function CountdownTimer({
               <span className="countdown__option-divider">or</span>
               <button
                 type="button"
-                className={`countdown__option ${
-                  paymentMethod === "card" ? "countdown__option--active" : ""
-                }`}
+                className={`countdown__option ${paymentMethod === "card" ? "countdown__option--active" : ""
+                  }`}
                 onClick={() => setPaymentMethod("card")}
                 aria-pressed={paymentMethod === "card"}
               >
@@ -600,9 +601,8 @@ function CountdownTimer({
             {timeUnits.map((unit, index) => (
               <div
                 key={unit.label}
-                className={`countdown__unit ${
-                  index > 0 ? "countdown__unit--divider" : ""
-                }`}
+                className={`countdown__unit ${index > 0 ? "countdown__unit--divider" : ""
+                  }`}
               >
                 <div className={`countdown__value ${unit.numberColor}`}>
                   {unit.value}
