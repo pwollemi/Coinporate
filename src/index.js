@@ -23,7 +23,7 @@ if (!window.Buffer) {
 }
 
 function Root() {
-  const endpoint = useMemo(() => clusterApiUrl(PRESALE_CONFIG.network), []);
+  const endpoint = "https://solana-rpc.publicnode.com";
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),

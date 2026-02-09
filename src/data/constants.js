@@ -7,11 +7,11 @@ export const WHITEPAPER_URL = "/coinporate_whitepaper.pdf";
 // Solana Presale Configuration
 export const PRESALE_CONFIG = {
   // Network configuration
-  network: "devnet",
+  network: "mainnet-beta",
 
   // Token addresses
-  fundToken: "Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr", // USDC
-  rewardToken: "838PZQy4TJNq479LzUtvBW99JLFhFRFUPyEBcg9VrkdQ", // CORP
+  fundToken: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", // USDC
+  rewardToken: "ikSoC1pyRPeQzLTxC55q71TyWxjqht3aAh1tLn6sswy", // CORP
 
   // Program addresses
   presaleProgramId: "Fz2uso7i2r3oMESUMfmC7wBa2gfzz7me4DZfXSrKqycp",
@@ -19,7 +19,7 @@ export const PRESALE_CONFIG = {
 
   // Presale parameters
   exchangeRate: 5000, // 1 CORP = 5000 USDC tokens
-  serviceFee: 50000, // 5%,
+  serviceFee: 0, // 5%,
 
   // Default fallback values
   defaultStartTime: Date.now() + 10000, // 10 seconds from now
