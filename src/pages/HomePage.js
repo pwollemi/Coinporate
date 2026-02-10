@@ -83,11 +83,16 @@ const getWidget = async () => {
 
 function HomePage({ onNavigate }) {
   const handleJoinPresale = () => {
-    if (onNavigate) {
-      onNavigate("/");
+    const target = document.getElementById("presale-countdown");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
-    window.location.href = "/";
+    if (onNavigate) {
+      onNavigate("/");
+    } else {
+      window.location.href = "/";
+    }
   };
   const defaultLiquidityIndex = Math.max(
     0,
@@ -288,17 +293,19 @@ function HomePage({ onNavigate }) {
                 </span>
               </PrimaryButton>
             </div>
-            <CountdownTimer
-              className="hero__countdown"
-              avatarOffsets={avatarOffsets}
-              userActiveValue={presenceCount}
-              pillContent={
-                <div className="countdown__pill-text">
-                  <span className="countdown__pill-text-strong">CORP</span>
-                  <span className="countdown__pill-text-light"> Presale</span>
-                </div>
-              }
-            />
+            <div id="presale-countdown" className="hero__countdown-anchor">
+              <CountdownTimer
+                className="hero__countdown"
+                avatarOffsets={avatarOffsets}
+                userActiveValue={presenceCount}
+                pillContent={
+                  <div className="countdown__pill-text">
+                    <span className="countdown__pill-text-strong">CORP</span>
+                    <span className="countdown__pill-text-light"> Presale</span>
+                  </div>
+                }
+              />
+            </div>
           </div>
         </div>
       </HeroSection>

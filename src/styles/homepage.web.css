@@ -338,6 +338,10 @@
   margin-top: 36px;
 }
 
+.hero__countdown-anchor {
+  scroll-margin-top: 120px;
+}
+
 .hero__floating {
   position: static;
 }
@@ -562,6 +566,13 @@
   font-weight: 500;
   line-height: 28px; /* 155.556% */
   letter-spacing: -0.439px;
+}
+
+@media (max-height: 820px) {
+  .hero__arch,
+  .hero__social {
+    display: none;
+  }
 }
 
 .countdown {
@@ -1112,11 +1123,9 @@
 }
 
 .token-intro__grid {
-  margin: 90px 0 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
+  margin: 90px 0 0 50px;
+  display: block;
+  width: 50%;
 }
 
 .token-intro__text {

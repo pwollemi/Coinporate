@@ -184,6 +184,11 @@
     flex-direction: column;
   }
 
+  .platform__split--reverse .platform__text {
+    width: 100%;
+    padding-left: 0;
+  }
+
   .platform__split--reverse .platform-shot {
     margin-left: -100px;
     margin-right: 0;
@@ -214,16 +219,21 @@
   .platform__text {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
   }
 
   .platform__title {
     text-align: left;
+    width: 100%;
+    max-width: 100%;
   }
 
   .platform__copy {
     text-align: left;
+    width: 100%;
+    max-width: 100%;
   }
 
   .platform__cta {
@@ -359,6 +369,12 @@
     margin-top: 0;
   }
 
+  .hero__countdown-anchor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .hero__copy {
     width: 100%;
     max-width: 100%;
@@ -431,10 +447,12 @@
     flex-direction: column;
     gap: 0;
     margin: 0;
+    width: 100%;
   }
 
   .token-intro__text {
     order: 2;
+    width: 100%;
   }
 
   .token-intro__pill {
@@ -455,8 +473,8 @@
 
   .token-intro__feature {
     height: auto;
-    padding: 10px 65px;
-    min-height: 95px;
+    padding: 14px 18px;
+    min-height: 72px;
     width: 100%;
     border-radius: 16px;
     justify-content: flex-start;
@@ -1099,6 +1117,10 @@
   .hero__layout {
     padding: 32px 20px 48px;
     gap: 24px;
+  }
+
+  .hero__countdown-anchor {
+    scroll-margin-top: 96px;
   }
 
   .hero__title {
