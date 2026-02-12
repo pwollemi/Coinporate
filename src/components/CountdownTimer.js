@@ -64,6 +64,7 @@ function CountdownTimer({
     timeUntilStart,
     timeUntilEnd,
   } = usePresaleState(wallet);
+
   const {
     withdrawableAmounts,
     refetch: refetchVesting,
@@ -74,6 +75,7 @@ function CountdownTimer({
   const [usdcAmount, setUsdcAmount] = useState("");
   const [corpAmount, setCorpAmount] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isReloading, setIsReloading] = useState(false);
 
   // Use dynamic configuration or fallback to hardcoded values
   const exchangeRate = config?.exchangeRate || 0;
@@ -251,6 +253,20 @@ function CountdownTimer({
 
   const avatarSlots = avatarImages.length ? avatarImages : [null, null, null];
 
+  const handleReloadPresale = async () => {
+    if (isReloading) {
+      return;
+    }
+    setIsReloading(true);
+    try {
+      await refetch();
+    } catch (reloadError) {
+      console.error("Failed to reload presale data:", reloadError);
+    } finally {
+      setIsReloading(false);
+    }
+  };
+
   // Enhanced claim UI for users who have purchased tokens
   const renderClaimUI = () => {
     if (!hasPurchased) {
@@ -369,11 +385,28 @@ function CountdownTimer({
       <div className={`countdown ${className}`}>
         <div className="countdown__panel">
           <div className="countdown__error">
-            <div className="countdown__error-icon">⚠️</div>
-            <div className="countdown__error-text">
-              Failed to load presale data
+            <div className="countdown__error-header">
+              <span className="countdown__error-icon" aria-hidden="true">
+                ⚠️
+              </span>
+              <div className="countdown__error-title">
+                Presale data unavailable
+              </div>
             </div>
-            <div className="countdown__error-subtext">{error}</div>
+            <div className="countdown__error-text">
+              Error happend while fetching information please reload the page
+            </div>
+            <div className="countdown__error-actions">
+              <button
+                className="countdown__action countdown__action--reload"
+                type="button"
+                onClick={handleReloadPresale}
+                disabled={isReloading}
+              >
+                {isReloading ? "Reloading..." : "Reload"}
+              </button>
+            </div>
+            <div className="countdown__error-subtext">Details: {error}</div>
           </div>
         </div>
         <CountdownPill>{pillContent}</CountdownPill>

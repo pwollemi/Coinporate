@@ -23,14 +23,13 @@ export function usePresaleState() {
       setLoading(true);
       setError(null);
       const presaleConfig = await fetchPresaleConfig(connection);
-      // presaleConfig.startTime = Date.now() + 100000;
+
       setConfig(presaleConfig);
 
       // Calculate initial status
       const presaleStatus = getPresaleStatus(presaleConfig);
       setStatus(presaleStatus);
     } catch (err) {
-      console.error("Failed to fetch presale config (client):", err);
       setError(err.message);
     } finally {
       setLoading(false);

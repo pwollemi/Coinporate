@@ -394,8 +394,8 @@ export async function fetchPresaleConfig(connection, wallet = dummyWallet()) {
         const presaleData = await program.account.presaleAccount.fetch(presaleAccount);
 
         return {
-            startTime: presaleData.startTime.toNumber() * 1000,
-            period: presaleData.period.toNumber() * 1000,
+            startTime: (presaleData.startTime.toNumber() * 1000) || 0,
+            period: presaleData.period.toNumber() * 1000 || 0,
             exchangeRate: presaleData.exchangeRate.toNumber(),
             serviceFee: presaleData.serviceFee.toNumber(),
             isPresalePaused: presaleData.isPresalePaused,
@@ -410,7 +410,6 @@ export async function fetchPresaleConfig(connection, wallet = dummyWallet()) {
         return null;
     }
 }
-
 /**
  * Get user's vesting information
  */
@@ -446,7 +445,7 @@ export async function getVestingAccount(
 
         return {
             vestingName: vestingAccountData.vestingName,
-            startTime: vestingAccountData.startTime.toNumber() * 1000,
+            startTime: vestingAccountData.startTime.toNumber() * 1000 || 0,
             vestingPeriod: vestingAccountData.vestingPeriod.toNumber() * 1000,
             vestingUnlock: vestingAccountData.vestingUnlock.toNumber() / 1000,
             lockPeriod: vestingAccountData.lockPeriod.toNumber() * 1000,
@@ -465,7 +464,7 @@ export async function getVestingAccount(
  */
 export function getPresaleStatus(config, currentTime = Date.now()) {
     const now = currentTime;
-    const startTime = Number(config.startTime);
+    const startTime = Number(config.startTime) || 0;
     const period = Number(config.period);
     const endTime = startTime + period;
 
