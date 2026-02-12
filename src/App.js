@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import HomePage from "./pages/HomePage";
 import AcademyPage from "./pages/AcademyPage";
 import AcademyDetailPage from "./pages/AcademyDetailPage";
@@ -87,6 +88,7 @@ function App() {
           />
         </div>
       </div>
+      <SpeedInsights />
     </ToastProvider>
   );
 }
